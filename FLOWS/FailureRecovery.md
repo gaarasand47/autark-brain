@@ -2,35 +2,40 @@
 
 **Status:** `Stable` (Gen-1)
 
-This flow demonstrates how the organism handles a mid-tick catastrophic failure without corrupting state.
+This flow demonstrates how the organism handles mid-execution catastrophic crashes (e.g. power failure, Out of Memory, fatal exception) without losing tasks or double-spending.
 
 ```mermaid
 sequenceDiagram
+    participant WorkerLoop
     participant Heart
-    participant Sandbox
-    participant WorkingMemory
-    participant EpisodicMemory
+    participant WorkQueue
+    participant Ledger
     
-    Heart->>Sandbox: executeSkill('riskyAction')
-    activate Sandbox
-    Sandbox-->>Heart: throw Error("Network Timeout")
-    deactivate Sandbox
+    WorkerLoop->>Heart: tick(GENERATE)
+    activate Heart
+    Heart-->>Heart: 💥 FATAL CRASH
+    deactivate Heart
     
-    Note over Heart: Catch Block Triggered
+    Note over WorkerLoop: Server Reboots
+    WorkerLoop->>Heart: tick(BOOT)
+    Heart->>Heart: Registers Capabilities
+    Heart-->>WorkerLoop: nextState = OBSERVE
     
-    Heart->>Heart: Log Error to WorkingMemory
-    Heart->>Heart: Force Transition to SLEEP
+    WorkerLoop->>Heart: tick(OBSERVE)
+    activate Heart
+    Heart->>WorkQueue: dequeue()
+    Note over WorkQueue: Finds old task with expired lease (status: GENERATE)
+    WorkQueue-->>Heart: task (status: GENERATE)
     
-    Heart->>EpisodicMemory: commitEpisode(FailedSummary)
+    Heart->>Heart: Resumes dynamically
+    Heart-->>WorkerLoop: nextState = ARTIFACT
+    deactivate Heart
     
-    Note over Heart: Finally Block Triggered
-    
-    Heart->>WorkingMemory: clear()
-    WorkingMemory-->>Heart: Flushed
-    
-    Heart->>Heart: Wait for next tick
+    Note over WorkerLoop: Execution Resumes Cleanly
 ```
 
 ### Traceability
-- **Implemented In:** `src/kernel/Heart.ts`.
-- **Invariants:** `WorkingMemory` MUST be cleared via the `finally` block to prevent the corrupted state from leaking into the next pulse.
+- **Implemented In:** `src/execution/WorkQueue.ts` and `src/kernel/Heart.ts`.
+- **Invariants:** 
+  1. `WorkQueue.dequeue()` MUST fetch any active task where `lease_expiry < now`, not just `QUEUED` tasks.
+  2. `Heart.ts` `OBSERVE` state MUST dynamically map the task's database status back to the equivalent `OrganismState` to resume without re-planning.

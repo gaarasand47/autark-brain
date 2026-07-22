@@ -5,24 +5,27 @@ The `Heart` is the central execution kernel of Autark. Without it, the organism 
 
 ## 2. Responsibilities & Inputs/Outputs
 - **Responsibilities:**
-  - Manages the entire `tick()` lifecycle (`WAKE` -> `THINK` -> `EXECUTE` -> `SLEEP`).
-  - Enforces the `CognitiveBudget` by deciding whether to trigger the `DreamEngine` or `ReflectionEngine`.
-  - Coordinates all other organs.
-- **Inputs:** None directly. It pulls data from the environment during `WAKE`.
+  - Manages the continuous transition of the organism's state through its biological lifecycle.
+  - Controls execution flow, resuming crashed tasks dynamically during `OBSERVE`.
+  - Enforces the `CognitiveBudget` by deciding whether to trigger the `DreamEngine` or Reflection during `SLEEP`.
+  - Coordinates all other organs based on the current state phase.
+- **Inputs:** Pulled from the environment context provided by `WorkerLoop`. Tasks are dequeued from `WorkQueue`.
 - **Outputs:** An orchestrated sequence of state changes and database mutations across all organs.
 
 ## 3. Internal Data Structures & State Transitions
-- **State Enum:** `WAKE | THINK | EXECUTE | SLEEP`
-- **Transitions:** Handled sequentially in a `try/catch/finally` block during `tick()`. 
+- **State Enum:** `BOOT | OBSERVE | THINK | AUTHORIZE | GENERATE | ARTIFACT | SANDBOX | EXECUTE | SETTLE | SLEEP`
+- **Transitions:** Handled as a continuous biological pulse by returning `nextState` to the `WorkerLoop`. `Heart.ts` maps task statuses to biological states during `OBSERVE` to ensure correct crash recovery and resumption.
 
 ## 4. Dependency Map
 - **Depends On:** 
-  - `Treasury` (for Cognitive Budget checks)
-  - `WorkingMemory` (for state storage during the tick)
-  - `EpisodicMemory` (to flush state at the end of the tick)
-  - `DreamEngine`, `ReflectionEngine` (for maintenance during sleep)
+  - `Treasury` (for Budget limits and settling)
+  - `Cortex` (for cognitive generation)
+  - `EpisodicMemory` and `SemanticMemory` (for logging and learning)
+  - `CapabilityRegistry` (for BOOT loading)
+  - `DreamEngine` (for maintenance during sleep)
 - **Used By:** 
-  - The entry point (`index.ts`) which instantiates `setInterval(Heart.tick, interval)`.
+  - `WorkerLoop.ts` (which supplies the physical 1s pulse calling `runHeart()`)
+  - `index.ts` (which boots the WorkerLoop)
 
 ## 5. Invariants
 - **Always Deterministic:** The loop must execute synchronously to avoid race conditions.
