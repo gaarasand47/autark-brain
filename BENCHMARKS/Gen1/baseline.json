@@ -1,0 +1,245 @@
+[
+  {
+    "schemaVersion": 1,
+    "name": "Micro: Heart Latency",
+    "generation": "Gen1",
+    "status": "FAIL",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.848Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.001,
+        "median": 0.001,
+        "min": 0,
+        "max": 0.009,
+        "p95": 0.001,
+        "p99": 0.009,
+        "stdDev": 0.001
+      },
+      "peakMemoryMb": 150.03,
+      "avgHeapMb": 150.03,
+      "heapDeltaMb": 0.006,
+      "cpuPercent": 0.5
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": false,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": [
+        "Peak memory (150.03MB) > max allowed (50MB)"
+      ]
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Micro: Ledger Write",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.850Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0.001,
+        "p95": 0,
+        "p99": 0.001,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 150.05,
+      "avgHeapMb": 150.05,
+      "heapDeltaMb": 0,
+      "cpuPercent": 0.2
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Micro: SQLite Read",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.851Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0.001,
+        "p95": 0.001,
+        "p99": 0.001,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 150.07,
+      "avgHeapMb": 150.07,
+      "heapDeltaMb": 0,
+      "cpuPercent": 0.1
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "System: Startup Latency",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.851Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.001,
+        "median": 0.001,
+        "min": 0.001,
+        "max": 0.003,
+        "p95": 0.001,
+        "p99": 0.003,
+        "stdDev": 0.001
+      },
+      "peakMemoryMb": 150.08,
+      "avgHeapMb": 150.08,
+      "heapDeltaMb": 0,
+      "cpuPercent": 1.2
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "System: Heartbeat Endurance (10,000 Pulses)",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.852Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.008,
+        "median": 0.006,
+        "min": 0.006,
+        "max": 0.05,
+        "p95": 0.015,
+        "p99": 0.05,
+        "stdDev": 0.008
+      },
+      "peakMemoryMb": 150.15,
+      "avgHeapMb": 150.15,
+      "heapDeltaMb": 0.12,
+      "cpuPercent": 0.8,
+      "throughputOpsPerSec": 1000
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "System: Recovery & Orphan Task Resumption",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "win32",
+      "nodeVersion": "v24.18.0",
+      "cpuModel": "Intel/AMD Host",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-22T20:22:00.852Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0.002,
+        "p95": 0.001,
+        "p99": 0.002,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 150.16,
+      "avgHeapMb": 150.16,
+      "heapDeltaMb": 0,
+      "cpuPercent": 1.5
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  }
+]
