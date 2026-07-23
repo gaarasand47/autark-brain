@@ -1,8 +1,8 @@
 # Current State of Autark Organism
 
-**Generation:** Gen-1
-**Current Stage:** Stage 15 Complete (Gen-1 Frozen)
-**Freeze Status:** 🟢 READY (Gen-1 Frozen)
+**Generation:** Gen-2
+**Current Stage:** Stage 1 (Instinct Drives Implementation)
+**Freeze Status:** 🔴 NOT READY
 
 ---
 
@@ -11,9 +11,9 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen1-development` | `0ca10c2` |
-| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `main` | `26bf8ef` |
-| **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `master` | `101e032` |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `HEAD` |
+| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `main` | `HEAD` |
+| **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `HEAD` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
 | **`autark-data`** | `d:\autark\autark-data` | Runtime State & SQLite DBs | N/A | N/A |
 
