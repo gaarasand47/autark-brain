@@ -11,9 +11,9 @@
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
 **Generation:** Gen-2  
-**Current Stage:** Stage 0 (Baseline Inheritance & Architecture Reconciliation)  
-**Status:** Gen-2 Stage 0: DESIGN REVIEW  
-**Source Implementation:** NOT STARTED (Awaiting Codex Stage 0 Architecture Approval)  
+**Current Stage:** Gen-2 Full Consolidated Pass  
+**Status:** READY_FOR_CODEX_REPAIR_VERIFICATION  
+**Source Implementation:** IMPLEMENTED  
 
 ---
 
@@ -42,8 +42,9 @@ Parent Directory: `d:\autark\`
 
 ## Gen-2 Progress Matrix
 
-- [ ] **G2-S0-O1 Stage 0 Architecture Reconciliation**: DESIGN REVIEW — Awaiting independent Codex review of ADR-008 & Gen-2 spec.
-- [ ] **Stages 1-7 (G2-S1-O1 through G2-S7-O3)**: OPEN — Source implementation not started.
+- [x] **G2-S0-O1 Stage 0 Architecture Reconciliation**: IMPLEMENTED
+- [x] **Stages 1-7 (G2-S1-O1 through G2-S7-O3)**: IMPLEMENTED (Consolidated Pass)
+- [ ] **Codex Repair Verification**: AWAITING VERIFICATION
 
 ## Gen-1 Inherited Audit Status
 

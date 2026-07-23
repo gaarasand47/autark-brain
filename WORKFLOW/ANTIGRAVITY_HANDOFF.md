@@ -143,8 +143,8 @@ npm run build && npm test -- src/__tests__/unit/random.test.ts
 - **Excluded:** `IIdGenerator` (deferred to `G2-S1-O3`), `OrganismStateSnapshot`, needs, drives, proposals, or persistence.
 
 
-## Gen-2 Consolidated Pass Complete
+## Gen-2 Consolidated Pass Repair Complete
 
-Engine SHA: e541eb93704835d61776e1b638367df5f3254f83
-Status: READY_FOR_CODEX_VERIFICATION
-Notes: InstinctSystem implemented and integrated. Local unit tests wrote but fail on node-gyp better-sqlite3 build due to missing MSVC on windows. Engine builds perfectly. Ready for Codex verification.
+Engine SHA: 92484a8
+Status: READY_FOR_CODEX_REPAIR_VERIFICATION
+Notes: Completed repair of 12 issues from Codex Review. Fixed integration in Heart, drive decay and hysteresis in DriveEngine, constraints and evidence propagation in GoalProposalEngine, and persistence safety in InstinctStore. Built and committed.
