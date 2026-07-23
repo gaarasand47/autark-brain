@@ -2,6 +2,12 @@
 
 **Status:** `Living Document`
 
+The strategic compass and the verified Gen-1 gap analysis are recorded in
+`REFERENCE/ORIGINAL_LIFE_ARCHITECTURE.md` and
+`GENERATIONS/GEN1_RECONCILIATION.md`. The next work sequence is documented in
+`GENERATIONS/NEXT_WORK_PLAN.md`; no Gen-3 implementation is authorized until
+that reconciliation receives independent design review.
+
 This roadmap defines the generational evolution of the Autark organism. Each generation introduces a distinct biological or structural capability while preserving the invariants of all previous generations. 
 
 ## [Gen-0] Genesis (Frozen)
