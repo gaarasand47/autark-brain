@@ -2,35 +2,46 @@
 
 ## Review Metadata
 
-- **Objective:** `G2-S0-O1` — Gen-2 Stage 0 Architecture Reconciliation
-- **Repair commit verified:** `2061f359c7492fd27730a69c492e997ad155b76b`
-- **Review type:** Independent repair verification
-- **Verdict:** `APPROVED`
+- **Objective:** `G2-S1-O1` — `IClock` deterministic primitive
+- **Design handoff commit:** `28625bd`
+- **Review type:** Independent design review
+- **Verdict:** `APPROVED WITH CONDITIONS`
 
-## Repair Findings Verified
+## Findings and Required Conditions
 
-1. `MotivationalContext.evidenceHash` now uses `string | null`.
-2. `NeedSignal` now has a `NeedKind` discriminant containing
-   `DATA_DEFICIENCY` and typed `EvidenceRef[]` evidence.
-3. High-confidence wording now permits only otherwise policy-eligible
-   proposal classes and explicitly preserves Constitution, Policy, Treasury,
-   Approval, Sandbox, Vault, and Identity restrictions.
-4. The evaluation flow now restricts confidence `0.50–0.99` to low-risk
-   internal/read-only proposals and disables proposals below `0.50`.
+1. **Reconcile the existing duplicate `IClock` declarations.**
+   `src/core/clock.ts` and `src/core/interfaces.ts` already declare equivalent
+   but independent `IClock` interfaces. The plan must identify one canonical
+   declaration and preserve current imports through a type re-export or
+   another explicit compatibility mechanism. Do not add a third interface.
 
-## Regression Check
+2. **Define the complete `TestClock` contract.**
+   The existing `IClock` includes `setTimeout`, `clearTimeout`, `setInterval`,
+   and `clearInterval`. A class implementing `IClock` cannot provide only
+   `now`, `advance`, and `set`. Specify deterministic timer behavior and tests,
+   or explicitly reconcile the inherited timer surface before implementation.
+   Do not silently delegate test timers to wall-clock globals.
 
-- Repair scope was limited to the four listed documentation findings and
-  workflow handoff files.
-- No Gen-2 production source code was introduced.
-- The executable repository remains at
-  `0136b096fa2f5068d1833d89ea5cd9658bc51923`.
+3. **Specify deterministic input semantics.**
+   Define behavior for negative, non-finite, and fractional values passed to
+   the constructor, `advance`, and `set`, including whether backward `set`
+   operations are permitted. Tests must cover the selected boundaries.
+
+4. **Strengthen verification.**
+   Test `SystemClock` with a controlled `Date.now` spy and an exact expected
+   value rather than a timing-dependent positivity assertion. Include
+   `npm run build`, the focused Jest test, and compatibility tests for all
+   inherited clock methods.
+
+5. **Keep implementation scope bounded.**
+   This objective may canonicalize the existing clock type and add
+   `TestClock`; it must not replace unrelated direct `Date.now()` calls or
+   refactor consumers beyond the minimum import compatibility change.
+   Use the single name `TestClock`; do not introduce a mock/fake clock.
 
 ## Required Next Action
 
-Antigravity may draft the bounded design plan for `G2-S1-O1` (`IClock`) in
-`ANTIGRAVITY_HANDOFF.md`. It must then set `STATUS.md` to
-`READY_FOR_CODEX_DESIGN_REVIEW` and stop.
+Revise only the `G2-S1-O1` design handoff to satisfy these conditions. Set
+`STATUS.md` to `READY_FOR_CODEX_REPAIR_VERIFICATION` and stop.
 
-No `G2-S1-O1` production implementation is authorized until its design
-receives a separate Codex verdict.
+No production implementation is authorized.
