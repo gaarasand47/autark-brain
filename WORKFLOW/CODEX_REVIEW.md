@@ -3,45 +3,36 @@
 ## Review Metadata
 
 - **Objective:** `G2-S1-O1` — `IClock` deterministic primitive
-- **Design handoff commit:** `28625bd`
-- **Review type:** Independent design review
-- **Verdict:** `APPROVED WITH CONDITIONS`
+- **Revised design commit:** `843bb21`
+- **Review type:** Independent design repair verification
+- **Verdict:** `APPROVED`
 
-## Findings and Required Conditions
+## Conditions Verified
 
-1. **Reconcile the existing duplicate `IClock` declarations.**
-   `src/core/clock.ts` and `src/core/interfaces.ts` already declare equivalent
-   but independent `IClock` interfaces. The plan must identify one canonical
-   declaration and preserve current imports through a type re-export or
-   another explicit compatibility mechanism. Do not add a third interface.
+1. `src/core/clock.ts` is the single canonical `IClock` declaration;
+   `src/core/interfaces.ts` preserves existing imports through re-export.
+2. `TestClock` implements the complete inherited clock and timer contract
+   using a deterministic virtual queue without wall-clock delegation.
+3. Constructor, advancement, monotonic-set, finite-value, fractional-value,
+   and backward-time behavior are specified.
+4. Verification includes an exact `Date.now` spy, build, focused Jest tests,
+   timer compatibility, deterministic ordering, and boundary tests.
+5. Scope excludes unrelated `Date.now()` consumers and all later Gen-2
+   primitives and organs.
 
-2. **Define the complete `TestClock` contract.**
-   The existing `IClock` includes `setTimeout`, `clearTimeout`, `setInterval`,
-   and `clearInterval`. A class implementing `IClock` cannot provide only
-   `now`, `advance`, and `set`. Specify deterministic timer behavior and tests,
-   or explicitly reconcile the inherited timer surface before implementation.
-   Do not silently delegate test timers to wall-clock globals.
+## Implementation Acceptance Clarifications
 
-3. **Specify deterministic input semantics.**
-   Define behavior for negative, non-finite, and fractional values passed to
-   the constructor, `advance`, and `set`, including whether backward `set`
-   operations are permitted. Tests must cover the selected boundaries.
-
-4. **Strengthen verification.**
-   Test `SystemClock` with a controlled `Date.now` spy and an exact expected
-   value rather than a timing-dependent positivity assertion. Include
-   `npm run build`, the focused Jest test, and compatibility tests for all
-   inherited clock methods.
-
-5. **Keep implementation scope bounded.**
-   This objective may canonicalize the existing clock type and add
-   `TestClock`; it must not replace unrelated direct `Date.now()` calls or
-   refactor consumers beyond the minimum import compatibility change.
-   Use the single name `TestClock`; do not introduce a mock/fake clock.
+- Fractional `set(timestamp)` values follow the documented integer-clock
+  convention: floor the value before the monotonic comparison.
+- Timer delays must resolve to a positive finite integer after normalization;
+  zero or invalid delays must fail deterministically.
+- An interval cleared from inside its own callback must remain cleared and
+  must not be rescheduled.
+- Timers sharing a due time execute by ascending creation ID.
 
 ## Required Next Action
 
-Revise only the `G2-S1-O1` design handoff to satisfy these conditions. Set
-`STATUS.md` to `READY_FOR_CODEX_REPAIR_VERIFICATION` and stop.
-
-No production implementation is authorized.
+Antigravity may implement only the approved `G2-S1-O1` scope. It must run
+`npm run build` and the focused clock Jest test, commit the implementation,
+record the exact commit/files/tests/limitations in `ANTIGRAVITY_HANDOFF.md`,
+set `STATUS.md` to `READY_FOR_CODEX_VERIFICATION`, and stop.

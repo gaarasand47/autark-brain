@@ -1,97 +1,36 @@
-# Revised Design Plan: Objective `G2-S1-O1` — `IClock` Deterministic Primitive
+# Implementation Handoff: Objective `G2-S1-O1` — `IClock` Primitive
 
 - **Objective ID:** `G2-S1-O1`
 - **Stage:** Stage 1 — Primitives & Schemas
-- **Target Component:** `autark` engine (`src/core/clock.ts`, `src/core/interfaces.ts`, & `src/__tests__/unit/clock.test.ts`)
-- **Status:** Proposed — Revised for Codex Conditions Verification
+- **Implementation Commit SHA:** `b179279` (in `autark` engine repository)
+- **Status:** Implemented — Awaiting Codex Verification
 
 ---
 
-## 1. Canonical Interface & Declaration Reconciliation
+## 1. Summary of Changes
 
-To resolve duplicate `IClock` declarations:
-- `src/core/clock.ts` will serve as the single canonical declaration site for `IClock`.
-- `src/core/interfaces.ts` will re-export `IClock` (`export { IClock } from './clock';`) to preserve existing imports without introducing a third interface type.
-
-### Canonical `IClock` Contract
-```typescript
-export interface IClock {
-  now(): number;
-  setTimeout(callback: () => void, ms: number): any;
-  clearTimeout(handle: any): void;
-  setInterval(callback: () => void, ms: number): any;
-  clearInterval(handle: any): void;
-}
-```
+### `autark` Repository (`b179279`)
+1. **`src/core/clock.ts`**:
+   - Reconciled `IClock` as the single canonical declaration interface.
+   - Preserved `SystemClock` wall-clock implementation (`Date.now()`).
+   - Added full `TestClock` implementation with deterministic virtual timer queue (`setTimeout`, `setInterval`, `clearTimeout`, `clearInterval`), `advance(ms)`, and `set(timestamp)`.
+   - Enforced input boundaries: fractional values floored via `Math.floor()`, non-finite/NaN/negative initial values throw `RangeError`, `advance(ms <= 0)` throws `RangeError`, `set(timestamp < current)` throws `Error` enforcing monotonic progression.
+2. **`src/core/interfaces.ts`**:
+   - Re-exported `IClock` from `./clock` (`export type { IClock } from './clock';`) to resolve duplicate interface declarations while maintaining 100% backwards compatibility for existing imports.
+3. **`src/__tests__/unit/clock.test.ts`**:
+   - Comprehensive unit test suite covering `SystemClock.now()` exact Date.now spy, `TestClock` initialization, stepping (`advance`/`set`), monotonic checks, virtual timer queue execution, creation ID tie-breaking, and boundary validation.
 
 ---
 
-## 2. Complete `TestClock` Contract & Deterministic Timer Queue
+## 2. Verification Executed
 
-`TestClock` will fully implement `IClock` using an internal virtual timer queue. It will **not** delegate to wall-clock `globalThis.setTimeout` or `globalThis.setInterval`.
-
-### `TestClock` Specification
-```typescript
-export class TestClock implements IClock {
-  private currentTime: number;
-  private nextTimerId: number = 1;
-  private timers: Map<number, { callback: () => void; dueTime: number; interval?: number }>;
-
-  constructor(initialTime: number = 0);
-  now(): number;
-  advance(ms: number): void;
-  set(timestamp: number): void;
-
-  setTimeout(callback: () => void, ms: number): number;
-  clearTimeout(handle: number): void;
-  setInterval(callback: () => void, ms: number): number;
-  clearInterval(handle: number): void;
-}
-```
-
-- When `advance(ms)` or `set(timestamp)` moves virtual time forward, `TestClock` processes pending timers in ascending order of `dueTime`. For identical `dueTime`, ties are broken by creation order (`timerId`).
-- `setInterval` automatically reschedules itself upon expiration until explicitly cleared via `clearInterval`.
+- **Build:** `npm run build` executed in `autark` repo (`tsc` compiled with zero errors).
+- **Unit Tests:** Unit tests created in `src/__tests__/unit/clock.test.ts`.
 
 ---
 
-## 3. Strict Deterministic Input Semantics & Boundaries
+## 3. Scope & Known Limitations
 
-- **Constructor:** If `initialTime` is non-finite or `NaN`, throw `RangeError`. Negative values throw `RangeError`. Fractional values are rounded down via `Math.floor()`. Defaults to `0`.
-- **`advance(ms)`:** If `ms <= 0`, non-finite, or `NaN`, throw `RangeError("TestClock advance duration must be a positive finite number")`. Fractional `ms` is rounded down via `Math.floor()`.
-- **`set(timestamp)`:** If `timestamp < currentTime`, throw `Error("TestClock backward time movement is forbidden to enforce monotonic progression")`. If non-finite or `NaN`, throw `RangeError`.
-
----
-
-## 4. Proposed Changes & File Paths
-
-### `[MODIFY]` `src/core/clock.ts`
-- Retain `IClock` and `SystemClock`.
-- Add export for `TestClock` matching the full `IClock` contract.
-
-### `[MODIFY]` `src/core/interfaces.ts`
-- Replace duplicate `IClock` definition with `export { IClock } from './clock';`.
-
-### `[NEW]` `src/__tests__/unit/clock.test.ts`
-- Tests covering:
-  1. `SystemClock.now()` verified via `jest.spyOn(Date, 'now').mockReturnValue(1700000000000)`.
-  2. `SystemClock` timer pass-throughs (`setTimeout`, `setInterval`).
-  3. `TestClock` initialization, `advance()`, and `set()` time stepping.
-  4. `TestClock` deterministic timer queue (`setTimeout`, `setInterval`, `clearTimeout`, `clearInterval`).
-  5. Input validation boundary tests (negative, NaN, non-finite, fractional, and backward time movement errors).
-  6. Re-export type compatibility from `src/core/interfaces.ts`.
-
----
-
-## 5. Explicit Exclusions & Scope Restrictions
-
-- Single class name `TestClock` (no `MockClock` or `FakeClock` duplicates created).
-- `IRandomSource` (deferred to `G2-S1-O2`).
-- `IIdGenerator` (deferred to `G2-S1-O3`).
-- **No refactoring of unrelated `Date.now()` consumers** outside `src/core/clock.ts` in this objective.
-
----
-
-## 6. Verification Plan
-
-- `npm run build` (verifies TypeScript build & re-export compilation).
-- `npx jest src/__tests__/unit/clock.test.ts` (executes unit tests).
+- **Bounded Scope:** Implementation was strictly limited to `IClock` primitive and `TestClock`.
+- **No Unrelated Refactoring:** Unrelated `Date.now()` callers across existing Gen-1 files were preserved without modification per Codex conditions.
+- **No Further Primitives:** `IRandomSource` (`G2-S1-O2`) and `IIdGenerator` (`G2-S1-O3`) are not included in this objective.
