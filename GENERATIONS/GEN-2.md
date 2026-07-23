@@ -75,6 +75,7 @@ These subcomponents are private internal logic modules of `InstinctSystem`. They
 `Heart` may ONLY invoke the public `InstinctSystem` interface:
 - Schedule evaluation: `InstinctSystem.evaluate(snapshot)`
 - Query cached state: `InstinctSystem.getEvaluationResult()`
+- Pass-through proposal acknowledgement: `InstinctSystem.acknowledgeProposal()`
 - Trigger persistence: `InstinctSystem.persistState()`
 - Recover state: `InstinctSystem.recoverState()`
 
@@ -94,7 +95,7 @@ InstinctSystem (Public Interface Entry)
   ├─ DriveEngine (Internal)  ──→ DriveState / MotivationalState
   └─ GoalProposalEngine (Internal) ──→ GoalProposal[]
         ↓
-MotivationalState & GoalProposal[] (Public Read-Only Return)
+InstinctEvaluationResult (Public Read-Only Return)
         ↓
 Heart Kernel (Orchestrator Intake)
         ↓
@@ -188,14 +189,28 @@ interface IIdGenerator {
 ```typescript
 interface NeedSignal {
   needId: string;
+  sourceMetrics: string[];
   intensity: number;
+  threshold: number;
   status: MetricStatus;
   confidence: number;
+  confidenceReason: string;
+  observationTime: number;
+  expiry: number;
+  evaluatorVersion: string;
+  correlationId: string;
+  evidenceHash: string;
 }
 
 interface DriveState {
-  intensity: number;
+  driveKind: "HUNGER" | "ANXIETY" | "CURIOSITY" | "NONE";
+  rawIntensity: number;
+  effectiveIntensity: number;
   status: MetricStatus;
+  confidence: number;
+  isActive: boolean;
+  activationReason: string;
+  evaluatorVersion: string;
 }
 ```
 
@@ -255,9 +270,13 @@ interface InstinctEvaluationResult {
 ## 7. Failure, Confidence, Recovery & Atomicity Semantics
 
 ### 7.1 Confidence, Thresholds, and Missing-Data Propagation
-- **Confidence Calculation:** Overall `MotivationalState` confidence is calculated as the minimum confidence score across all core `NeedSignal` inputs (e.g., if any critical Treasury metric is `UNAVAILABLE` or `UNKNOWN`, the overall confidence drops to `0.0` or a predefined degraded threshold).
-- **Missing-Data Propagation:** A metric status of `UNKNOWN` or `UNAVAILABLE` immediately degrades the confidence score and propagates up to escalate Anxiety (due to uncertainty). 
-- **Generation Threshold:** Goal proposals are ONLY generated if `MotivationalState.confidence >= 0.50`. Below this threshold, proposal generation is disabled.
+- **Deterministic Formula:** Overall `MotivationalState.confidence` is calculated as the minimum `confidence` across all activated `NeedSignal` inputs contributing to the dominant drive.
+- **Confidence Tiers & Restrictions:**
+  - **High (1.0):** Normal operation. All objective classes permitted.
+  - **Degraded (0.50 - 0.99):** Generation is restricted strictly to low-risk internal/read-only objective classes.
+  - **Unavailable (< 0.50):** Goal proposal generation is completely disabled.
+- **Critical Data Blocking:** If any critical Treasury or system integrity data is `UNKNOWN` or `UNAVAILABLE`, Hunger and Anxiety proposal generation is strictly blocked regardless of aggregate confidence.
+- **Missing-Data & Uncertainty:** Missing data does NOT fabricate verified physiological evidence. Instead, it raises a distinct, dedicated uncertainty signal (e.g., a "Data Deficiency" Need) which directly escalates Anxiety and degrades confidence without faking underlying metric values.
 
 ### 7.2 Evaluation Failure Semantics (No Fake "NONE")
 - If `InstinctSystem.evaluate()` encounters an exception, unhandled failure, or missing critical inputs, it emits a structural failure state:
@@ -275,8 +294,8 @@ interface InstinctEvaluationResult {
       confidenceReason: "Evaluation failed",
       suggestedObjectiveClass: null,
       actionAuthority: false,
-      evaluatorVersion: "fallback",
-      evidenceHash: "none"
+      evaluatorVersion: snapshot.version,
+      evidenceHash: null
     },
     proposals: []
   }
@@ -308,34 +327,51 @@ To adhere to the strict one-objective-at-a-time governance model, the Gen-2 impl
 ### Stage 0: Architecture (Current)
 * **G2-S0-O1**: Baseline Inheritance & Architecture Reconciliation
 
-### Primitives & Schemas
-* **G2-O1**: Implement `IClock`, `IRandomSource`, and `IIdGenerator` deterministic primitives.
-* **G2-O2**: Implement `OrganismStateSnapshot` and metric types.
-* **G2-O3**: Implement `NeedSignal` and `DriveState` schemas.
-* **G2-O4**: Implement `MotivationalState` and `InstinctEvaluationResult` envelopes.
+### Stage 1: Primitives & Schemas
+* **G2-S1-O1**: Implement `IClock` primitive.
+* **G2-S1-O2**: Implement `IRandomSource` primitive.
+* **G2-S1-O3**: Implement `IIdGenerator` primitive.
+* **G2-S1-O4**: Implement `OrganismStateSnapshot` and generic metric types.
+* **G2-S1-O5**: Implement `NeedSignal` schema.
+* **G2-S1-O6**: Implement `DriveState` schema.
+* **G2-S1-O7**: Implement `MotivationalState` schema.
+* **G2-S1-O8**: Implement `InstinctEvaluationResult` schema.
 
-### NeedMonitor
-* **G2-O5**: Implement `NeedMonitor` metric validation logic (stale/degraded/valid).
-* **G2-O6**: Implement `NeedMonitor` NeedSignal translation and confidence scoring.
+### Stage 2: NeedMonitor
+* **G2-S2-O1**: Implement `NeedMonitor` generic metric validation logic (stale/degraded/valid).
+* **G2-S2-O2**: Implement `NeedMonitor` translation for Treasury metrics into Hunger `NeedSignal`.
+* **G2-S2-O3**: Implement `NeedMonitor` translation for Workload/Reliability metrics into Anxiety `NeedSignal`.
+* **G2-S2-O4**: Implement `NeedMonitor` deterministic confidence scoring and uncertainty degradation.
 
-### DriveEngine
-* **G2-O7**: Implement `DriveEngine` raw intensity calculations for Hunger, Anxiety, Curiosity.
-* **G2-O8**: Implement `DriveEngine` deterministic arbitration and hysteresis decay.
+### Stage 3: DriveEngine
+* **G2-S3-O1**: Implement `DriveEngine` raw intensity computation for Hunger.
+* **G2-S3-O2**: Implement `DriveEngine` raw intensity computation for Anxiety.
+* **G2-S3-O3**: Implement `DriveEngine` raw intensity computation for Curiosity.
+* **G2-S3-O4**: Implement `DriveEngine` deterministic arbitration (e.g. Anxiety suppressing Curiosity).
+* **G2-S3-O5**: Implement `DriveEngine` hysteresis thresholds.
+* **G2-S3-O6**: Implement `DriveEngine` decay curves.
 
-### GoalProposalEngine
-* **G2-O9**: Implement `GoalProposalEngine` generation rules for Hunger (monotonic risk ceiling).
-* **G2-O10**: Implement `GoalProposalEngine` generation rules for Anxiety and Curiosity.
+### Stage 4: GoalProposalEngine
+* **G2-S4-O1**: Implement `GoalProposalEngine` rules for Hunger (monotonic risk ceiling).
+* **G2-S4-O2**: Implement `GoalProposalEngine` rules for Anxiety.
+* **G2-S4-O3**: Implement `GoalProposalEngine` rules for Curiosity.
 
-### InstinctSystem Assembly
-* **G2-O11**: Assemble `InstinctSystem` public interface and route internal logic components.
-* **G2-O12**: Implement atomic SQLite persistence and schema versioning for `InstinctSystem`.
-* **G2-O13**: Implement `InstinctSystem` recovery, quarantine, and failure fallback semantics.
+### Stage 5: InstinctSystem Assembly
+* **G2-S5-O1**: Assemble `InstinctSystem` public interface.
+* **G2-S5-O2**: Route internal logic flow (`NeedMonitor` -> `DriveEngine` -> `GoalProposalEngine`).
+* **G2-S5-O3**: Implement atomic SQLite persistence schema versioning for `InstinctSystem`.
+* **G2-S5-O4**: Implement atomic SQLite transaction writes.
+* **G2-S5-O5**: Implement `InstinctSystem` boot recovery logic.
+* **G2-S5-O6**: Implement `InstinctSystem` corruption quarantine and structural fallback states.
 
-### Heart & Cortex Integration
-* **G2-O14**: Wire `Heart` tick sequence to `InstinctSystem.evaluate()` and `persistState()`.
-* **G2-O15**: Implement `Heart` pass-through for proposal acknowledgement (`acknowledgeProposal`).
-* **G2-O16**: Implement `Heart` pass-through of `InstinctEvaluationResult` to `Cortex.think()`.
+### Stage 6: Heart & Cortex Integration
+* **G2-S6-O1**: Wire `Heart` tick sequence to `InstinctSystem.evaluate()`.
+* **G2-S6-O2**: Wire `Heart` SLEEP sequence to `InstinctSystem.persistState()`.
+* **G2-S6-O3**: Implement `Heart` blind pass-through for proposal acknowledgement (`acknowledgeProposal`).
+* **G2-S6-O4**: Implement `Heart` pass-through of `InstinctEvaluationResult` to `Cortex.think()`.
+* **G2-S6-O5**: Implement `Cortex` planning integration using advisory motivational context.
 
-### System Validation & Release
-* **G2-O17**: Complete Gen-2 system testing and shadow-mode validation.
-* **G2-O18**: Gen-2 Integration and Final Release (Requires separate independent authorization).
+### Stage 7: System Validation & Release
+* **G2-S7-O1**: Execute Gen-2 shadow-mode validation.
+* **G2-S7-O2**: Execute Gen-2 comprehensive deterministic replay tests.
+* **G2-S7-O3**: Produce Gen-2 Release-Candidate Evidence Handoff (Antigravity possesses no release authority).

@@ -76,8 +76,8 @@ export interface InstinctEvaluationResult {
         confidenceReason: "Evaluation failed",
         suggestedObjectiveClass: null,
         actionAuthority: false,
-        evaluatorVersion: "fallback",
-        evidenceHash: "none"
+        evaluatorVersion: snapshot.version,
+        evidenceHash: null
       },
       proposals: []
     }
@@ -88,5 +88,5 @@ export interface InstinctEvaluationResult {
 
 ## 4. Directionality & Safety Invariants
 
-- **Data Flow:** `Heart` $\rightarrow$ `OrganismStateSnapshot` $\rightarrow$ `InstinctSystem.evaluate()` $\rightarrow$ `MotivationalState` $\rightarrow$ `Heart`.
-- **Canonical Zero Authority:** `Heart` passes `MotivationalState` as read-only context to `Cortex`. Drives possess ZERO authority over execution dispatch, Treasury spending, Vault/signing/broadcast APIs, production mutation/deployment, policy/constitution rewriting, identity governance, or self-approval.
+- **Data Flow:** `Heart` $\rightarrow$ `OrganismStateSnapshot` $\rightarrow$ `InstinctSystem.evaluate()` $\rightarrow$ `InstinctEvaluationResult` $\rightarrow$ `Heart`.
+- **Canonical Zero Authority:** `Heart` passes `InstinctEvaluationResult` (containing context and proposals) as read-only context to `Cortex`. Drives possess ZERO authority over execution dispatch, Treasury spending, Vault/signing/broadcast APIs, production mutation/deployment, policy/constitution rewriting, identity governance, or self-approval.

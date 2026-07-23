@@ -43,7 +43,7 @@ Parent Directory: `d:\autark\`
 ## Gen-2 Progress Matrix
 
 - [ ] **G2-S0-O1 Stage 0 Architecture Reconciliation**: DESIGN REVIEW — Awaiting independent Codex review of ADR-008 & Gen-2 spec.
-- [ ] **G2-O1 to G2-O18**: OPEN — Source implementation not started. (e.g. G2-O1, G2-O2, etc.)
+- [ ] **Stages 1-7 (G2-S1-O1 through G2-S7-O3)**: OPEN — Source implementation not started.
 
 ## Gen-1 Inherited Audit Status
 
