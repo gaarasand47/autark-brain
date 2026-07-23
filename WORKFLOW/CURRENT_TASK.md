@@ -1,14 +1,14 @@
 # Current Task
 
-- **Objective ID:** `G2-S1-O1`
+- **Objective ID:** `G2-S1-O2`
 - **Stage:** Stage 1 — Primitives & Schemas
-- **Title:** Implement `IClock` Deterministic Primitive
+- **Title:** Implement `IRandomSource` Deterministic Primitive
 - **Scope:**
-  - Define the canonical `IClock` TypeScript interface (`now(): number`).
-  - Implement `SystemClock` (production implementation returning UTC timestamp in milliseconds).
-  - Implement `MockClock` / `TestClock` (deterministic controllable clock for unit testing and deterministic replay).
-  - Write unit tests verifying `SystemClock` and `TestClock` behavior.
+  - Define canonical `IRandomSource` TypeScript interface (`random(): number` returning [0, 1)).
+  - Implement `MathRandomSource` (production implementation delegating to `Math.random()`).
+  - Implement `TestRandomSource` (deterministic seedable PRNG primitive with seed initialization, sequence generation, state inspection, and fixed-sequence feeds for unit testing and deterministic replay).
+  - Write unit tests in `src/__tests__/unit/random.test.ts` verifying `MathRandomSource` and `TestRandomSource`.
 - **Exclusions:**
-  - `IRandomSource` (deferred to `G2-S1-O2`).
   - `IIdGenerator` (deferred to `G2-S1-O3`).
+  - `OrganismStateSnapshot`, `NeedSignal`, `DriveState`, `MotivationalState`, or `GoalProposal` schemas.
   - Organism state snapshots, needs, drives, proposals, or persistence.
