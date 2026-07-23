@@ -1,6 +1,6 @@
 # InstinctSystem Organ Specification
 
-**Status:** Proposed (Gen-2 Stage 0 Design Review — Reconciled)  
+**Status:** Implemented; awaiting independent repair verification  
 **Document:** `ORGANS/INSTINCT_SYSTEM.md`  
 **ADR:** `DECISIONS/ADR-008-GEN2-DRIVE-ARCHITECTURE.md`
 
@@ -54,6 +54,10 @@ export interface InstinctEvaluationResult {
 
 - **Canonical Zero Authority Matrix:** `InstinctSystem` has ZERO authority over execution dispatch, Treasury spending/reservation, Vault/signing/broadcast APIs, production mutation/deployment, policy/constitution rewriting, identity governance, or self-approval of goals/evolution.
 - **Monotonic Risk Ceiling Rule:** Greater Hunger must NEVER permit greater financial risk. As Treasury scarcity increases, permitted risk ceilings and spending limits MUST tighten monotonically.
+- **Critical-Hunger Class:** At Hunger intensity `>= 0.80`, the only financial
+  proposal class is `FINANCIAL_CONSERVATION` with `LOW` risk. A general
+  suggested class may tighten this result but must never replace it with
+  `FINANCIAL_TRANSACTION`.
 - **Approval Attachment:** Evaluation, calculation, and non-executable proposal generation require NO approval. Approval requirements attach ONLY when a proposal is accepted into `Cortex` planning and crosses an execution, spending, mutation, deployment, credential, or protected-action boundary.
 
 ---

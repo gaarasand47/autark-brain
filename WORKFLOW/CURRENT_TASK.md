@@ -1,14 +1,13 @@
 # Current Task
 
-- **Objective ID:** `G2-S1-O2`
-- **Stage:** Stage 1 — Primitives & Schemas
-- **Title:** Implement `IRandomSource` Deterministic Primitive
-- **Scope:**
-  - Define canonical `IRandomSource` TypeScript interface (`random(): number` returning [0, 1)).
-  - Implement `MathRandomSource` (production implementation delegating to `Math.random()`).
-  - Implement `TestRandomSource` (deterministic seedable PRNG primitive with seed initialization, sequence generation, state inspection, and fixed-sequence feeds for unit testing and deterministic replay).
-  - Write unit tests in `src/__tests__/unit/random.test.ts` verifying `MathRandomSource` and `TestRandomSource`.
-- **Exclusions:**
-  - `IIdGenerator` (deferred to `G2-S1-O3`).
-  - `OrganismStateSnapshot`, `NeedSignal`, `DriveState`, `MotivationalState`, or `GoalProposal` schemas.
-  - Organism state snapshots, needs, drives, proposals, or persistence.
+- **Objective ID:** `G2-FINAL-REPAIR-VERIFY`
+- **Stage:** Gen-2 bounded architecture repair
+- **Title:** Independent verification of the final three repair findings
+- **Implementation scope completed:**
+  - Preserve `FINANCIAL_CONSERVATION` for critical Hunger.
+  - Validate persisted numeric ranges and proposal timestamp ordering.
+  - Reconcile canonical documentation and workflow state.
+- **Required next action:** A reviewer independent of the repair author must
+  inspect the exact commits and run the focused and full Docker suites.
+- **Exclusions:** No Gen-3 work, release tagging, live validation, wallet
+  authority, signing, broadcast, or production mutation.

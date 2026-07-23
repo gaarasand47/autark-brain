@@ -55,3 +55,8 @@ Before acting, always read:
 - Mark a stage complete.
 - Enable wallet signing, broadcast, live credentials, or autonomous mutation.
 - Modify immutable Gen-1 tags.
+
+Codex may implement the three existing repair findings.
+Codex cannot verify or approve its own changes.
+A separate independent reviewer must perform final verification.
+Gen-2 scope and authority restrictions remain unchanged.

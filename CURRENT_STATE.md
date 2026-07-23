@@ -11,9 +11,9 @@
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
 **Generation:** Gen-2  
-**Current Stage:** Gen-2 Full Consolidated Pass  
-**Status:** READY_FOR_CODEX_REPAIR_VERIFICATION  
-**Source Implementation:** IMPLEMENTED  
+**Current Stage:** Gen-2 final bounded repair  
+**Status:** AWAITING_INDEPENDENT_REVIEW  
+**Source Implementation:** REPAIR IMPLEMENTED; NOT INDEPENDENTLY VERIFIED  
 
 ---
 
@@ -43,9 +43,10 @@ Parent Directory: `d:\autark\`
 ## Gen-2 Progress Matrix
 
 - [x] **G2-S0-O1 Stage 0 Architecture Reconciliation**: IMPLEMENTED
-- [x] **Stages 1-7 (G2-S1-O1 through G2-S7-O3)**: IMPLEMENTED (Consolidated Pass)
-- [x] **Phase 3 Repairs**: IMPLEMENTED
-- [ ] **Codex Repair Verification**: AWAITING VERIFICATION
+- [x] **Stages 1-6 implementation scope**: IMPLEMENTED (consolidated pass)
+- [x] **Final bounded repair**: IMPLEMENTED by temporarily authorized Codex
+- [ ] **Stage 7 validation and RC evidence**: NOT COMPLETE
+- [ ] **Independent repair verification**: AWAITING A SEPARATE REVIEWER
 
 ## Gen-1 Inherited Audit Status
 

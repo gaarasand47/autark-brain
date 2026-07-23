@@ -1,68 +1,52 @@
-# Codex Phase 3 Repair Verification
+# Codex Phase 4 Repair Verification
 
 ## Verdict
 
 **FAIL**
 
-## Exact Scope and Test Evidence
+## Exact Scope and Evidence
 
-- Engine: `d3d71d526d8226fcd0c3a54066db5c3d84648d20`
-- Brain documentation repair: `4d52f6690e6c247653061bdfe6cf003619dfc3e4`
-- Brain handoff commit: `392da0b7060b31dc171b65dd882b63f2b0dc90d5`
+- Engine: `bd0d08b740ffee97caa601f708eb1dfa3c0a8290`
+- Brain documentation repair: `b030b5e9c99a682fad6c653e8f5a99b4b4c99713`
+- Brain workflow head: `d0755cef47d590a4bd04bfb8e49b1892a9086c8e`
 - Docker build: PASS
-- Focused combined repair suite: FAIL, 14/15 tests passed
-- Failure: valid persisted proposal evidence is quarantined as corruption.
+- Full Docker suite: FAIL, 67/68 tests passed
 
 ## Verified Repairs
 
-- Tests now target the production `runHeart` API.
-- BOOT recovery, SLEEP persistence, Cortex context, and selected-goal routing
-  tests execute.
-- Snapshot provenance, drive tests, and critical-Hunger class tests pass.
-- Quarantine table renaming is transactional and includes schema metadata.
+- Canonical acknowledgement status union is used without Heart fallback.
+- Valid `EvidenceRef` objects recover successfully.
+- Null suggested objective class fails closed.
+- Quarantine naming uses injected deterministic IDs.
+- New adversarial persistence tests execute and pass.
+- Existing Heart, persistence, drive, authority, and Gen-1 regressions pass.
 
-## Findings Still Open
+## Remaining Findings
 
-1. **Valid persistence recovery is broken.**
-   `GoalProposal.evidence` is canonically `EvidenceRef[]` and persistence
-   writes JSON objects. `parseAndValidateEvidence()` incorrectly requires
-   every item to be a string. Docker therefore changes a valid recovered
-   state from `VALID` to `UNAVAILABLE`. Validate the complete `EvidenceRef`
-   object schema and retain the valid round-trip test.
+1. **Critical-Hunger risk tightening is undone by the generic class override.**
+   `GoalProposalEngine` first selects `FINANCIAL_CONSERVATION`/`LOW` for
+   critical Hunger, then replaces that class with
+   `state.suggestedObjectiveClass` (`FINANCIAL_TRANSACTION`). The Docker
+   boundary test fails accordingly. Make the override monotonic: a suggested
+   class may tighten risk but must never widen or replace the critical-Hunger
+   conservation class. Retain the failing regression test.
 
-2. **Acknowledgement statuses still contradict the canonical interfaces.**
-   The architecture specifies `ACCEPTED | REJECTED | EXPIRED`. Code uses
-   `ACKNOWLEDGED | REJECTED`, excludes `ACCEPTED` and `EXPIRED` from
-   `CortexOutput`, and Heart retains an invented `ACKNOWLEDGED` fallback.
-   Use one canonical status union end-to-end and forward it without fallback
-   inference.
+2. **Canonical documentation is still inconsistent.**
+   `ORGANS/INSTINCT_SYSTEM.md`, both interface specifications, and
+   `FLOWS/INSTINCT_EVALUATION_FLOW.md` still report `Proposed`; workflow and
+   generation documents claim completion despite failed verification.
+   Reconcile the status and acknowledgement/objective-class contracts across
+   all canonical files. `CURRENT_TASK.md` also remains stale at `G2-S1-O2`.
 
-3. **Proposal safety guard was weakened.**
-   Removing `state.suggestedObjectiveClass === null` permits proposals from
-   inconsistent or deliberately malformed states. Restore fail-closed
-   behavior. Tests must use a valid suggested class and prove null disables
-   proposal generation.
-
-4. **Quarantine naming is nondeterministic.**
-   `Math.random()` was introduced into persistence recovery. Use an injected
-   deterministic ID source or another deterministic collision-safe mechanism;
-   do not use ambient randomness.
-
-5. **Recovery validation still needs adversarial coverage.**
-   Add tests for malformed evidence objects, nested drive corruption,
-   non-finite/out-of-range proposal numbers, invalid schema metadata, repeated
-   same-clock quarantines, and quarantine failure behavior.
-
-6. **Canonical brain documents remain inconsistent.**
-   `ORGANS/INSTINCT_SYSTEM.md`, both interface specs, and the evaluation flow
-   still say `Proposed`; their acknowledgement unions conflict with code.
-   `GEN-2.md` simultaneously says implementation complete and that no source
-   implementation starts before review. Reconcile all previously listed
-   canonical documents and record the current failed-verification state.
+3. **Recovery numeric range validation remains incomplete.**
+   Finite checks exist, but proposal urgency/confidence and evidence numeric
+   values are not consistently bounded, and timestamp ordering is not
+   validated. Add focused adversarial coverage for out-of-range finite values
+   and invalid `expiresAt <= createdAt`.
 
 ## Required Next Action
 
-Repair only these six findings. Run the combined Docker suites including the
-existing `InstinctSystem.test.ts`, commit engine and brain separately, provide
-exact full SHAs and actual results, set
+An implementation-authorized agent must repair only these three findings,
+run the complete Docker suite, update the canonical brain documents and
+handoff with exact SHAs/results, set
 `STATUS.md` to `READY_FOR_CODEX_REPAIR_VERIFICATION`, and stop.

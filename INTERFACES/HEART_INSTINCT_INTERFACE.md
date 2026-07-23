@@ -1,6 +1,6 @@
 # Heart ↔ Instinct System Interface Specification
 
-**Status:** Proposed (Gen-2 Stage 0 Design Review — Reconciled)  
+**Status:** Implemented; awaiting independent repair verification  
 **Document:** `INTERFACES/HEART_INSTINCT_INTERFACE.md`  
 **ADR:** `DECISIONS/ADR-008-GEN2-DRIVE-ARCHITECTURE.md`
 

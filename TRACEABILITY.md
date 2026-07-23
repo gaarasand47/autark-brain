@@ -1,6 +1,6 @@
 # Traceability Matrix
 
-**Status:** `Implementation Complete - Awaiting Codex Verification` (Not frozen)
+**Status:** `Repair Implemented - Awaiting Independent Verification` (Not frozen)
 
 Every major architectural feature must be traceable through this matrix. If a feature is listed here but cannot be found in the code or design specifications, it is biologically invalid.
 
@@ -34,4 +34,5 @@ Every major architectural feature must be traceable through this matrix. If a fe
 
 ---
 ### Implementation Status
-Stage 0 Architecture Reconciliation source code implementation completed. Awaiting Codex Repair Verification.
+Gen-2 architecture repair is implemented but not independently verified.
+Stage 7 validation and release-candidate evidence remain open.

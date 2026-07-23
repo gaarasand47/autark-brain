@@ -1,6 +1,6 @@
 # Autark Gen-2 Canonical Architecture, Deliverables, and Exit Criteria
 
-**Status:** Implementation Complete - Awaiting Final Codex Repair Verification  
+**Status:** Implementation repair complete; awaiting independent verification  
 **Purpose:** This document is stored in `autark-brain` and used by Antigravity, Codex, and future sessions as the single implementation guide for Gen-2.  
 **Important:** No Gen-3 implementation begins until Gen-2 Codex Repair Verification passes.
 
@@ -55,7 +55,9 @@ Its purpose is to add:
 to:
 > *Heart schedules instinct evaluation and consumes motivational state, while a dedicated Instinct subsystem (`InstinctSystem`) owns Need/Drive calculations.*
 
-**No source code implementation starts until Codex reviews and approves Stage 0.**
+**Implementation history:** Stage 0 received independent design approval before
+Gen-2 source implementation began. The current implementation remains
+unverified until a reviewer independent of the repair author accepts it.
 
 ---
 
@@ -261,6 +263,7 @@ interface GoalProposal {
 
   actionAuthority: false;
   proposalVersion: string;
+  lifecycleStatus: "PROPOSED" | "ACCEPTED" | "REJECTED" | "EXPIRED";
 }
 ```
 
@@ -336,7 +339,7 @@ Gen-2 is complete only when Autark can observe named internal metrics, produce d
 
 To adhere to the strict one-objective-at-a-time governance model, the Gen-2 implementation is decomposed into genuinely narrow, independently verifiable objectives. No objective may begin until the previous objective's implementation is verified and approved by Codex.
 
-### Stage 0: Architecture (Current)
+### Stage 0: Architecture
 * **G2-S0-O1**: Baseline Inheritance & Architecture Reconciliation
 
 ### Stage 1: Primitives & Schemas

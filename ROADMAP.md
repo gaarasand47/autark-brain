@@ -18,7 +18,7 @@ The cognitive foundation.
   The `Gen-1-RC` tag is immutable but not final-freeze verified. See
   `AUDITS/RECONCILIATION/Gen1/` and `autark:gen1-reconciliation-repair`.
 
-## [Gen-2] Instinct & Motivation (Implementation Complete - Awaiting Verification)
+## [Gen-2] Instinct & Motivation (Repair Implemented — Independent Verification Pending)
 The biological drive.
 - **Goal:** Stop reacting to user prompts and start *wanting* things based on internal state deficits.
 - **Capabilities:** 
