@@ -8,27 +8,27 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.554Z"
+      "timestamp": "2026-07-23T06:14:06.172Z"
     },
     "telemetry": {
       "latencyMs": {
         "iterations": 30,
         "mean": 0.001,
-        "median": 0,
+        "median": 0.001,
         "min": 0,
-        "max": 0.006,
-        "p95": 0.001,
-        "p99": 0.006,
-        "stdDev": 0.001
+        "max": 0.011,
+        "p95": 0.002,
+        "p99": 0.011,
+        "stdDev": 0.002
       },
-      "peakMemoryMb": 150.01,
-      "avgHeapMb": 150.01,
-      "heapDeltaMb": 0.006,
+      "peakMemoryMb": 140.03,
+      "avgHeapMb": 140.03,
+      "heapDeltaMb": 0.007,
       "cpuPercent": 0.5
     },
     "budgetComparison": {
@@ -48,12 +48,12 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.555Z"
+      "timestamp": "2026-07-23T06:14:06.186Z"
     },
     "telemetry": {
       "latencyMs": {
@@ -66,8 +66,8 @@
         "p99": 0.001,
         "stdDev": 0
       },
-      "peakMemoryMb": 150.04,
-      "avgHeapMb": 150.04,
+      "peakMemoryMb": 140.06,
+      "avgHeapMb": 140.06,
       "heapDeltaMb": 0,
       "cpuPercent": 0.2
     },
@@ -88,12 +88,12 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.555Z"
+      "timestamp": "2026-07-23T06:14:06.187Z"
     },
     "telemetry": {
       "latencyMs": {
@@ -106,8 +106,8 @@
         "p99": 0.001,
         "stdDev": 0
       },
-      "peakMemoryMb": 150.05,
-      "avgHeapMb": 150.05,
+      "peakMemoryMb": 140.08,
+      "avgHeapMb": 140.08,
       "heapDeltaMb": 0,
       "cpuPercent": 0.1
     },
@@ -128,12 +128,12 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.556Z"
+      "timestamp": "2026-07-23T06:14:06.187Z"
     },
     "telemetry": {
       "latencyMs": {
@@ -146,8 +146,8 @@
         "p99": 0.001,
         "stdDev": 0
       },
-      "peakMemoryMb": 150.07,
-      "avgHeapMb": 150.07,
+      "peakMemoryMb": 140.1,
+      "avgHeapMb": 140.1,
       "heapDeltaMb": 0,
       "cpuPercent": 1.2
     },
@@ -168,26 +168,26 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.556Z"
+      "timestamp": "2026-07-23T06:14:06.188Z"
     },
     "telemetry": {
       "latencyMs": {
         "iterations": 30,
-        "mean": 0.008,
-        "median": 0.006,
-        "min": 0.005,
-        "max": 0.043,
-        "p95": 0.015,
-        "p99": 0.043,
-        "stdDev": 0.007
+        "mean": 0.011,
+        "median": 0.004,
+        "min": 0.004,
+        "max": 0.213,
+        "p95": 0.017,
+        "p99": 0.213,
+        "stdDev": 0.037
       },
-      "peakMemoryMb": 150.13,
-      "avgHeapMb": 150.13,
+      "peakMemoryMb": 140.16,
+      "avgHeapMb": 140.16,
       "heapDeltaMb": 0.12,
       "cpuPercent": 0.8,
       "throughputOpsPerSec": 1000
@@ -209,12 +209,12 @@
       "gitCommit": "0ca10c2",
       "gitBranch": "gen1-development",
       "generation": "Gen1",
-      "os": "win32",
-      "nodeVersion": "v24.18.0",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
       "cpuModel": "Intel/AMD Host",
       "ramGb": 16,
       "sqliteVersion": "3.x",
-      "timestamp": "2026-07-22T20:22:10.556Z"
+      "timestamp": "2026-07-23T06:14:06.188Z"
     },
     "telemetry": {
       "latencyMs": {
@@ -222,15 +222,299 @@
         "mean": 0,
         "median": 0,
         "min": 0,
-        "max": 0.002,
-        "p95": 0.001,
-        "p99": 0.002,
+        "max": 0.001,
+        "p95": 0,
+        "p99": 0.001,
         "stdDev": 0
       },
-      "peakMemoryMb": 150.15,
-      "avgHeapMb": 150.15,
+      "peakMemoryMb": 140.18,
+      "avgHeapMb": 140.18,
       "heapDeltaMb": 0,
       "cpuPercent": 1.5
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: 100,000 Pulse Endurance",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.215Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 100,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "p95": 0,
+        "p99": 0,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 139.81,
+      "avgHeapMb": 139.81,
+      "heapDeltaMb": -0.376,
+      "cpuPercent": 1,
+      "throughputOpsPerSec": 100000
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Queue Stress (100k Items)",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.219Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 5,
+        "mean": 0.607,
+        "median": 0.117,
+        "min": 0.001,
+        "max": 2.655,
+        "p95": 2.655,
+        "p99": 2.655,
+        "stdDev": 1.028
+      },
+      "peakMemoryMb": 139.85,
+      "avgHeapMb": 139.85,
+      "heapDeltaMb": 0.007,
+      "cpuPercent": 2.5,
+      "throughputOpsPerSec": 15000
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Database Concurrency & Lock Contention",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.219Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0.001,
+        "p95": 0.001,
+        "p99": 0.001,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 139.86,
+      "avgHeapMb": 139.86,
+      "heapDeltaMb": 0.005,
+      "cpuPercent": 1.8,
+      "dbIoMs": 0
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Resource & Handle Leak Audit",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.221Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.04,
+        "median": 0.005,
+        "min": 0.002,
+        "max": 0.671,
+        "p95": 0.251,
+        "p99": 0.671,
+        "stdDev": 0.126
+      },
+      "peakMemoryMb": 139.94,
+      "avgHeapMb": 139.94,
+      "heapDeltaMb": 0.062,
+      "cpuPercent": 0.3
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Mid-State Crash Recovery & Double-Spend Defense",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.221Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 6,
+        "mean": 0,
+        "median": 0,
+        "min": 0,
+        "max": 0.001,
+        "p95": 0.001,
+        "p99": 0.001,
+        "stdDev": 0
+      },
+      "peakMemoryMb": 139.95,
+      "avgHeapMb": 139.95,
+      "heapDeltaMb": 0,
+      "cpuPercent": 1.1
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Economic Balance & 20% Budget Cap Integrity",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.222Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.011,
+        "median": 0.01,
+        "min": 0.01,
+        "max": 0.021,
+        "p95": 0.016,
+        "p99": 0.021,
+        "stdDev": 0.002
+      },
+      "peakMemoryMb": 140.42,
+      "avgHeapMb": 140.42,
+      "heapDeltaMb": 0,
+      "cpuPercent": 1,
+      "throughputOpsPerSec": 10000
+    },
+    "budgetComparison": {
+      "latencyPassed": true,
+      "memoryPassed": true,
+      "cpuPassed": true,
+      "throughputPassed": true,
+      "failureReasons": []
+    }
+  },
+  {
+    "schemaVersion": 1,
+    "name": "Reliability: Dream Engine & Working Memory Amnesia",
+    "generation": "Gen1",
+    "status": "PASS",
+    "metadata": {
+      "gitCommit": "0ca10c2",
+      "gitBranch": "gen1-development",
+      "generation": "Gen1",
+      "os": "linux",
+      "nodeVersion": "v22.23.1",
+      "cpuModel": "Host System CPU",
+      "ramGb": 16,
+      "sqliteVersion": "3.x",
+      "timestamp": "2026-07-23T06:14:06.222Z"
+    },
+    "telemetry": {
+      "latencyMs": {
+        "iterations": 30,
+        "mean": 0.004,
+        "median": 0.001,
+        "min": 0.001,
+        "max": 0.091,
+        "p95": 0.002,
+        "p99": 0.091,
+        "stdDev": 0.016
+      },
+      "peakMemoryMb": 140.46,
+      "avgHeapMb": 140.46,
+      "heapDeltaMb": 0,
+      "cpuPercent": 0.9
     },
     "budgetComparison": {
       "latencyPassed": true,
