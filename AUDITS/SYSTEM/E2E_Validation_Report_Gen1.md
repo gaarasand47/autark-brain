@@ -21,7 +21,7 @@ This document contains the raw verifiable proof for the End-to-End (E2E) Validat
 ## Scenario 3: High-Throughput Integrity (100 Jobs)
 **Objective:** Verify that the queue handles bulk parallel load without dropping or duplicating tasks.
 **Status:** [PASS]
-**Evidence Archive:** `autark-brain/AUDITS/SYSTEM/Gen1/6h_telemetry.jsonl`
+**Evidence Archive:** `autark-brain/BENCHMARKS/Gen1/summary.json`
 **Summary:** Executed during System Queue Stress. Handled 111,111 jobs with ~15,000 ops/sec and 0 orphans.
 
 ## Scenario 4: 6-Hour Continuous Endurance (Release Candidate Gate)
