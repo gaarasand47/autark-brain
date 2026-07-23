@@ -1,33 +1,66 @@
-# Antigravity Handoff — Repair Handoff
+# Design Plan: Objective `G2-S1-O1` — `IClock` Deterministic Primitive
 
-## Review Summary & Repairs Applied
-
-- **Target Review:** `G2-S0-O1` — Approved with Conditions
-- **Commit Reviewed:** `635f8ccd55491eea4281b2577bbc188f7ee58c5d`
-- **Action Type:** Documentation-only repair addressing the 4 required conditions
-
-### 🛠️ Repairs Completed
-
-1. **Nullable Evidence Schema Alignment (Condition 1):**
-   - Updated `INTERFACES/INSTINCT_CORTEX_INTERFACE.md` so `MotivationalContext.evidenceHash` explicitly uses `string | null`, matching all other exposed schemas.
-
-2. **Genuinely Typed Data Deficiency (Condition 2):**
-   - Added `NeedKind` discriminant enum (`TREASURY_DEFICIT`, `RELIABILITY_DEFICIT`, `WORKLOAD_PRESSURE`, `KNOWLEDGE_GAP`, `DATA_DEFICIENCY`) to `GENERATIONS/GEN-2.md`.
-   - Updated `NeedSignal` to use `needKind: NeedKind` and `evidence: EvidenceRef[]` instead of untyped `sourceMetrics: string[]`.
-
-3. **High-Confidence Restriction Language (Condition 3):**
-   - Replaced "All objective classes permitted" in `GEN-2.md` Section 7.1 with "all otherwise policy-eligible proposal classes permitted."
-   - Explicitly preserved Constitution, Policy, Treasury, Approval, Sandbox, Vault, and Identity restrictions.
-
-4. **Flow Confidence Rule Update (Condition 4):**
-   - Updated `FLOWS/INSTINCT_EVALUATION_FLOW.md` step 5 to specify that confidence $0.50–0.99$ permits ONLY low-risk internal/read-only proposals, while normal proposal generation remains subject to inherited policy and authority boundaries.
-
-### 📝 Files Modified
-- `INTERFACES/INSTINCT_CORTEX_INTERFACE.md`
-- `GENERATIONS/GEN-2.md`
-- `FLOWS/INSTINCT_EVALUATION_FLOW.md`
-- `WORKFLOW/ANTIGRAVITY_HANDOFF.md`
-- `WORKFLOW/STATUS.md`
+- **Objective ID:** `G2-S1-O1`
+- **Stage:** Stage 1 — Primitives & Schemas
+- **Target Component:** `autark` engine (`src/core/clock.ts` & `src/__tests__/unit/clock.test.ts`)
+- **Status:** Proposed — Awaiting Codex Design Review
 
 ---
-*Ready for Codex repair verification.*
+
+## 1. Purpose & Core Design
+
+The purpose of `G2-S1-O1` is to establish the canonical, deterministic time primitive (`IClock`) required by all Gen-2 organs (`InstinctSystem`, `NeedMonitor`, `DriveEngine`, `GoalProposalEngine`, `Heart`) to eliminate direct `Date.now()` calls that break deterministic replayability.
+
+```typescript
+export interface IClock {
+  /**
+   * Returns current time in milliseconds since Unix epoch.
+   * Guaranteed deterministic when backed by TestClock during replay/testing.
+   */
+  now(): number;
+}
+```
+
+---
+
+## 2. Proposed Changes & File Paths
+
+### `[MODIFY]` `src/core/clock.ts` (in `autark` repository)
+- Refactor/strengthen `IClock` interface to include canonical `now(): number`.
+- Ensure `SystemClock` implements `IClock` returning wall-clock time (`Date.now()`).
+- Implement `TestClock` implementing `IClock` with explicit step/advance and set methods:
+  - `constructor(initialTime?: number)`
+  - `now(): number`
+  - `advance(ms: number): void`
+  - `set(timestamp: number): void`
+
+### `[NEW]` `src/__tests__/unit/clock.test.ts` (in `autark` repository)
+- Unit tests verifying:
+  - `SystemClock.now()` returns valid positive Unix timestamp.
+  - `TestClock` starts at initialized time (or 0 default).
+  - `TestClock.advance(ms)` deterministically steps time forward.
+  - `TestClock.set(timestamp)` sets exact time.
+
+---
+
+## 3. Explicit Exclusions
+
+- `IRandomSource` (deferred to `G2-S1-O2`).
+- `IIdGenerator` (deferred to `G2-S1-O3`).
+- `OrganismStateSnapshot`, `NeedSignal`, `DriveState`, or `InstinctEvaluationResult` schemas.
+- Organ integration into `Heart`, `InstinctSystem`, or `Cortex`.
+
+---
+
+## 4. Safety, Authority & Determinism Invariants
+
+- **Authority:** Zero execution, Treasury, signing, broadcast, policy, or approval authority.
+- **Determinism:** `TestClock` guarantees 100% deterministic time progression across test executions.
+- **Backwards Compatibility:** Existing `IClock` timer signatures (`setTimeout`, `setInterval`) remain intact if present, ensuring no breaking changes to Gen-1 imports.
+
+---
+
+## 5. Verification & Acceptance Plan
+
+- **Automated Unit Tests:** `npx jest src/__tests__/unit/clock.test.ts`
+- **Verification Criteria:** All tests pass with zero failures.

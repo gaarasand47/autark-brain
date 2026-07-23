@@ -3,43 +3,34 @@
 ## Review Metadata
 
 - **Objective:** `G2-S0-O1` — Gen-2 Stage 0 Architecture Reconciliation
-- **Architecture commit reviewed:** `635f8ccd55491eea4281b2577bbc188f7ee58c5d`
-- **Review type:** Independent design review
-- **Verdict:** `APPROVED WITH CONDITIONS`
+- **Repair commit verified:** `2061f359c7492fd27730a69c492e997ad155b76b`
+- **Review type:** Independent repair verification
+- **Verdict:** `APPROVED`
 
-## Required Conditions
+## Repair Findings Verified
 
-1. Align nullable evidence across every exposed schema. `MotivationalContext.evidenceHash`
-   must use the canonical `string | null` type.
-2. Make Data Deficiency genuinely typed. Add a `NeedKind` or equivalent
-   discriminant containing `DATA_DEFICIENCY`, and replace arbitrary
-   `sourceMetrics: string[]` values with typed metric evidence or stable
-   evidence references.
-3. Replace the high-confidence phrase "All objective classes permitted" with
-   "all otherwise policy-eligible proposal classes." Explicitly preserve
-   Constitution, Policy, Treasury, Approval, Sandbox, Vault, and Identity
-   restrictions.
-4. Update `FLOWS/INSTINCT_EVALUATION_FLOW.md` so confidence `0.50–0.99`
-   permits only low-risk internal/read-only proposals. Normal proposal
-   generation remains subject to inherited policy and authority boundaries.
+1. `MotivationalContext.evidenceHash` now uses `string | null`.
+2. `NeedSignal` now has a `NeedKind` discriminant containing
+   `DATA_DEFICIENCY` and typed `EvidenceRef[]` evidence.
+3. High-confidence wording now permits only otherwise policy-eligible
+   proposal classes and explicitly preserves Constitution, Policy, Treasury,
+   Approval, Sandbox, Vault, and Identity restrictions.
+4. The evaluation flow now restricts confidence `0.50–0.99` to low-risk
+   internal/read-only proposals and disables proposals below `0.50`.
 
-## Verified
+## Regression Check
 
-- ADR-008 correctly reconciles ADR-006.
-- Heart remains an orchestrator.
-- `InstinctSystem` is the sole top-level organ.
-- Drives have no direct execution, Treasury, wallet, signing, broadcast,
-  mutation, policy, identity, or approval authority.
-- Approval applies at protected-action boundaries, not harmless internal
-  cognition.
-- Hunger monotonically tightens risk under scarcity.
-- Determinism, confidence, missing-data, persistence, recovery, baseline
-  provenance, and objective decomposition are defined.
+- Repair scope was limited to the four listed documentation findings and
+  workflow handoff files.
 - No Gen-2 production source code was introduced.
+- The executable repository remains at
+  `0136b096fa2f5068d1833d89ea5cd9658bc51923`.
 
 ## Required Next Action
 
-Apply one documentation-only repair limited to the four conditions above.
-Do not implement or broaden `G2-S1-O1`. After the repair, update
-`ANTIGRAVITY_HANDOFF.md`, set `STATUS.md` to
-`READY_FOR_CODEX_REPAIR_VERIFICATION`, and stop.
+Antigravity may draft the bounded design plan for `G2-S1-O1` (`IClock`) in
+`ANTIGRAVITY_HANDOFF.md`. It must then set `STATUS.md` to
+`READY_FOR_CODEX_DESIGN_REVIEW` and stop.
+
+No `G2-S1-O1` production implementation is authorized until its design
+receives a separate Codex verdict.
