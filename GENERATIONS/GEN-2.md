@@ -74,7 +74,7 @@ These subcomponents are private internal logic modules of `InstinctSystem`. They
 ### 3.2 Heart Boundary
 `Heart` may ONLY invoke the public `InstinctSystem` interface:
 - Schedule evaluation: `InstinctSystem.evaluate(snapshot)`
-- Query cached state: `InstinctSystem.getMotivationalState()`
+- Query cached state: `InstinctSystem.getEvaluationResult()`
 - Trigger persistence: `InstinctSystem.persistState()`
 - Recover state: `InstinctSystem.recoverState()`
 
@@ -212,16 +212,40 @@ interface GoalProposal {
 }
 ```
 
+### 6.5 `InstinctEvaluationResult`
+```typescript
+interface InstinctEvaluationResult {
+  state: MotivationalState;
+  proposals: GoalProposal[];
+}
+```
+
 ---
 
 ## 7. Failure, Recovery, Atomicity & Metric Semantics
 
 ### 7.1 Evaluation Failure Semantics (No Fake "NONE")
-- If `InstinctSystem.evaluate()` encounters an exception, unhandled failure, or missing critical inputs, it emits:
-  - `evaluationStatus: "UNAVAILABLE"`
-  - `confidence: 0.0`
-  - `dominantDrive: "NONE"`
-  - `goalProposals: []` (empty array)
+- If `InstinctSystem.evaluate()` encounters an exception, unhandled failure, or missing critical inputs, it emits a structural failure state:
+  ```typescript
+  {
+    state: {
+      snapshotId: snapshot.snapshotId,
+      evaluatedAt: Date.now(),
+      evaluationStatus: "UNAVAILABLE",
+      hunger: { intensity: 0, status: "UNAVAILABLE" },
+      anxiety: { intensity: 0, status: "UNAVAILABLE" },
+      curiosity: { intensity: 0, status: "UNAVAILABLE" },
+      dominantDrive: "NONE",
+      confidence: 0.0,
+      confidenceReason: "Evaluation failed",
+      suggestedObjectiveClass: null,
+      actionAuthority: false,
+      evaluatorVersion: "fallback",
+      evidenceHash: "none"
+    },
+    proposals: []
+  }
+  ```
   - Telemetry error event logged with exact exception stack trace.
 - `Heart` MUST NOT synthesize a healthy-looking `NONE` state upon failure; it must preserve and log `evaluationStatus: "UNAVAILABLE"`.
 
@@ -244,15 +268,37 @@ Gen-2 is complete only when Autark can observe named internal metrics, produce d
 
 ## 9. Gen-2 Canonical Objective Sequence
 
-To adhere to the strict one-objective-at-a-time governance model, the Gen-2 implementation is divided into the following sequential objectives. No objective may begin until the previous objective's implementation is verified and approved by Codex.
+To adhere to the strict one-objective-at-a-time governance model, the Gen-2 implementation is decomposed into genuinely narrow, independently verifiable objectives. No objective may begin until the previous objective's implementation is verified and approved by Codex.
 
-* **G2-OBJ-00: Stage 0 — Baseline Inheritance & Architecture Reconciliation** (Current)
-* **G2-OBJ-01: Stage 1 — Deterministic Primitives and Schemas**
-* **G2-OBJ-02: Stage 2 — NeedMonitor Implementation**
-* **G2-OBJ-03: Stage 3 — DriveEngine Implementation**
-* **G2-OBJ-04: Stage 4 — GoalProposalEngine Implementation**
-* **G2-OBJ-05: Stage 5 — InstinctSystem Organ Assembly & SQLite Persistence**
-* **G2-OBJ-06: Stage 6 — Heart Pulse Integration & Testing**
-* **G2-OBJ-07: Stage 7 — Cortex Advisory Context Integration**
-* **G2-OBJ-08: Stage 8 — Gen-2 System Testing & Shadow-Mode Validation**
-* **G2-OBJ-09: Stage 9 — Gen-2 Integration and Release**
+### Stage 0: Architecture (Current)
+* **G2-S0-O1**: Baseline Inheritance & Architecture Reconciliation
+
+### Stage 1: Primitives & Schemas
+* **G2-S1-O1**: Implement `OrganismStateSnapshot` types and static collectors.
+* **G2-S1-O2**: Implement `MetricStatus`, `MotivationalState`, and `InstinctEvaluationResult` types.
+
+### Stage 2: NeedMonitor
+* **G2-S2-O1**: Implement `NeedMonitor` metric validation logic (stale/degraded/valid).
+* **G2-S2-O2**: Implement `NeedMonitor` NeedSignal translation and confidence scoring.
+
+### Stage 3: DriveEngine
+* **G2-S3-O1**: Implement `DriveEngine` raw intensity calculations for Hunger, Anxiety, Curiosity.
+* **G2-S3-O2**: Implement `DriveEngine` deterministic arbitration and hysteresis decay.
+
+### Stage 4: GoalProposalEngine
+* **G2-S4-O1**: Implement `GoalProposalEngine` generation rules for Hunger (monotonic risk ceiling).
+* **G2-S4-O2**: Implement `GoalProposalEngine` generation rules for Anxiety and Curiosity.
+
+### Stage 5: InstinctSystem Assembly
+* **G2-S5-O1**: Assemble `InstinctSystem` public interface over internal logic components.
+* **G2-S5-O2**: Implement atomic SQLite persistence and schema versioning for `InstinctSystem`.
+* **G2-S5-O3**: Implement `InstinctSystem` recovery, quarantine, and failure fallback semantics.
+
+### Stage 6: Heart & Cortex Integration
+* **G2-S6-O1**: Wire `Heart` tick sequence to `InstinctSystem.evaluate()` and `persistState()`.
+* **G2-S6-O2**: Implement `Heart` pass-through of `InstinctEvaluationResult` to `Cortex.think()`.
+* **G2-S6-O3**: Implement `Cortex` planning integration using advisory motivational context.
+
+### Stage 7: System Validation & Release
+* **G2-S7-O1**: Complete Gen-2 system testing and shadow-mode validation.
+* **G2-S7-O2**: Gen-2 Integration and Final Release (Requires separate independent authorization).

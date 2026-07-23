@@ -33,7 +33,7 @@ In Gen-1 documentation, the future introduction of instincts and drives for Gen-
 
 1. **Heart Ownership Boundary:**
    - `Heart.ts` **does NOT own** drive formulas, need normalization, confidence calculations, arbitration rules, hysteresis, decay, or goal proposal logic.
-   - `Heart.ts` **only invokes** the public `InstinctSystem` interface (`evaluate`, `getMotivationalState`, `persistState`, `recoverState`).
+   - `Heart.ts` **only invokes** the public `InstinctSystem` interface (`evaluate`, `getEvaluationResult`, `persistState`, `recoverState`).
 
 2. **Principal Organ & Internal Enclosure:**
    - Create exactly **one principal top-level organ**: **`InstinctSystem`**.
@@ -51,7 +51,7 @@ In Gen-1 documentation, the future introduction of instincts and drives for Gen-
    - Approval requirements (`ApprovalGateway`, human signatures, policy rules) attach ONLY when a proposal is accepted into `Cortex` planning and crosses an execution, spending, mutation, deployment, credential, or protected-action boundary.
 
 6. **Failure, Recovery & Atomicity Semantics:**
-   - Upon evaluation failure, `InstinctSystem` emits `evaluationStatus: "UNAVAILABLE"`, `confidence: 0.0`, `dominantDrive: "NONE"`, `goalProposals: []`, and error telemetry. `Heart` MUST NOT synthesize a healthy-looking `NONE` state.
+   - Upon evaluation failure, `InstinctSystem` emits a structural failure state (with `state.evaluationStatus: "UNAVAILABLE"`, `state.confidence: 0.0`, `state.dominantDrive: "NONE"`, and `proposals: []`) along with error telemetry. `Heart` MUST NOT synthesize a healthy-looking `NONE` state.
    - All persistence operations use single **atomic SQLite transactions**.
    - Corrupt or missing persisted state triggers quarantine and clean boot recovery fallback (`evaluationStatus: "UNAVAILABLE"`).
 

@@ -8,11 +8,11 @@
 
 ## 1. Overview & Organ Boundary Principles
 
-The interface between `Heart` (kernel orchestrator) and `InstinctSystem` (motivational organ) is strictly asynchronous, read-only, and bounded.
+The interface between `Heart` (kernel orchestrator) and `InstinctSystem` (motivational organ) is strictly asynchronous and bounded. The returned evaluation payloads are immutable, read-only, and strictly advisory. `Heart` uses bounded lifecycle operations (`persistState`, `recoverState`) which only affect `InstinctSystem`-owned persistence.
 
 - `Heart` **schedules** instinct evaluation during the biological pulse by calling `InstinctSystem.evaluate(snapshot)`.
-- `Heart` **consumes** the resulting read-only `MotivationalState`.
-- `Heart` **triggers** state persistence during `SLEEP` via `InstinctSystem.persistState()`.
+- `Heart` **consumes** the resulting read-only `InstinctEvaluationResult` payload.
+- `Heart` **triggers** bounded state persistence during `SLEEP` via `InstinctSystem.persistState()`.
 - `Heart` **does NOT access** `NeedMonitor`, `DriveEngine`, `GoalProposalEngine`, or SQLite drive persistence storage directly.
 
 ---
@@ -32,9 +32,14 @@ export interface IHeartInstinctInterface {
    */
   getEvaluationResult(): InstinctEvaluationResult;
 
+  /**
+   * Pass-through route for Cortex to acknowledge a proposal's lifecycle status.
+   * Heart blindly forwards this acknowledgement to InstinctSystem. InstinctSystem owns updating the proposal state.
+   */
+  acknowledgeProposal(proposalId: string, status: "ACCEPTED" | "REJECTED" | "EXPIRED"): void;
 
   /**
-   * Triggers state persistence to underlying database storage.
+   * Triggers bounded state persistence to underlying database storage.
    * Called by Heart during the SLEEP lifecycle phase.
    */
   persistState(): Promise<void>;
@@ -56,7 +61,27 @@ export interface InstinctEvaluationResult {
 ## 3. Failure & Degradation Semantics (No Synthetic "NONE")
 
 - If `evaluate()` fails, throws an unhandled exception, or encounters missing critical inputs:
-  - `InstinctSystem` returns a failure state with `evaluationStatus: "UNAVAILABLE"`, `confidence: 0.0`, `dominantDrive: "NONE"`, and `goalProposals: []`.
+  - `InstinctSystem` returns a structural failure state:
+    ```typescript
+    {
+      state: {
+        snapshotId: snapshot.snapshotId,
+        evaluatedAt: Date.now(),
+        evaluationStatus: "UNAVAILABLE",
+        hunger: { intensity: 0, status: "UNAVAILABLE" },
+        anxiety: { intensity: 0, status: "UNAVAILABLE" },
+        curiosity: { intensity: 0, status: "UNAVAILABLE" },
+        dominantDrive: "NONE",
+        confidence: 0.0,
+        confidenceReason: "Evaluation failed",
+        suggestedObjectiveClass: null,
+        actionAuthority: false,
+        evaluatorVersion: "fallback",
+        evidenceHash: "none"
+      },
+      proposals: []
+    }
+    ```
   - `Heart` MUST NOT synthesize or log a healthy-looking `NONE` state. `Heart` logs a telemetry event recording `evaluationStatus: "UNAVAILABLE"` and continues the biological pulse cleanly without goal proposals.
 
 ---

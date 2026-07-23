@@ -33,12 +33,16 @@
 
 ```typescript
 export interface IInstinctSystemOrgan {
-  evaluate(snapshot: OrganismStateSnapshot): Promise<MotivationalState>;
-  getMotivationalState(): MotivationalState;
-  getMotivationalContext(): MotivationalContext;
-  getGoalProposals(): GoalProposal[];
+  evaluate(snapshot: OrganismStateSnapshot): Promise<InstinctEvaluationResult>;
+  getEvaluationResult(): InstinctEvaluationResult;
+  acknowledgeProposal(proposalId: string, status: "ACCEPTED" | "REJECTED" | "EXPIRED"): void;
   persistState(): Promise<void>;
-  recoverState(): Promise<MotivationalState>;
+  recoverState(): Promise<InstinctEvaluationResult>;
+}
+
+export interface InstinctEvaluationResult {
+  state: MotivationalState;
+  proposals: GoalProposal[];
 }
 ```
 
@@ -56,5 +60,5 @@ export interface IInstinctSystemOrgan {
 
 ## 5. Failure, Recovery & Metric Semantics
 
-- **Evaluation Failure:** If `evaluate()` fails or encounters missing critical inputs, `InstinctSystem` emits `evaluationStatus: "UNAVAILABLE"`, `confidence: 0.0`, `dominantDrive: "NONE"`, `goalProposals: []`, and error telemetry. `Heart` MUST NOT synthesize a healthy-looking `NONE` state.
-- **Recovery Fallback:** If persisted state is corrupt, missing, or schema-incompatible, `InstinctSystem` logs a critical recovery event, quarantines corrupt records, and falls back to a clean boot state (`evaluationStatus: "UNAVAILABLE"`, `confidence: 0.0`), triggering immediate snapshot re-evaluation.
+- **Evaluation Failure:** If `evaluate()` fails or encounters missing critical inputs, `InstinctSystem` emits a structural failure state (with `state.evaluationStatus: "UNAVAILABLE"`, `state.confidence: 0.0`, `state.dominantDrive: "NONE"`, and `proposals: []`) and error telemetry. `Heart` MUST NOT synthesize a healthy-looking `NONE` state.
+- **Recovery Fallback:** If persisted state is corrupt, missing, or schema-incompatible, `InstinctSystem` logs a critical recovery event, quarantines corrupt records, and falls back to a clean boot structural failure state (`state.evaluationStatus: "UNAVAILABLE"`, `state.confidence: 0.0`), triggering immediate snapshot re-evaluation.
