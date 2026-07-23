@@ -66,7 +66,7 @@ export interface InstinctEvaluationResult {
     {
       state: {
         snapshotId: snapshot.snapshotId,
-        evaluatedAt: Date.now(),
+        evaluatedAt: clock.now(),
         evaluationStatus: "UNAVAILABLE",
         hunger: { intensity: 0, status: "UNAVAILABLE" },
         anxiety: { intensity: 0, status: "UNAVAILABLE" },

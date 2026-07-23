@@ -33,7 +33,7 @@ In Gen-1 documentation, the future introduction of instincts and drives for Gen-
 
 1. **Heart Ownership Boundary:**
    - `Heart.ts` **does NOT own** drive formulas, need normalization, confidence calculations, arbitration rules, hysteresis, decay, or goal proposal logic.
-   - `Heart.ts` **only invokes** the public `InstinctSystem` interface (`evaluate`, `getEvaluationResult`, `persistState`, `recoverState`).
+   - `Heart.ts` **only invokes** the public `InstinctSystem` interface (`evaluate`, `getEvaluationResult`, `acknowledgeProposal`, `persistState`, `recoverState`).
 
 2. **Principal Organ & Internal Enclosure:**
    - Create exactly **one principal top-level organ**: **`InstinctSystem`**.

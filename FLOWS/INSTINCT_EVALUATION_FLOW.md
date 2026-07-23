@@ -37,6 +37,8 @@ sequenceDiagram
     Heart->>IS: persistState() [during SLEEP]
     IS->>DB: Atomic SQLite transaction write
     Heart->>Cortex: Pass MotivationalContext & GoalProposal[] during THINK
+    Cortex-->>Heart: acknowledgeProposal(proposalId, status)
+    Heart->>IS: acknowledgeProposal(proposalId, status)
 ```
 
 ---
@@ -63,3 +65,6 @@ sequenceDiagram
 
 7. **Advisory Context Exposure (`Cortex`):**
    `Heart` passes read-only `MotivationalContext` and `GoalProposal[]` to `Cortex` during `THINK`. `Cortex` uses this advisory context for plan priority scoring while independently enforcing all policy, treasury, and approval constraints.
+
+8. **Proposal Acknowledgement (`Heart` pass-through):**
+   `Cortex` acknowledges accepted or rejected proposals. `Heart` blindly forwards this acknowledgement to `InstinctSystem.acknowledgeProposal()`. `InstinctSystem` exclusively owns updating the proposal state in its internal storage, preventing `Heart` from acquiring proposal-policy authority.
