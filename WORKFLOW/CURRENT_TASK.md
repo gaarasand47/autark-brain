@@ -1,13 +1,12 @@
 # Current Task
 
-- **Objective ID:** `G2-FINAL-REPAIR-VERIFY`
-- **Stage:** Gen-2 bounded architecture repair
-- **Title:** Independent verification of the final three repair findings
-- **Implementation scope completed:**
-  - Preserve `FINANCIAL_CONSERVATION` for critical Hunger.
-  - Validate persisted numeric ranges and proposal timestamp ordering.
-  - Reconcile canonical documentation and workflow state.
-- **Required next action:** A reviewer independent of the repair author must
-  inspect the exact commits and run the focused and full Docker suites.
-- **Exclusions:** No Gen-3 work, release tagging, live validation, wallet
-  authority, signing, broadcast, or production mutation.
+- **Objective ID:** `G2-S7-RC1-EVIDENCE`
+- **Stage:** Stage 7 — bounded release-candidate evidence
+- **Title:** Prepare Gen-2 RC1 evidence after independently accepted repair
+- **Accepted engine:** `077d756303d48e9e19f8dbeac034c54f4c6a0c9f`
+- **Accepted brain handoff:** `24eb160156bcefa89268bbc944c656c00c995954`
+- **Independent verdict:** `PASS WITH LIMITATIONS`
+- **Scope:** Collect minimal shadow-mode, deterministic replay, Docker test,
+  provenance, limitation, and authority-boundary evidence.
+- **Exclusions:** No release tag, production deployment, Gen-3 work, live
+  credentials, wallet/signing/broadcast authority, or autonomous mutation.

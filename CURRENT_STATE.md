@@ -11,9 +11,9 @@
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
 **Generation:** Gen-2  
-**Current Stage:** Gen-2 final bounded repair  
-**Status:** AWAITING_INDEPENDENT_REVIEW  
-**Source Implementation:** REPAIR IMPLEMENTED; NOT INDEPENDENTLY VERIFIED  
+**Current Stage:** Stage 7 RC1 evidence preparation  
+**Status:** READY_FOR_GEN2_RC1_EVIDENCE  
+**Source Implementation:** INDEPENDENTLY VERIFIED — PASS WITH LIMITATIONS  
 
 ---
 
@@ -46,7 +46,10 @@ Parent Directory: `d:\autark\`
 - [x] **Stages 1-6 implementation scope**: IMPLEMENTED (consolidated pass)
 - [x] **Final bounded repair**: IMPLEMENTED by temporarily authorized Codex
 - [ ] **Stage 7 validation and RC evidence**: NOT COMPLETE
-- [ ] **Independent repair verification**: AWAITING A SEPARATE REVIEWER
+- [x] **Independent repair verification**: PASS WITH LIMITATIONS
+  (`077d756303d48e9e19f8dbeac034c54f4c6a0c9f`)
+- [ ] **Known limitation**: Jest requires `--forceExit` because of an existing
+  open handle.
 
 ## Gen-1 Inherited Audit Status
 

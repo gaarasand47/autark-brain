@@ -1,52 +1,31 @@
-# Codex Phase 4 Repair Verification
+# Independent Gen-2 Repair Verification
 
 ## Verdict
 
-**FAIL**
+**PASS WITH LIMITATIONS**
 
-## Exact Scope and Evidence
+## Independently Verified Evidence
 
-- Engine: `bd0d08b740ffee97caa601f708eb1dfa3c0a8290`
-- Brain documentation repair: `b030b5e9c99a682fad6c653e8f5a99b4b4c99713`
-- Brain workflow head: `d0755cef47d590a4bd04bfb8e49b1892a9086c8e`
-- Docker build: PASS
-- Full Docker suite: FAIL, 67/68 tests passed
+- Engine commit:
+  `077d756303d48e9e19f8dbeac034c54f4c6a0c9f`
+- Brain handoff commit, resolved locally:
+  `24eb160156bcefa89268bbc944c656c00c995954`
+- Docker build: passed.
+- Focused suites: 5/5 suites, 30/30 tests passed.
+- Full suite: 17/17 suites, 75/75 tests passed.
+- Critical Hunger remains `FINANCIAL_CONSERVATION`/`LOW` for all five
+  `ObjectiveClass` values, including the `0.80` boundary.
+- Persistence protections remain intact.
+- Canonical documentation is consistent with independent-review status.
+- No authority boundary was added.
 
-## Verified Repairs
+## Limitation
 
-- Canonical acknowledgement status union is used without Heart fallback.
-- Valid `EvidenceRef` objects recover successfully.
-- Null suggested objective class fails closed.
-- Quarantine naming uses injected deterministic IDs.
-- New adversarial persistence tests execute and pass.
-- Existing Heart, persistence, drive, authority, and Gen-1 regressions pass.
+Jest still requires `--forceExit` and reports the existing open-handle
+warning. This is documented and was outside the bounded repair scope.
 
-## Remaining Findings
+## Boundary
 
-1. **Critical-Hunger risk tightening is undone by the generic class override.**
-   `GoalProposalEngine` first selects `FINANCIAL_CONSERVATION`/`LOW` for
-   critical Hunger, then replaces that class with
-   `state.suggestedObjectiveClass` (`FINANCIAL_TRANSACTION`). The Docker
-   boundary test fails accordingly. Make the override monotonic: a suggested
-   class may tighten risk but must never widen or replace the critical-Hunger
-   conservation class. Retain the failing regression test.
-
-2. **Canonical documentation is still inconsistent.**
-   `ORGANS/INSTINCT_SYSTEM.md`, both interface specifications, and
-   `FLOWS/INSTINCT_EVALUATION_FLOW.md` still report `Proposed`; workflow and
-   generation documents claim completion despite failed verification.
-   Reconcile the status and acknowledgement/objective-class contracts across
-   all canonical files. `CURRENT_TASK.md` also remains stale at `G2-S1-O2`.
-
-3. **Recovery numeric range validation remains incomplete.**
-   Finite checks exist, but proposal urgency/confidence and evidence numeric
-   values are not consistently bounded, and timestamp ordering is not
-   validated. Add focused adversarial coverage for out-of-range finite values
-   and invalid `expiresAt <= createdAt`.
-
-## Required Next Action
-
-An implementation-authorized agent must repair only these three findings,
-run the complete Docker suite, update the canonical brain documents and
-handoff with exact SHAs/results, set
-`STATUS.md` to `READY_FOR_CODEX_REPAIR_VERIFICATION`, and stop.
+This verdict accepts the bounded architecture repair. It is not a release,
+production-readiness, Gen-2 RC1, or Gen-3 authorization. Stage 7 RC evidence
+remains separate.

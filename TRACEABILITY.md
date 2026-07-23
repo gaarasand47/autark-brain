@@ -1,6 +1,6 @@
 # Traceability Matrix
 
-**Status:** `Repair Implemented - Awaiting Independent Verification` (Not frozen)
+**Status:** `Repair Independently Verified - PASS WITH LIMITATIONS` (Not frozen)
 
 Every major architectural feature must be traceable through this matrix. If a feature is listed here but cannot be found in the code or design specifications, it is biologically invalid.
 
@@ -34,5 +34,7 @@ Every major architectural feature must be traceable through this matrix. If a fe
 
 ---
 ### Implementation Status
-Gen-2 architecture repair is implemented but not independently verified.
-Stage 7 validation and release-candidate evidence remain open.
+Gen-2 architecture repair was independently verified at engine commit
+`077d756303d48e9e19f8dbeac034c54f4c6a0c9f` with `PASS WITH LIMITATIONS`.
+Stage 7 release-candidate evidence remains open; Jest's existing open-handle
+warning requires `--forceExit`.

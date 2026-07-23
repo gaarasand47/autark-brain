@@ -1,6 +1,6 @@
 # InstinctSystem Organ Specification
 
-**Status:** Implemented; awaiting independent repair verification  
+**Status:** Independently verified with limitation; RC1 evidence pending  
 **Document:** `ORGANS/INSTINCT_SYSTEM.md`  
 **ADR:** `DECISIONS/ADR-008-GEN2-DRIVE-ARCHITECTURE.md`
 
