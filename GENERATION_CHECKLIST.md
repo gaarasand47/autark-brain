@@ -2,6 +2,13 @@
 
 A generation (e.g. Gen-1, Gen-2) **CANNOT** be frozen or tagged for release until every single gate in this checklist is verified and checked off.
 
+## Gen-1 reconciliation status
+
+All Gen-1 gates remain unchecked. `541a032` supplies successful repair-branch
+test evidence only; it does not close release gates. Gates with prior PASS
+reports must be treated as **OPEN** or **UNVERIFIED** until their raw evidence,
+code paths, and traceability are independently reconciled.
+
 ## Release Gates
 
 - [ ] **1. Unit Audits**: All organ unit audits passed with mechanical proof.

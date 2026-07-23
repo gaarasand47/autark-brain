@@ -1,5 +1,15 @@
 # Current State of Autark Organism
 
+> ## Gen-1 reconciliation override — 2026-07-23
+>
+> Gen-1-RC (`b81204d7f1fb63c07fecc957cb0f490330d6ed6f`) is immutable and was
+> independently found to have failed reconciliation. Remediation is on
+> `autark:gen1-reconciliation-repair`, currently through `111b487` (with the
+> restored test baseline at `541a032`). The successful 8-suite/19-test Docker
+> run is repair-branch evidence only; it does **not** make Gen-1 frozen,
+> production-ready, or final-freeze verified. See
+> `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
+
 **Generation:** Gen-2
 **Current Stage:** Stage 1 (Instinct Drives Implementation)
 **Freeze Status:** 🔴 NOT READY
@@ -21,21 +31,12 @@ Parent Directory: `d:\autark\`
 
 ## Audit & Verification Matrix
 
-- [x] **Stage 1**: Unit Audits (`autark-brain/AUDITS/UNIT/`)
-- [x] **Stage 2**: Interface Audits (`autark-brain/AUDITS/INTERFACE/`)
-- [x] **Stage 3**: Workflow Audits (`autark-brain/AUDITS/WORKFLOW/`)
-- [x] **Stage 4**: Dependency Audits (`autark-brain/AUDITS/DEPENDENCY/`)
-- [x] **Stage 5**: State Machine Audit (`autark-brain/ORGANS/HEART.md`, `ADR-007`)
-- [x] **Stage 6**: Security Audits (`autark-brain/AUDITS/SECURITY/Security_Audit_Gen1.md`)
-- [x] **Stage 7**: Performance Audits (`autark-brain/BENCHMARKS/Gen1/`)
-- [x] **Stage 8**: Reliability & Stress Testing (`autark-brain/AUDITS/RELIABILITY/Reliability_Audit_Gen1.md`)
-- [x] **Stage 9**: Chaos Engineering (`autark-brain/AUDITS/CHAOS/Chaos_Audit_Gen1.md`)
-- [x] **Stage 10**: End-to-End System Validation (`autark-brain/AUDITS/SYSTEM/E2E_Validation_Report_Gen1.md`)
-- [x] **Stage 11**: Production Readiness Audit (`autark-brain/AUDITS/PRODUCTION/Production_Readiness_Audit_Gen1.md`)
-- [x] **Stage 12**: Deterministic Replay Audit (`autark-brain/AUDITS/SYSTEM/Deterministic_Replay_Audit_Gen1.md`)
-- [x] **Stage 13**: Architecture Drift Audit (`autark-brain/AUDITS/SYSTEM/Architecture_Drift_Audit_Gen1.md`)
-- [x] **Stage 14**: Release Candidate (Live Validation)
-- [x] **Stage 15**: Gen-1 Freeze
+- [ ] **Stages 1–10**: OPEN — legacy reports require file/test/evidence reconciliation.
+- [ ] **Stage 11 Production Readiness**: UNVERIFIED — prior PASS is superseded by reconciliation findings.
+- [ ] **Stage 12 Deterministic Replay**: OPEN — direct clock/random dependencies remain.
+- [ ] **Stage 13 Architecture Drift**: OPEN — traceability and organ/interface claims conflict with code.
+- [ ] **Stage 14 Release Candidate / Live Validation**: UNVERIFIED — no live validation is authorized or evidenced.
+- [ ] **Stage 15 Gen-1 Freeze**: OPEN — immutable tag preserved; final-freeze decision withheld.
 
 ---
 

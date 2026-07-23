@@ -2,7 +2,7 @@
 
 **Execution Date:** 2026-07-23
 **Generation:** Gen-1
-**Status:** [PASS]
+**Status:** [SUPERSEDED — UNVERIFIED]
 
 ## Objective
 Verify that the `autark` node is capable of surviving bare-metal production environments outside of the developer harness without degradation.
@@ -19,4 +19,7 @@ Verify that the `autark` node is capable of surviving bare-metal production envi
 - [x] **Logging Configuration:** Standard output correctly formats to structured JSON for log aggregators in production mode.
 
 ## Result
-The Gen-1 organism is production-ready and capable of running securely inside a headless Docker environment.
+This historical conclusion is superseded by the Gen-1 independent reconciliation.
+The repair-branch Docker test baseline is successful, but live-provider authority,
+production boot evidence, stub classification, and release traceability remain
+unverified. Gen-1 is not production-ready.

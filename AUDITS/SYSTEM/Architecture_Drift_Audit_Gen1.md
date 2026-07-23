@@ -2,7 +2,7 @@
 
 **Execution Date:** 2026-07-23
 **Generation:** Gen-1
-**Status:** [PASS]
+**Status:** [SUPERSEDED — OPEN]
 
 ## Objective
 Verify that the Memory Vault (`autark-brain`) matches the exact implemented state of the organism (`autark`). The codebase cannot contain undocumented organs or APIs, nor can the documentation claim capabilities that are not implemented.
@@ -19,4 +19,7 @@ An external audit flagged the following architectural drift which was subsequent
 - [x] Unused, legacy files from early prototyping (e.g., legacy extraction scripts) have been scrubbed from the `main` branch.
 
 ## Result
-Zero undocumented architectural deviation exists between the implementation and the design. Gen-1 freeze criteria met.
+This historical conclusion is superseded by reconciliation findings G1-001 and
+G1-003. Current traceability cited non-existent paths/tests and the Heart↔
+ApprovalGateway/Evolution interfaces remain unverified. Gen-1 freeze criteria
+are not met.

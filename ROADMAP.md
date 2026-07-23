@@ -10,11 +10,13 @@ The foundational organism.
 - **Organs:** Heart, Treasury, Basic Execution Sandbox, Identity Core.
 - **Status:** Complete.
 
-## [Gen-1] Mind (Frozen)
+## [Gen-1] Mind (Reconciliation Remediation)
 The cognitive foundation.
 - **Goal:** Enable the organism to remember, reflect, and safely simulate strategies without burning real capital.
 - **Organs:** Episodic Memory, Semantic Memory, Working Memory, Dream Engine, Skill Compiler.
-- **Status:** Complete.
+- **Status:** Repair-branch test baseline restored; independent reconciliation remains open.
+  The `Gen-1-RC` tag is immutable but not final-freeze verified. See
+  `AUDITS/RECONCILIATION/Gen1/` and `autark:gen1-reconciliation-repair`.
 
 ## [Gen-2] Instinct & Motivation (Up Next)
 The biological drive.
