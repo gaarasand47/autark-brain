@@ -18,7 +18,7 @@ The cognitive foundation.
   The `Gen-1-RC` tag is immutable but not final-freeze verified. See
   `AUDITS/RECONCILIATION/Gen1/` and `autark:gen1-reconciliation-repair`.
 
-## [Gen-2] Instinct & Motivation (Repair Verified with Limitation — RC1 Evidence Pending)
+## [Gen-2] Instinct & Motivation (RC1 Baseline Candidate)
 The biological drive.
 - **Goal:** Stop reacting to user prompts and start *wanting* things based on internal state deficits.
 - **Capabilities:** 
@@ -26,6 +26,9 @@ The biological drive.
   - Translate high error rates into "Anxiety" (driving conservative play).
   - Translate high stability into "Curiosity" (driving exploration).
 - **Architecture:** Heart schedules instinct evaluation and consumes motivational state, while a dedicated Instinct subsystem (`InstinctSystem`) owns Need/Drive calculations (see `DECISIONS/ADR-008-GEN2-DRIVE-ARCHITECTURE.md`).
+- **Baseline evidence:** Docker build, 17/17 suites and 75/75 tests, 3/3
+  deterministic replays, and a 10-second read-only shadow smoke run passed.
+  Full chaos/security validation is deferred.
 
 ## [Gen-3] Predictive World Modeling
 The internal simulator.

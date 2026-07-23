@@ -11,8 +11,8 @@
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
 **Generation:** Gen-2  
-**Current Stage:** Stage 7 RC1 evidence preparation  
-**Status:** READY_FOR_GEN2_RC1_EVIDENCE  
+**Current Stage:** Gen-2 RC1 baseline
+**Status:** GEN2_RC1_READY_FOR_HUMAN
 **Source Implementation:** INDEPENDENTLY VERIFIED — PASS WITH LIMITATIONS  
 
 ---
@@ -32,9 +32,9 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `0136b096fa2f5068d1833d89ea5cd9658bc51923` |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `dd32313733023adac7f8510435ea2251da30422e` |
 | **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen2-development` | `HEAD` |
-| **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `HEAD` |
+| **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `6e2b961a40e19c6f2fedfc301e4ce8125940dcca` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
 | **`autark-data`** | `d:\autark\autark-data` | Runtime State & SQLite DBs | N/A | N/A |
 
@@ -45,7 +45,7 @@ Parent Directory: `d:\autark\`
 - [x] **G2-S0-O1 Stage 0 Architecture Reconciliation**: IMPLEMENTED
 - [x] **Stages 1-6 implementation scope**: IMPLEMENTED (consolidated pass)
 - [x] **Final bounded repair**: IMPLEMENTED by temporarily authorized Codex
-- [ ] **Stage 7 validation and RC evidence**: NOT COMPLETE
+- [x] **Stage 7 validation and RC evidence**: BASIC RC1 EVIDENCE COMPLETE
 - [x] **Independent repair verification**: PASS WITH LIMITATIONS
   (`077d756303d48e9e19f8dbeac034c54f4c6a0c9f`)
 - [ ] **Known limitation**: Jest requires `--forceExit` because of an existing

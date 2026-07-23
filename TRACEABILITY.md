@@ -1,6 +1,6 @@
 # Traceability Matrix
 
-**Status:** `Repair Independently Verified - PASS WITH LIMITATIONS` (Not frozen)
+**Status:** `Gen-2 RC1 baseline candidate - PASS WITH LIMITATIONS` (awaiting human lock)
 
 Every major architectural feature must be traceable through this matrix. If a feature is listed here but cannot be found in the code or design specifications, it is biologically invalid.
 
@@ -36,5 +36,7 @@ Every major architectural feature must be traceable through this matrix. If a fe
 ### Implementation Status
 Gen-2 architecture repair was independently verified at engine commit
 `077d756303d48e9e19f8dbeac034c54f4c6a0c9f` with `PASS WITH LIMITATIONS`.
-Stage 7 release-candidate evidence remains open; Jest's existing open-handle
-warning requires `--forceExit`.
+Baseline smoke evidence is complete at engine commit
+`dd32313733023adac7f8510435ea2251da30422e` and bench commit
+`6e2b961a40e19c6f2fedfc301e4ce8125940dcca`. Full chaos and security campaigns
+remain deferred.

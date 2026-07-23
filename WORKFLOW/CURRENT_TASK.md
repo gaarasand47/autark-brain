@@ -1,8 +1,8 @@
 # Current Task
 
-- **Objective ID:** `G2-S7-RC1-EVIDENCE`
+- **Objective ID:** `G2-S7-O3`
 - **Stage:** Stage 7 — bounded release-candidate evidence
-- **Title:** Prepare Gen-2 RC1 evidence after independently accepted repair
+- **Title:** Gen-2 RC1 evidence handoff complete; awaiting human baseline lock
 - **Accepted engine:** `077d756303d48e9e19f8dbeac034c54f4c6a0c9f`
 - **Accepted brain handoff:** `24eb160156bcefa89268bbc944c656c00c995954`
 - **Independent verdict:** `PASS WITH LIMITATIONS`

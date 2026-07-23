@@ -1,4 +1,4 @@
-# Gen-2 Final Bounded Repair Handoff
+# Gen-2 RC1 Baseline Handoff
 
 ## Authority and Review Separation
 
@@ -53,6 +53,17 @@ independent reviewer is required.
 - Record an independent verdict without asking this implementing Codex run to
   approve itself.
 
+## RC1 smoke evidence
+
+- Engine baseline candidate: `dd32313733023adac7f8510435ea2251da30422e`.
+- Bench validation commit: `6e2b961a40e19c6f2fedfc301e4ce8125940dcca`.
+- Docker build: passed; full engine suite: 17/17 suites, 75/75 tests.
+- Deterministic replay: 3/3 identical logical outputs.
+- Read-only shadow smoke: 10 seconds with an empty wallet key, passed.
+
+These are baseline smoke checks only. Full chaos/security audit and Gen-3 work
+are deferred until separately authorized.
+
 ## Status
 
-`AWAITING_INDEPENDENT_REVIEW`
+`GEN2_RC1_READY_FOR_HUMAN`

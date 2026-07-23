@@ -1,6 +1,6 @@
 # Autark Gen-2 Canonical Architecture, Deliverables, and Exit Criteria
 
-**Status:** Repair independently verified with limitation; RC1 evidence pending  
+**Status:** RC1 baseline candidate; independently verified with limitation
 **Purpose:** This document is stored in `autark-brain` and used by Antigravity, Codex, and future sessions as the single implementation guide for Gen-2.  
 **Important:** No Gen-3 implementation begins until Gen-2 Codex Repair Verification passes.
 
