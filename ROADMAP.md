@@ -25,7 +25,7 @@ The biological drive.
   - Translate low Treasury into "Hunger".
   - Translate high error rates into "Anxiety" (driving conservative play).
   - Translate high stability into "Curiosity" (driving exploration).
-- **Architecture:** Introduction of the Need/Drive matrix in the Heart.
+- **Architecture:** Heart schedules instinct evaluation and consumes motivational state, while a dedicated Instinct subsystem (`InstinctSystem`) owns Need/Drive calculations (see `DECISIONS/ADR-008-GEN2-DRIVE-ARCHITECTURE.md`).
 
 ## [Gen-3] Predictive World Modeling
 The internal simulator.

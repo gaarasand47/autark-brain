@@ -10,9 +10,20 @@
 > production-ready, or final-freeze verified. See
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
-**Generation:** Gen-2
-**Current Stage:** Stage 1 (Instinct Drives Implementation)
-**Freeze Status:** 🔴 NOT READY
+**Generation:** Gen-2  
+**Current Stage:** Stage 0 (Baseline Inheritance & Architecture Reconciliation)  
+**Status:** Gen-2 Stage 0: DESIGN REVIEW  
+**Source Implementation:** NOT STARTED (Awaiting Codex Stage 0 Architecture Approval)  
+
+---
+
+## Baseline Provenance & Branching Origin
+- **Immutable Gen-1-Baseline Tag Targets:**
+  - `autark` engine tag (`Gen-1-Baseline`): `5c39218208d160cc46725ae8d1e5354a08c567d8`
+  - `autark-brain` memory vault tag (`Gen-1-Baseline`): `37bca336ab4e17cff306208e52cf8d8772ac8db7`
+- **Stage-0 Branching Origin Commits:**
+  - `autark` engine repository: `0136b096fa2f5068d1833d89ea5cd9658bc51923` (branch: `gen2-development`)
+  - `autark-brain` memory vault: `26d532506672504f092afb96fd449d7261321236` (branch: `gen1-baseline`)
 
 ---
 
@@ -21,39 +32,23 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `HEAD` |
-| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `main` | `HEAD` |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `0136b096fa2f5068d1833d89ea5cd9658bc51923` |
+| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen2-development` | `HEAD` |
 | **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `HEAD` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
 | **`autark-data`** | `d:\autark\autark-data` | Runtime State & SQLite DBs | N/A | N/A |
 
 ---
 
-## Audit & Verification Matrix
+## Gen-2 Progress Matrix
 
-- [ ] **Stages 1–10**: OPEN — legacy reports require file/test/evidence reconciliation.
+- [ ] **G2-OBJ-00 Stage 0 Architecture Reconciliation**: DESIGN REVIEW — Awaiting independent Codex review of ADR-008 & Gen-2 spec.
+- [ ] **G2-OBJ-01 to G2-OBJ-09**: OPEN — Source implementation not started.
+
+## Gen-1 Inherited Audit Status
+
 - [ ] **Stage 11 Production Readiness**: UNVERIFIED — prior PASS is superseded by reconciliation findings.
 - [ ] **Stage 12 Deterministic Replay**: OPEN — direct clock/random dependencies remain.
 - [ ] **Stage 13 Architecture Drift**: OPEN — traceability and organ/interface claims conflict with code.
 - [ ] **Stage 14 Release Candidate / Live Validation**: UNVERIFIED — no live validation is authorized or evidenced.
 - [ ] **Stage 15 Gen-1 Freeze**: OPEN — immutable tag preserved; final-freeze decision withheld.
-
----
-
-## Last Verified Results
-- **Benchmark Suite**: 13/13 micro, system, and reliability benchmarks PASSED in Docker Linux container (2 CPU / 512MB RAM).
-- **Chaos Engineering**: 7/7 Level B Live Organism Attacks passed (funds protected, memory intact, safe states triggered). Simulated Level A passed cleanly.
-- **100k Pulse Endurance**: -0.34MB heap delta, 0 leaked handles.
-- **Queue Stress**: 111,111 items processed with 0% starvation and ~15,000 ops/sec throughput.
-- **Mid-State Crash Recovery**: 100% state resumption across all 6 mid-flight states with 0 double-spending.
-
----
-
-## Known Technical Debt & Issues
-1. On-chain transaction status verification during crash recovery needs RPC polling in `BOOT` state (scheduled for Gen-2).
-2. Large queue table history partitioning to be introduced in Gen-2.
-
----
-
-## Handover Document
-See `IMPLEMENTATION_HANDOVER/SESSION_HANDOVER_GEN1_STAGE8.md` for full instructions.
