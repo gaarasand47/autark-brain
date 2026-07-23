@@ -1,0 +1,237 @@
+FAIL src/testing/gen1.test.ts
+  ● Console
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.532Z","level":"INFO","component":"Migrations","message":"Found 5 pending migrations. Current version: 0","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.549Z","level":"INFO","component":"Migrations","message":"Applying migration v1...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.553Z","level":"INFO","component":"Migrations","message":"Applying migration v2...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.554Z","level":"INFO","component":"Migrations","message":"Applying migration v3...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.556Z","level":"INFO","component":"Migrations","message":"Applying migration v4...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.558Z","level":"INFO","component":"Migrations","message":"Applying migration v5...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:29.559Z","level":"INFO","component":"Migrations","message":"Successfully migrated to v5","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.warn
+      [Treasury] Cognitive budget exhausted. Requested: $0.50, Available: $0.20
+
+      121 |       return true;
+      122 |     }
+    > 123 |     console.warn(`[Treasury] Cognitive budget exhausted. Requested: $${amount.toFixed(2)}, Available: $${available.toFixed(2)}`);
+          |             ^
+      124 |     return false;
+      125 |   }
+      126 | }
+
+      at Treasury.reserveCognitiveBudget (src/economy/Treasury.ts:123:13)
+      at Object.<anonymous> (src/testing/gen1.test.ts:86:34)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:30.191Z","level":"INFO","generation":1,"pulse_id":"unknown","request_id":"unknown","task_id":"unknown","current_state":"unknown","organ":"unknown","event":"EVOLUTION","message":"Generating Improvement Proposal for: Test Fix","duration_ms":null,"status":"OK","error":null,"metadata":{}}
+
+      at StructuredLogger.emit (src/utils/logger.ts:71:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:30.193Z","level":"WARN","generation":1,"pulse_id":"unknown","request_id":"unknown","task_id":"unknown","current_state":"unknown","organ":"unknown","event":"EVOLUTION","message":"Proposal prop_1784810310193 generated with Rollback Package. HALTING for Human Approval.","duration_ms":null,"status":"WARN","error":null,"metadata":{}}
+
+      at StructuredLogger.emit (src/utils/logger.ts:71:15)
+
+  ● Gen-1 Cognitive Organism Audit › G1-02: Curiosity Queue biologically prioritizes Failures and Profit over Novelty
+
+    expect(received).not.toBeNull()
+
+    Received: null
+
+      100 |
+      101 |     const top = curiosityQueue.dequeue();
+    > 102 |     expect(top).not.toBeNull();
+          |                     ^
+      103 |     // High profit (50 * 0.5 = 25) vs High failure (10 * 2 = 20). High profit should win!
+      104 |     expect(top!.question).toBe('High profit!');
+      105 |
+
+      at Object.<anonymous> (src/testing/gen1.test.ts:102:21)
+
+PASS src/testing/economics.test.ts
+  ● Console
+
+    console.warn
+      [Treasury] Profit floor rejected: Expected profit $0.05 is below minimum threshold $0.10
+
+      20 |       const expectedProfit = expectedRevenue - estimatedCost;
+      21 |       if (expectedProfit < MINIMUM_PROFIT_THRESHOLD) {
+    > 22 |         console.warn(`[Treasury] Profit floor rejected: Expected profit $${expectedProfit.toFixed(2)} is below minimum threshold $${MINIMUM_PROFIT_THRESHOLD.toFixed(2)}`);
+         |                 ^
+      23 |         return false;
+      24 |       }
+      25 |     }
+
+      at Treasury.reserve (src/economy/Treasury.ts:22:17)
+      at Object.<anonymous> (src/testing/economics.test.ts:28:30)
+
+PASS src/testing/migrations.test.ts
+  ● Console
+
+    console.log
+      [Migration] Database is up to date.
+
+      at runMigrations (src/db/migrate.ts:49:13)
+
+    console.log
+      [Migration] Database is up to date.
+
+      at runMigrations (src/db/migrate.ts:49:13)
+
+PASS src/__tests__/test_unauthorized_execution.test.ts (8.574 s)
+FAIL src/testing/sandbox.test.ts
+  ● Console
+
+    console.log
+      Lab execution failed: A dynamic import callback was invoked without --experimental-vm-modules
+
+      at Object.<anonymous> (src/testing/sandbox.test.ts:62:15)
+
+  ● DeterministicLab › should execute script successfully with mocked AI bridge
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      64 |
+      65 |     // We expect success even with bridge injected
+    > 66 |     expect(receipt.success).toBe(true);
+         |                             ^
+      67 |     expect(receipt.stdout).toContain('Script executed successfully');
+      68 |     expect(receipt.networkCalls).toBe(2);
+      69 |   });
+
+      at Object.<anonymous> (src/testing/sandbox.test.ts:66:29)
+
+PASS src/testing/backup.test.ts
+  ● Console
+
+    console.log
+      [Backup] Starting backup of /app/src/testing/test_backup.db to /app/src/testing/backups_test/organism-backup-2026-07-23T12-38-39-450Z.db...
+
+      at backupDatabase (scripts/backup-restore.ts:16:11)
+
+    console.log
+      [Backup] Backup successful.
+
+      at backupDatabase (scripts/backup-restore.ts:18:11)
+
+    console.log
+      [RestoreVerify] Verifying integrity of backup at /app/src/testing/backups_test/organism-backup-2026-07-23T12-38-39-450Z.db...
+
+      at verifyRestore (scripts/backup-restore.ts:25:11)
+
+    console.log
+      [RestoreVerify] Integrity check PASSED.
+
+      at verifyRestore (scripts/backup-restore.ts:32:15)
+
+PASS src/testing/secrets.test.ts
+PASS src/testing/programmatic-migrations.test.ts
+  ● Console
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.791Z","level":"INFO","component":"Migrations","message":"Found 5 pending migrations. Current version: 0","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.792Z","level":"INFO","component":"Migrations","message":"Applying migration v1...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.793Z","level":"INFO","component":"Migrations","message":"Applying migration v2...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.793Z","level":"INFO","component":"Migrations","message":"Applying migration v3...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.794Z","level":"INFO","component":"Migrations","message":"Applying migration v4...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.795Z","level":"INFO","component":"Migrations","message":"Applying migration v5...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.795Z","level":"INFO","component":"Migrations","message":"Successfully migrated to v5","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.797Z","level":"INFO","component":"Migrations","message":"Found 5 pending migrations. Current version: 0","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.798Z","level":"INFO","component":"Migrations","message":"Applying migration v1...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.799Z","level":"INFO","component":"Migrations","message":"Applying migration v2...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.800Z","level":"INFO","component":"Migrations","message":"Applying migration v3...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.801Z","level":"INFO","component":"Migrations","message":"Applying migration v4...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.802Z","level":"INFO","component":"Migrations","message":"Applying migration v5...","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+    console.log
+      {"timestamp":"2026-07-23T12:38:39.802Z","level":"INFO","component":"Migrations","message":"Successfully migrated to v5","requestId":"system","executionId":"system","decisionId":"system","metadata":{}}
+
+      at Function.log (src/observability/StructuredLogger.ts:32:15)
+
+
+Test Suites: 2 failed, 6 passed, 8 total
+Tests:       2 failed, 17 passed, 19 total
+Snapshots:   0 total
+Time:        11.554 s
+Ran all test suites.
