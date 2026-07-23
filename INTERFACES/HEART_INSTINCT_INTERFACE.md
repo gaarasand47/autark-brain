@@ -66,17 +66,18 @@ export interface InstinctEvaluationResult {
     {
       state: {
         snapshotId: snapshot.snapshotId,
+        snapshotVersion: snapshot.version,
         evaluatedAt: clock.now(),
         evaluationStatus: "UNAVAILABLE",
-        hunger: { intensity: 0, status: "UNAVAILABLE" },
-        anxiety: { intensity: 0, status: "UNAVAILABLE" },
-        curiosity: { intensity: 0, status: "UNAVAILABLE" },
+        hunger: { driveKind: "HUNGER", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
+        anxiety: { driveKind: "ANXIETY", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
+        curiosity: { driveKind: "CURIOSITY", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
         dominantDrive: "NONE",
         confidence: 0.0,
         confidenceReason: "Evaluation failed",
         suggestedObjectiveClass: null,
         actionAuthority: false,
-        evaluatorVersion: snapshot.version,
+        evaluatorVersion: CURRENT_EVALUATOR_VERSION,
         evidenceHash: null
       },
       proposals: []

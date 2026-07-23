@@ -199,7 +199,7 @@ interface NeedSignal {
   expiry: number;
   evaluatorVersion: string;
   correlationId: string;
-  evidenceHash: string;
+  evidenceHash: string | null;
 }
 
 interface DriveState {
@@ -218,6 +218,7 @@ interface DriveState {
 ```typescript
 interface MotivationalState {
   snapshotId: string;
+  snapshotVersion: string;
   evaluatedAt: number;
   evaluationStatus: EvaluationStatus;
 
@@ -233,11 +234,11 @@ interface MotivationalState {
   actionAuthority: false;
 
   evaluatorVersion: string;
-  evidenceHash: string;
+  evidenceHash: string | null;
 }
 ```
 
-### 6.4 `GoalProposal`
+### 6.6 `GoalProposal`
 ```typescript
 interface GoalProposal {
   goalId: string;
@@ -270,13 +271,17 @@ interface InstinctEvaluationResult {
 ## 7. Failure, Confidence, Recovery & Atomicity Semantics
 
 ### 7.1 Confidence, Thresholds, and Missing-Data Propagation
-- **Deterministic Formula:** Overall `MotivationalState.confidence` is calculated as the minimum `confidence` across all activated `NeedSignal` inputs contributing to the dominant drive.
+- **Total Deterministic Formula:** 
+  1. Base confidence for each `NeedSignal` is mapped strictly from its source metrics: `VALID` (1.0), `STALE` (0.75), `DEGRADED` (0.50), `UNKNOWN` (0.25), `UNAVAILABLE` (0.0). If a `NeedSignal` aggregates multiple metrics, its confidence is the mathematical minimum of those metric confidences.
+  2. The overall `MotivationalState.confidence` is the deterministic minimum `confidence` across ALL instantiated `NeedSignal` inputs, regardless of which drive is dominant.
+  3. **Empty Set:** If exactly zero `NeedSignal` inputs exist, overall confidence is rigidly clamped to `0.0`.
+  4. **Tie Behavior:** If multiple drives share the exact same effective intensity, arbitration resolves ties deterministically using a hardcoded sequence priority: `HUNGER` > `ANXIETY` > `CURIOSITY`.
 - **Confidence Tiers & Restrictions:**
   - **High (1.0):** Normal operation. All objective classes permitted.
   - **Degraded (0.50 - 0.99):** Generation is restricted strictly to low-risk internal/read-only objective classes.
   - **Unavailable (< 0.50):** Goal proposal generation is completely disabled.
 - **Critical Data Blocking:** If any critical Treasury or system integrity data is `UNKNOWN` or `UNAVAILABLE`, Hunger and Anxiety proposal generation is strictly blocked regardless of aggregate confidence.
-- **Missing-Data & Uncertainty:** Missing data does NOT fabricate verified physiological evidence. Instead, it raises a distinct, dedicated uncertainty signal (e.g., a "Data Deficiency" Need) which directly escalates Anxiety and degrades confidence without faking underlying metric values.
+- **Typed Uncertainty:** Missing data does NOT fabricate verified physiological evidence. Instead, a dedicated, strongly-typed `NeedSignal` (e.g., `needId: "DATA_DEFICIENCY"`) is explicitly generated. This translates directly into Anxiety while transparently enforcing a low confidence score, without faking underlying metric values.
 
 ### 7.2 Evaluation Failure Semantics (No Fake "NONE")
 - If `InstinctSystem.evaluate()` encounters an exception, unhandled failure, or missing critical inputs, it emits a structural failure state:
@@ -284,17 +289,18 @@ interface InstinctEvaluationResult {
   {
     state: {
       snapshotId: snapshot.snapshotId,
+      snapshotVersion: snapshot.version,
       evaluatedAt: clock.now(),
       evaluationStatus: "UNAVAILABLE",
-      hunger: { intensity: 0, status: "UNAVAILABLE" },
-      anxiety: { intensity: 0, status: "UNAVAILABLE" },
-      curiosity: { intensity: 0, status: "UNAVAILABLE" },
+      hunger: { driveKind: "HUNGER", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
+      anxiety: { driveKind: "ANXIETY", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
+      curiosity: { driveKind: "CURIOSITY", rawIntensity: 0, effectiveIntensity: 0, status: "UNAVAILABLE", confidence: 0, isActive: false, activationReason: "Evaluation failed", evaluatorVersion: CURRENT_EVALUATOR_VERSION },
       dominantDrive: "NONE",
       confidence: 0.0,
       confidenceReason: "Evaluation failed",
       suggestedObjectiveClass: null,
       actionAuthority: false,
-      evaluatorVersion: snapshot.version,
+      evaluatorVersion: CURRENT_EVALUATOR_VERSION,
       evidenceHash: null
     },
     proposals: []
@@ -303,7 +309,7 @@ interface InstinctEvaluationResult {
   - Telemetry error event logged with exact exception stack trace.
 - `Heart` MUST NOT synthesize a healthy-looking `NONE` state upon failure; it must preserve and log `evaluationStatus: "UNAVAILABLE"`.
 
-### 7.2 Persistence Atomicity & Schema Versioning
+### 7.3 Persistence Atomicity & Schema Versioning
 - All persisted motivational states, active goal proposals, and evaluator version metadata MUST be written within a single **atomic SQLite transaction**.
 - Every persisted record includes `evaluatorVersion` and `schemaVersion`.
 
@@ -335,13 +341,16 @@ To adhere to the strict one-objective-at-a-time governance model, the Gen-2 impl
 * **G2-S1-O5**: Implement `NeedSignal` schema.
 * **G2-S1-O6**: Implement `DriveState` schema.
 * **G2-S1-O7**: Implement `MotivationalState` schema.
-* **G2-S1-O8**: Implement `InstinctEvaluationResult` schema.
+* **G2-S1-O8**: Implement `GoalProposal` schema.
+* **G2-S1-O9**: Implement `InstinctEvaluationResult` schema.
 
 ### Stage 2: NeedMonitor
 * **G2-S2-O1**: Implement `NeedMonitor` generic metric validation logic (stale/degraded/valid).
 * **G2-S2-O2**: Implement `NeedMonitor` translation for Treasury metrics into Hunger `NeedSignal`.
 * **G2-S2-O3**: Implement `NeedMonitor` translation for Workload/Reliability metrics into Anxiety `NeedSignal`.
-* **G2-S2-O4**: Implement `NeedMonitor` deterministic confidence scoring and uncertainty degradation.
+* **G2-S2-O4**: Implement `NeedMonitor` translation for Knowledge Gap/Exploration metrics into Curiosity `NeedSignal`.
+* **G2-S2-O5**: Implement `NeedMonitor` translation for missing data into a typed Data-Deficiency uncertainty `NeedSignal`.
+* **G2-S2-O6**: Implement `NeedMonitor` deterministic confidence scoring and uncertainty degradation.
 
 ### Stage 3: DriveEngine
 * **G2-S3-O1**: Implement `DriveEngine` raw intensity computation for Hunger.
