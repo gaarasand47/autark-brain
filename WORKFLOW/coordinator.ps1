@@ -292,6 +292,18 @@ try {
                 -Message "Missing prompt file: $promptFile"
         }
 
+        if ($DryRun) {
+            $objectiveId = Read-ObjectiveId
+            $cliAvailable = if ($agent -eq "ANTIGRAVITY") {
+                $null -ne $antigravityExecutable
+            }
+            else {
+                $null -ne $codexExecutable
+            }
+            Write-Host "DRY RUN: would launch $agent for $status ($objectiveId); CLI available: $cliAvailable."
+            exit 0
+        }
+
         if ($agent -eq "ANTIGRAVITY" -and $null -eq $antigravityExecutable) {
             Stop-WithStatus `
                 -Status "BLOCKED_MISSING_ANTIGRAVITY_CLI" `
@@ -344,11 +356,6 @@ try {
 You must update WORKFLOW/STATUS.md to the next valid state before exiting.
 "@
         $prompt = $basePrompt + $dispatchContext
-
-        if ($DryRun) {
-            Write-Host "DRY RUN: would launch $agent for $status ($objectiveId)."
-            exit 0
-        }
 
         Write-AtomicText -Path $statusFile -Value $runningStatus
         $timestamp = [DateTime]::UtcNow.ToString("yyyyMMddTHHmmssZ")
