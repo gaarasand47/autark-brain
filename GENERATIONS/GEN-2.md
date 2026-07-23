@@ -1,8 +1,8 @@
 # Autark Gen-2 Canonical Architecture, Deliverables, and Exit Criteria
 
-**Status:** Proposed canonical Gen-2 specification (Reconciled Stage 0)  
+**Status:** Implementation Complete - Awaiting Final Codex Repair Verification  
 **Purpose:** This document is stored in `autark-brain` and used by Antigravity, Codex, and future sessions as the single implementation guide for Gen-2.  
-**Important:** No Gen-2 implementation begins until Stage 0 architecture reconciliation receives independent Codex approval.
+**Important:** No Gen-3 implementation begins until Gen-2 Codex Repair Verification passes.
 
 ---
 
