@@ -16,10 +16,10 @@ Every major architectural feature must be traceable through this matrix. If a fe
 | **Code Sandbox** | DeterministicLab | Top-level Organ | `src/execution/Lab.ts` | `src/testing/sandbox.test.ts` | ADR-001 | Gen-1 | Repair-branch test evidence |
 | **Human Gateway** | ApprovalGateway | Top-level Organ | `src/evolution/ApprovalGateway.ts` | No committed matching test | ADR-001 | Gen-1 | PARTIAL / fail-closed |
 | **Evolution Engine** | EvolutionManager | Top-level Organ | `src/evolution/EvolutionManager.ts` | `src/testing/gen1.test.ts` | ADR-001 | Gen-1 | PARTIAL / mutation disabled |
-| **Instinct System Organ** | InstinctSystem | Principal Top-level Organ | `ORGANS/INSTINCT_SYSTEM.md` *(Target: `src/organs/instinct/InstinctSystem.ts`)* | TBD | ADR-008 | Gen-2 Stage 0 | DESIGN REVIEW |
-| **Need Monitor** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/organs/instinct/NeedMonitor.ts`)* | TBD | ADR-008 | Gen-2 Stage 0 | DESIGN REVIEW |
-| **Drive Engine** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/organs/instinct/DriveEngine.ts`)* | TBD | ADR-008 | Gen-2 Stage 0 | DESIGN REVIEW |
-| **Goal Proposal Engine** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/organs/instinct/GoalProposalEngine.ts`)* | TBD | ADR-008 | Gen-2 Stage 0 | DESIGN REVIEW |
+| **Instinct System Organ** | InstinctSystem | Principal Top-level Organ | `ORGANS/INSTINCT_SYSTEM.md` *(Target: `src/instincts/InstinctSystem.ts`)* | `src/__tests__/unit/InstinctSystem.test.ts` | ADR-008 | Gen-2 Stage 0 | IMPLEMENTED |
+| **Need Monitor** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/instincts/NeedMonitor.ts`)* | `src/__tests__/unit/NeedMonitor.test.ts` | ADR-008 | Gen-2 Stage 0 | IMPLEMENTED |
+| **Drive Engine** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/instincts/DriveEngine.ts`)* | `src/__tests__/unit/DriveEngine.test.ts` | ADR-008 | Gen-2 Stage 0 | IMPLEMENTED |
+| **Goal Proposal Engine** | InstinctSystem | Internal Component | `GENERATIONS/GEN-2.md` *(Target: `src/instincts/GoalProposalEngine.ts`)* | `src/__tests__/unit/GoalProposalEngine.test.ts` | ADR-008 | Gen-2 Stage 0 | IMPLEMENTED |
 
 ---
 
@@ -34,4 +34,4 @@ Every major architectural feature must be traceable through this matrix. If a fe
 
 ---
 ### Implementation Status
-Stage 0 Architecture Reconciliation under independent Codex design review; source code implementation not started.
+Stage 0 Architecture Reconciliation source code implementation completed. Awaiting Codex Repair Verification.
