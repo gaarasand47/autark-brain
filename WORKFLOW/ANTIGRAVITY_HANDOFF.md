@@ -10,7 +10,9 @@ independent reviewer is required.
 ## Exact Scope
 
 - Engine base: `bd0d08b740ffee97caa601f708eb1dfa3c0a8290`
-- Engine repair: `c7f5e4f5945fe367e3b434f578c8dde0ebb784a0`
+- Engine initial repair: `c7f5e4f5945fe367e3b434f578c8dde0ebb784a0`
+- Engine independent-finding repair:
+  `077d756303d48e9e19f8dbeac034c54f4c6a0c9f`
 - Brain base: `d0755cef47d590a4bd04bfb8e49b1892a9086c8e`
 - Brain repair: the commit containing this handoff is authoritative.
 
@@ -24,13 +26,19 @@ independent reviewer is required.
 3. Canonical organ, interface, flow, roadmap, current-state, traceability, and
    workflow documents now say implementation repair is awaiting independent
    verification rather than claiming completion.
+4. After independent review found that non-financial suggested classes could
+   still replace critical-Hunger conservation, the override was made
+   unconditional: every `ObjectiveClass` suggestion now leaves critical
+   Hunger as `FINANCIAL_CONSERVATION`/`LOW`.
 
 ## Docker Evidence Produced by Implementer
 
 - Image: `autark-gen2-final-repair`
 - `npm run build`: passed.
-- Focused suites: 5/5 suites, 25/25 tests passed.
-- Full suite: 17/17 suites, 70/70 tests passed.
+- Focused suites after the independent-finding repair: 5/5 suites, 30/30
+  tests passed.
+- Full suite after the independent-finding repair: 17/17 suites, 75/75 tests
+  passed.
 - Jest required `--forceExit`; the existing open-handle warning remains a
   limitation and was not broadened into this repair.
 
