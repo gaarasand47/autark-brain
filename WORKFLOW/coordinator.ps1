@@ -90,7 +90,7 @@ function Write-CoordinatorState {
 
 function Resolve-AgentCommand {
     param(
-        [Parameter(Mandatory = $true)][string]$ConfiguredCommand,
+        [string]$ConfiguredCommand = "",
         [Parameter(Mandatory = $true)][string]$DefaultName
     )
 
