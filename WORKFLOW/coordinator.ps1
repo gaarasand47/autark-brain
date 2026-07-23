@@ -116,22 +116,30 @@ function Invoke-AgentProcess {
     )
 
     $startInfo = [System.Diagnostics.ProcessStartInfo]::new()
-    $startInfo.FileName = $Executable
+    if ($Executable.EndsWith(".cmd", [StringComparison]::OrdinalIgnoreCase) -or $Executable.EndsWith(".bat", [StringComparison]::OrdinalIgnoreCase) -or $Executable.EndsWith(".ps1", [StringComparison]::OrdinalIgnoreCase)) {
+        $startInfo.FileName = "cmd.exe"
+        if ($Agent -eq "ANTIGRAVITY") {
+            $startInfo.Arguments = "/c `"`"$Executable`" -p `"$Prompt`"`""
+        }
+        else {
+            $startInfo.Arguments = "/c `"`"$Executable`" exec -`""
+        }
+    }
+    else {
+        $startInfo.FileName = $Executable
+        if ($Agent -eq "ANTIGRAVITY") {
+            $startInfo.Arguments = "-p `"$Prompt`""
+        }
+        else {
+            $startInfo.Arguments = "exec -"
+        }
+    }
     $startInfo.WorkingDirectory = $Root
     $startInfo.UseShellExecute = $false
     $startInfo.RedirectStandardOutput = $true
     $startInfo.RedirectStandardError = $true
     $startInfo.RedirectStandardInput = ($Agent -eq "CODEX")
     $startInfo.CreateNoWindow = $true
-
-    if ($Agent -eq "ANTIGRAVITY") {
-        $startInfo.ArgumentList.Add("-p")
-        $startInfo.ArgumentList.Add($Prompt)
-    }
-    else {
-        $startInfo.ArgumentList.Add("exec")
-        $startInfo.ArgumentList.Add("-")
-    }
 
     $process = [System.Diagnostics.Process]::new()
     $process.StartInfo = $startInfo
@@ -393,7 +401,9 @@ You must update WORKFLOW/STATUS.md to the next valid state before exiting.
 }
 finally {
     if ($null -ne $lockStream) {
+        $lockStream.Close()
         $lockStream.Dispose()
+        $lockStream = $null
     }
     if (Test-Path -LiteralPath $lockFile) {
         Remove-Item -LiteralPath $lockFile -Force
