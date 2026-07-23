@@ -45,7 +45,7 @@ export interface MotivationalContext {
   evaluationStatus: "VALID" | "DEGRADED" | "UNAVAILABLE";
   suggestedObjectiveClass: ObjectiveClass | null;
   evaluatorVersion: string;
-  evidenceHash: string;
+  evidenceHash: string | null;
 }
 ```
 

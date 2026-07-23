@@ -58,7 +58,7 @@ sequenceDiagram
    Inside the `InstinctSystem` boundary, `DriveEngine` computes Hunger, Anxiety, Curiosity, applies arbitration rules (e.g. Anxiety suppresses Curiosity), hysteresis thresholds, decay rates, and produces `MotivationalState`.
 
 5. **Internal Proposal Generation (`GoalProposalEngine`):**
-   If confidence $\ge 0.50$, `GoalProposalEngine` maps active drives into non-executable `GoalProposal[]` entries with explicit risk classes, evidence references, and expiration timestamps. If confidence $< 0.50$, proposal generation is disabled.
+   If confidence = 1.0, `GoalProposalEngine` generates proposals for all otherwise policy-eligible classes. If confidence is $0.50–0.99$, it permits ONLY low-risk internal/read-only proposals. Normal proposal generation remains subject to inherited policy and authority boundaries. If confidence $< 0.50$, proposal generation is completely disabled.
 
 6. **Organ Return & Persistence (`InstinctSystem.persistState`):**
    `InstinctSystem` returns an `InstinctEvaluationResult` containing `MotivationalState` and `GoalProposal[]` to `Heart`. During `SLEEP`, `Heart` triggers `InstinctSystem.persistState()`, which executes an atomic SQLite transaction write inside `InstinctSystem`.

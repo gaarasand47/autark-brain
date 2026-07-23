@@ -185,11 +185,17 @@ interface IIdGenerator {
 }
 ```
 
-### 6.4 `NeedSignal` & `DriveState`
-```typescript
+type NeedKind =
+  | "TREASURY_DEFICIT"
+  | "RELIABILITY_DEFICIT"
+  | "WORKLOAD_PRESSURE"
+  | "KNOWLEDGE_GAP"
+  | "DATA_DEFICIENCY";
+
 interface NeedSignal {
   needId: string;
-  sourceMetrics: string[];
+  needKind: NeedKind;
+  evidence: EvidenceRef[];
   intensity: number;
   threshold: number;
   status: MetricStatus;
@@ -277,11 +283,11 @@ interface InstinctEvaluationResult {
   3. **Empty Set:** If exactly zero `NeedSignal` inputs exist, overall confidence is rigidly clamped to `0.0`.
   4. **Tie Behavior:** If multiple drives share the exact same effective intensity, arbitration resolves ties deterministically using a hardcoded sequence priority: `HUNGER` > `ANXIETY` > `CURIOSITY`.
 - **Confidence Tiers & Restrictions:**
-  - **High (1.0):** Normal operation. All objective classes permitted.
-  - **Degraded (0.50 - 0.99):** Generation is restricted strictly to low-risk internal/read-only objective classes.
+  - **High (1.0):** Normal operation. All otherwise policy-eligible proposal classes permitted. Explicitly preserves Constitution, Policy, Treasury, Approval, Sandbox, Vault, and Identity restrictions.
+  - **Degraded (0.50 - 0.99):** Generation is restricted strictly to low-risk internal/read-only objective classes. Normal proposal generation remains subject to inherited policy and authority boundaries.
   - **Unavailable (< 0.50):** Goal proposal generation is completely disabled.
 - **Critical Data Blocking:** If any critical Treasury or system integrity data is `UNKNOWN` or `UNAVAILABLE`, Hunger and Anxiety proposal generation is strictly blocked regardless of aggregate confidence.
-- **Typed Uncertainty:** Missing data does NOT fabricate verified physiological evidence. Instead, a dedicated, strongly-typed `NeedSignal` (e.g., `needId: "DATA_DEFICIENCY"`) is explicitly generated. This translates directly into Anxiety while transparently enforcing a low confidence score, without faking underlying metric values.
+- **Typed Uncertainty:** Missing data does NOT fabricate verified physiological evidence. Instead, a dedicated, strongly-typed `NeedSignal` (`needKind: "DATA_DEFICIENCY"`) is explicitly generated with typed evidence references to missing metrics. This translates directly into Anxiety while transparently enforcing a low confidence score, without faking underlying metric values.
 
 ### 7.2 Evaluation Failure Semantics (No Fake "NONE")
 - If `InstinctSystem.evaluate()` encounters an exception, unhandled failure, or missing critical inputs, it emits a structural failure state:
