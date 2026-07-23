@@ -55,3 +55,11 @@ Respect the architectural boundaries of the organism:
 - `autark-lab/` - Research & experiments
 - `autark-data/` - Runtime state
 - `autark-bench/` - Benchmarks & performance history
+
+## 7. Evidence Over Assertion
+
+Every engineering claim must be reproducible.
+
+A PASS without executable evidence is treated as UNVERIFIED.
+
+All audits must archive sufficient artifacts (logs, database snapshots, metrics, execution traces, configuration, and commit identifiers) for another engineer to independently reproduce the result.

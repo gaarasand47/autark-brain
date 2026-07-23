@@ -1,0 +1,19 @@
+{
+  "test_kill_organism": {
+    "recoveryTimeMs": 6062,
+    "duplicateTransactions": 0,
+    "orphanTasks": 0,
+    "ledgerCorruption": 0,
+    "status": "PASS"
+  },
+  "test_lock_database": {
+    "status": "PASS",
+    "ledgerCorruption": 0
+  },
+  "test_disconnect_network": {
+    "status": "PASS"
+  },
+  "test_break_cortex": {
+    "status": "PASS"
+  }
+}

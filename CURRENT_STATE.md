@@ -29,15 +29,19 @@ Parent Directory: `d:\autark\`
 - [x] **Stage 6**: Security Audits (`autark-brain/AUDITS/SECURITY/Security_Audit_Gen1.md`)
 - [x] **Stage 7**: Performance Audits (`autark-brain/BENCHMARKS/Gen1/`)
 - [x] **Stage 8**: Reliability & Stress Testing (`autark-brain/AUDITS/RELIABILITY/Reliability_Audit_Gen1.md`)
-- [ ] **Stage 9**: Chaos Engineering *(NEXT MILESTONE)*
-- [ ] **Stage 10**: End-to-End System Validation
-- [ ] **Stage 11**: Architecture Drift Audit
-- [ ] **Stage 12**: Gen-1 Release Freeze
+- [x] **Stage 9**: Chaos Engineering (`autark-brain/AUDITS/CHAOS/Chaos_Audit_Gen1.md`)
+- [x] **Stage 10**: End-to-End System Validation (`autark-brain/AUDITS/SYSTEM/E2E_Validation_Report_Gen1.md`)
+- [ ] **Stage 11**: Production Readiness Audit *(NEXT MILESTONE)*
+- [ ] **Stage 12**: Deterministic Replay Audit
+- [ ] **Stage 13**: Architecture Drift Audit
+- [ ] **Stage 14**: Release Candidate (Live Validation)
+- [ ] **Stage 15**: Gen-1 Freeze
 
 ---
 
 ## Last Verified Results
 - **Benchmark Suite**: 13/13 micro, system, and reliability benchmarks PASSED in Docker Linux container (2 CPU / 512MB RAM).
+- **Chaos Engineering**: 7/7 Level B Live Organism Attacks passed (funds protected, memory intact, safe states triggered). Simulated Level A passed cleanly.
 - **100k Pulse Endurance**: -0.34MB heap delta, 0 leaked handles.
 - **Queue Stress**: 111,111 items processed with 0% starvation and ~15,000 ops/sec throughput.
 - **Mid-State Crash Recovery**: 100% state resumption across all 6 mid-flight states with 0 double-spending.
