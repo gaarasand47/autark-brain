@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-24
 **Target Audience:** Codex
-**Status:** `READY_FOR_GEN3_DESIGN`
+**Status:** `CONSOLIDATION CORRECTED; GEN-3 STAGE 0 REVIEWED`
 
 ## Executive Summary
 To facilitate the transition to the Gen-3 Builder System, the `autark-brain` repository has been mechanically consolidated. The highly fragmented Gen-1/Gen-2 documentation (which consisted of dozens of tiny markdown files scattered across over a dozen directories) has been logically concatenated into **five unified master documents**.
@@ -11,7 +11,11 @@ No knowledge, context, or technical details were removed or summarized. The cont
 
 ## The New Brain Structure
 
-The canonical knowledge base now resides directly at the root of `autark-brain` in the following five files:
+The five root files are navigational master views for context efficiency. The
+original canonical files, `AGENTS.md`, the workflow state machine, and the
+source ADR/interface/flow/generation documents remain present and authoritative
+for governance, automation and exact change review. A master view must never
+replace or silently delete its source material.
 
 ### `1_GOVERNANCE_AND_LAWS.md`
 **Domain:** The mechanical rules and operational standards governing the organism and repository.
@@ -44,6 +48,10 @@ The following structural folders were retained and unchanged due to their nature
 When designing Gen-3:
 1. **Context Window Efficiency:** You can now read the entire biological map in a single pass by requesting `2_ARCHITECTURE_AND_ORGANS.md`.
 2. **Appending New ADRs:** Append new decisions directly into `5_REFERENCE_AND_DECISIONS.md`.
-3. **Updating Architecture:** Append the new `BuilderSystem` organ definitions and interfaces directly into `2_ARCHITECTURE_AND_ORGANS.md`. Do not create new scattered directories.
+3. **Updating Architecture:** Update the canonical source document first, then
+   regenerate or append the corresponding master view. Master files are not a
+   substitute for the source ADRs, interfaces, flows or workflow state files.
 
-The vault is sealed and ready for Gen-3 Genesis.
+The vault is structurally restored and ready for independent Gen-3 Stage 0
+review. No Gen-3 production implementation or Stage 1 work is authorized by
+this report.
