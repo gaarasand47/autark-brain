@@ -29,3 +29,19 @@ Conditions:
 
 No deployment, operation, customers, revenue, autonomous mutation or Gen-2A
 change is authorized.
+
+## G3-S1-O2 Project lifecycle design review
+
+**Reviewed plan:** `e92ca54`
+**Verdict:** `APPROVED WITH CONDITIONS`
+
+The repaired plan defines the Project schema and finite bounds, exact guarded
+transitions and terminal states, actor/approval ownership, idempotency and
+conflict semantics, schema-versioned atomic persistence/recovery, quarantine and
+unavailable envelopes, deterministic replay inputs, candidate evidence
+freshness/membership, adversarial assertions and authority scanning.
+
+Implementation conditions: enforce the normative plan exactly, especially UTC
+timestamp validation, bounded arrays, evidence expiry/freshness, terminal
+no-outgoing edges and quarantine provenance. Independently test each condition.
+No scope expansion or Gen-3 baseline is authorized.
