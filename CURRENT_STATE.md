@@ -32,8 +32,8 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen4-development` | Gen-3 hardened baseline |
-| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen4-development` | Gen-4 Stage 0 docs |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen4-development` | Gen-3 hardened baseline; Gen-4 source absent |
+| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen4-development` | Gen-4 Stage 0 docs, review pending |
 | **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `6e2b961a40e19c6f2fedfc301e4ce8125940dcca` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
 | **`autark-data`** | `d:\autark\autark-data` | Runtime State & SQLite DBs | N/A | N/A |

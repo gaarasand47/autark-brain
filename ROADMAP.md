@@ -44,17 +44,16 @@ The biological drive.
   `DECISIONS/ADR-009-GEN3-BUILDER-BOUNDARY.md`.
 - **Future timeline review:** `REFERENCE/GENERATION_TIMELINE_REVIEW.md`.
 
-## [Gen-4] Planning & Temporal Reasoning
-The long-term strategist.
-- **Goal:** Break complex, multi-day goals into hierarchical steps. Maintain focus across hundreds of sleep cycles without losing the thread of the objective.
+## [Gen-4] Operator / Deployment Service
+- **Goal:** Operate approved Gen-3 artifacts under bounded policy, sandbox,
+  credential, budget, observability, and human-intervention controls.
 - **Current reconciliation:** Gen-4 is an OperatorSystem architecture,
   documentation-only on `gen4-development`, preserving immutable Gen-2A and
   Gen-3 evidence. No implementation or pilot is authorized.
 
-## [Gen-5] Fully Autonomous Evolution
-The self-coder.
-- **Goal:** Transition the `EvolutionManager` from requiring human signature for every codebase change to autonomously deploying safe, formally verified mutations.
-- **Architecture:** Formal Verification constraints added to the Sandbox.
+## [Gen-5] Evolution (Future, not Gen-4)
+- **Goal:** Research and propose self-improvement under permanent human
+  constitutional sovereignty; no Gen-5 behavior belongs in Gen-4.
 
 ## [Gen-6+] Society & Autark Swarms
 The collective.

@@ -9,6 +9,8 @@
 | Security and recovery | SECURITY/GEN4_*.md | Review pending |
 | Lifecycle and maintenance | FLOWS/GEN4_*.md | Review pending |
 | Pilot entry/exit | TESTING/GEN4_PILOT_ENTRY_EXIT.md | Review pending |
+| Typed runtime and provider contracts | REFERENCE/GEN4_TYPED_CONTRACTS.md, REFERENCE/GEN4_RUNTIME_CONTRACTS.md, SECURITY/GEN4_PROVIDER_LLM_BOUNDARY.md | Review pending |
+| Persistence, fencing, quarantine, recovery | REFERENCE/GEN4_TYPED_CONTRACTS.md, FLOWS/GEN4_OPERATOR_LIFECYCLE.md | Review pending |
 
 **Status:** `Gen-2 RC1 baseline candidate - PASS WITH LIMITATIONS` (awaiting human lock)
 

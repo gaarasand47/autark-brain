@@ -13,3 +13,9 @@ Failure states are `UNAVAILABLE`, `QUARANTINED`, `PAUSED`, `ROLLING_BACK`, and
 `RECOVERY_PENDING`. They cannot auto-transition to ACTIVE; fresh evidence and
 the owning approval are required. Recovery is atomic, idempotent, and writes
 no post-shutdown events.
+
+`RECONCILE_REQUIRED` is owned by the human/ApprovalGateway after a replay or
+state conflict. Retry rules: only bounded idempotent retries for transient
+provider/resource errors; never retry policy, approval, credential, identity,
+hash, or authority failures. Quarantine is owned by Persistence/Incident and
+requires forensic evidence before discard.

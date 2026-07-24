@@ -45,6 +45,11 @@ Gen-4 adds the bounded OperatorSystem without mutating this historical Gen-1
 genome. Constitution, Identity, Treasury, ApprovalGateway, Sandbox, Memory,
 and Heart ownership remain unchanged; no wallet, signing, broadcast,
 customer, or autonomous mutation authority is introduced.
+
+The current Gen-4 contract is additive only: schema-versioned OperatorIntent
+and LifecycleTransition records bind identity, Constitution, capability
+snapshot, policy, approval, lease, resource/egress ceilings, replay key,
+provenance, and state hashes. Historical Gen-1 constants remain immutable.
 - **Backward Compatibility:** Gen-1 is fully capable of reading Gen-0 ledger and episode structures.
 
 ---
