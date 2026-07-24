@@ -39,3 +39,6 @@ exclusions. Documentation-only architecture package is prepared for
 independent Codex design review. No Gen-4 implementation has started.
 
 READY_FOR_CODEX_DESIGN_REVIEW
+
+Gen-4 design package has typed contracts, provider/LLM boundaries, lifecycle
+recovery semantics, pilot thresholds, and complete dependency traceability.

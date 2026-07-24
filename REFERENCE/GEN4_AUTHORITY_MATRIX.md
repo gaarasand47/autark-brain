@@ -16,3 +16,8 @@ Human constitutional sovereignty is permanent and overrides every automated path
 OperatorSystem may request, validate, stage, observe, pause, and propose
 rollback. It may not decide approval, policy, treasury, identity, signing,
 egress, customer communication, source mutation, or constitutional changes.
+
+Provider/LLM outputs are evidence only; Observation, Memory, Learning, and
+Builder cannot promote them to approval. ArtifactVerifier owns checksum and
+provenance verification; ResourceMeter and EgressQuota own ceilings; Incident
+Manager may request stop but only a human/Policy decision may resume.
