@@ -61,3 +61,19 @@ Limitation: persistence locking remains in-process/one writer-process only;
 cross-process locking is not implemented, consistent with the architecture.
 No Gen-3 baseline, artifact, deployment, operation, customer, revenue or Gen-4
 behavior is authorized.
+
+## G3-S1-O3 ProjectSpecification design review
+
+**Reviewed plan:** `8f8b250`
+**Verdict:** `APPROVED WITH CONDITIONS`
+
+The plan correctly remains documentation-only and limits the objective to an
+immutable specification linked to one approved Project, bounded DAG/capability
+references, budget/provenance and acceptance tests.
+
+Before implementation, define exact field types and finite bounds; deterministic
+task/node IDs and edge representation with cycle detection; capability registry
+identity/version and membership semantics; decimal/rounding and deterministic
+budget allocation; project-version/provenance hash binding and replay/idempotency;
+immutable persistence/recovery; and the explicit authority-scan scope. No
+execution, artifact, deployment or approval authority is included.
