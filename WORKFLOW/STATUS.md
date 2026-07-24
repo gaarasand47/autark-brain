@@ -24,3 +24,11 @@ Final hardening evidence is archived in
 `AUDITS/RELEASES/GEN3_FINAL_FOUNDATION_HARDENING.md`. No RC2 tag is created
 until the remaining high-contention stress and inherited Gen-1 test issues
 are separately resolved or explicitly authorized.
+
+GEN3_FOUNDATION_HARDENED_AWAITING_GEN4_AUTHORIZATION
+
+Fresh independent Docker verification passed at engine commit `6e254a5`:
+25 suites/112 tests, natural exit, and complete asserted multiprocess stress.
+Final evidence is archived in
+`AUDITS/RELEASES/GEN3_FOUNDATION_HARDENING_FINAL.md`. Gen-4 remains blocked
+until separate human authorization.
