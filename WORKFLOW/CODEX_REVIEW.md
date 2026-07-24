@@ -117,4 +117,15 @@ TypeScript passed; five focused suites passed (27/27). Registry snapshot
 hashing, stale-lock takeover, competing-writer rejection, replay conflict,
 and raw-byte quarantine hashing were independently verified. Remaining limits
 are full multi-process stress coverage and runtime-complete authority
-reachability proof.
+ reachability proof.
+
+## G4-O1 implementation verification
+
+**Verified engine:** `efd03e2`  
+**Verdict:** `PASS`
+
+Pinned Docker image digest `sha256:5907dbe...` was recorded. The focused O1
+suite passed 9/9 tests covering typed intent/persistence validation,
+replay/recovery, fencing/quarantine, and authority boundaries. Limitations:
+dependency advisories and broader multi-process stress are deferred to later
+hardening. No authority is granted beyond the bounded O1 scope.

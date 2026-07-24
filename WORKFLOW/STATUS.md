@@ -49,3 +49,11 @@ Implementation candidate: autark commit `2ae39e1` on `gen4-development`. This
 is an unverified handoff for independent Docker, adversarial, restart, and
 authority verification only. No later objective, live credential, deployment,
 or Gen-4 baseline is authorized.
+
+GEN4_O1_VERIFIED_READY_FOR_GEN4_O2_PLAN
+
+O1 independently passed at engine commit `efd03e2`. Pinned Docker image digest
+`sha256:5907dbe...`; focused verification passed 9/9 tests. Dependency
+advisories and broader multi-process stress remain tracked limitations. The
+next permitted action is drafting the narrow G4-O2 plan; implementation and
+live operation remain blocked pending that plan and review.

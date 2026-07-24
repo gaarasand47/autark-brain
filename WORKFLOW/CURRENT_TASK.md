@@ -1,13 +1,11 @@
 # Current Task
 
-- **Objective ID:** `G4-O1`
-- **Stage:** Gen-4 Stage 1 — Operator foundation
-- **Title:** Operator intent and fenced persistence candidate; awaiting independent verification
-- **Candidate engine:** `2ae39e1`
-- **Independent verdict:** `UNVERIFIED`
-- **Scope:** Verify typed Operator intent envelopes, lifecycle/persistence
-  boundaries, deterministic replay and recovery, fencing/quarantine, and
-  authority exclusions in pinned Docker.
-- **Exclusions:** No later Gen-4 objectives, live credentials, deployment,
-  real-value action, customer communication, wallet/signing/broadcast,
-  production mutation, or autonomous release authority.
+- **Objective ID:** `G4-O2`
+- **Stage:** Gen-4 implementation planning
+- **Title:** Draft narrow G4-O2 plan after independently verified O1
+- **Accepted engine:** `efd03e2`
+- **Independent verdict:** `PASS`
+- **Scope:** Documentation-only planning for the next bounded Gen-4 objective.
+- **Exclusions:** No implementation, live credentials, deployment, real-value
+  action, customer communication, wallet/signing/broadcast, production
+  mutation, or Gen-4 baseline tag.
