@@ -77,3 +77,19 @@ identity/version and membership semantics; decimal/rounding and deterministic
 budget allocation; project-version/provenance hash binding and replay/idempotency;
 immutable persistence/recovery; and the explicit authority-scan scope. No
 execution, artifact, deployment or approval authority is included.
+
+## G3-S1-O3 repair review
+
+**Reviewed plan:** `ac3eaad`
+**Verdict:** `APPROVED WITH CONDITIONS`
+
+The repaired plan specifies exact fields and bounds, canonical deterministic
+IDs/serialization, Kahn DAG cycle detection, capability registry snapshots,
+integer-cent budget allocation, project/candidate/scope binding, replay/conflict
+semantics, immutable versioned persistence/recovery/quarantine and transitive
+authority scanning.
+
+Implementation conditions: enforce immutability after creation, canonical hash
+and sorted-ID rules, capability snapshots, and all listed adversarial tests for
+cycles, duplicates, bounds, budgets, version/replay, immutability, recovery and
+authority. No scope expansion.
