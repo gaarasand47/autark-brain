@@ -12,3 +12,7 @@
 | Audit/provenance | Memory/Audit | append evidence |
 
 Human constitutional sovereignty is permanent and overrides every automated path.
+
+OperatorSystem may request, validate, stage, observe, pause, and propose
+rollback. It may not decide approval, policy, treasury, identity, signing,
+egress, customer communication, source mutation, or constitutional changes.

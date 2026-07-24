@@ -8,3 +8,8 @@
 6. On threshold breach, pause or rollback using an explicit incident decision; never auto-escalate authority.
 7. Maintenance changes create a new artifact/version and repeat validation; in-place mutation is forbidden.
 8. Retire with evidence, credential revocation, backup, and audit export.
+
+Failure states are `UNAVAILABLE`, `QUARANTINED`, `PAUSED`, `ROLLING_BACK`, and
+`RECOVERY_PENDING`. They cannot auto-transition to ACTIVE; fresh evidence and
+the owning approval are required. Recovery is atomic, idempotent, and writes
+no post-shutdown events.

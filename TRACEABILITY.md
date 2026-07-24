@@ -1,5 +1,15 @@
 # Traceability Matrix
 
+## Gen-4 Stage 0 Traceability
+
+| Requirement | Canonical document | Status |
+|---|---|---|
+| Operator organ, schemas, guards | GENERATIONS/GEN-4.md, ORGANS/OPERATOR_SYSTEM.md | Review pending |
+| Authority and dependencies | REFERENCE/GEN4_AUTHORITY_MATRIX.md, REFERENCE/GEN4_DEPENDENCY_CONTRACTS.md | Review pending |
+| Security and recovery | SECURITY/GEN4_*.md | Review pending |
+| Lifecycle and maintenance | FLOWS/GEN4_*.md | Review pending |
+| Pilot entry/exit | TESTING/GEN4_PILOT_ENTRY_EXIT.md | Review pending |
+
 **Status:** `Gen-2 RC1 baseline candidate - PASS WITH LIMITATIONS` (awaiting human lock)
 
 Every major architectural feature must be traceable through this matrix. If a feature is listed here but cannot be found in the code or design specifications, it is biologically invalid.

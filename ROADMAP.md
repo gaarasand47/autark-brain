@@ -47,6 +47,9 @@ The biological drive.
 ## [Gen-4] Planning & Temporal Reasoning
 The long-term strategist.
 - **Goal:** Break complex, multi-day goals into hierarchical steps. Maintain focus across hundreds of sleep cycles without losing the thread of the objective.
+- **Current reconciliation:** Gen-4 is an OperatorSystem architecture,
+  documentation-only on `gen4-development`, preserving immutable Gen-2A and
+  Gen-3 evidence. No implementation or pilot is authorized.
 
 ## [Gen-5] Fully Autonomous Evolution
 The self-coder.

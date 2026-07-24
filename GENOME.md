@@ -38,6 +38,13 @@ These are genetic constants. They may not be mutated by learning.
 ## 5. Lineage & Compatibility
 - **Parent Lineage:** None (Root Genesis Organism).
 - **Child Lineage:** None currently spawned.
+
+## 6. Additive Gen-4 Contract
+
+Gen-4 adds the bounded OperatorSystem without mutating this historical Gen-1
+genome. Constitution, Identity, Treasury, ApprovalGateway, Sandbox, Memory,
+and Heart ownership remain unchanged; no wallet, signing, broadcast,
+customer, or autonomous mutation authority is introduced.
 - **Backward Compatibility:** Gen-1 is fully capable of reading Gen-0 ledger and episode structures.
 
 ---
