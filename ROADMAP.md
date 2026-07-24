@@ -5,8 +5,9 @@
 The strategic compass and the verified Gen-1 gap analysis are recorded in
 `REFERENCE/ORIGINAL_LIFE_ARCHITECTURE.md` and
 `GENERATIONS/GEN1_RECONCILIATION.md`. The next work sequence is documented in
-`GENERATIONS/NEXT_WORK_PLAN.md`; no Gen-3 implementation is authorized until
-that reconciliation receives independent design review.
+`GENERATIONS/NEXT_WORK_PLAN.md`. Gen-3 is now sealed as independently verified
+historical evidence; Gen-4 remains documentation-only pending independent
+Stage 0 design approval.
 
 This roadmap defines the generational evolution of the Autark organism. Each
 generation preserves prior invariants; Gen-4 is design-only and does not
