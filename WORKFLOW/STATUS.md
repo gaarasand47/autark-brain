@@ -11,3 +11,9 @@ LIMITATIONS. Docker and TypeScript passed; 27/27 focused tests passed.
 Registry snapshot hashing, stale-lock takeover, competing-writer rejection,
 replay conflict, and raw-byte quarantine hashing passed. Remaining limits are
 full multi-process stress coverage and runtime-complete authority reachability.
+
+GEN3_BASELINED_AWAITING_GEN4_AUTHORIZATION
+
+Human baseline authorization accepted. Evidence is archived in
+`AUDITS/RELEASES/GEN3_BASELINE_ARCHIVE.md`. Gen-4 remains blocked pending
+separate human authorization.
