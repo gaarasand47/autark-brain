@@ -57,3 +57,10 @@ O1 independently passed at engine commit `efd03e2`. Pinned Docker image digest
 advisories and broader multi-process stress remain tracked limitations. The
 next permitted action is drafting the narrow G4-O2 plan; implementation and
 live operation remain blocked pending that plan and review.
+
+GEN4_O2_REPAIR_REQUIRED
+
+Independent review of engine commit `a4916e9` returned `FAIL`. Repair is
+required within the existing O2 scope. Do not advance to O3, create a Gen-4
+baseline, add credentials, deploy, or broaden authority until a fresh
+independent verification passes.
