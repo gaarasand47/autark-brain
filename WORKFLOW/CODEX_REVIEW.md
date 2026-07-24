@@ -45,3 +45,19 @@ Implementation conditions: enforce the normative plan exactly, especially UTC
 timestamp validation, bounded arrays, evidence expiry/freshness, terminal
 no-outgoing edges and quarantine provenance. Independently test each condition.
 No scope expansion or Gen-3 baseline is authorized.
+
+## G3-S1-O2 implementation verification
+
+**Verified engine:** `3a9bffa`
+**Verdict:** `PASS WITH LIMITATIONS`
+
+Pinned Docker build and TypeScript compilation passed. Focused suites passed
+3/3 with 17/17 tests. Restart recovery, corruption sidecar/quarantine,
+malformed transition logs, repeated same-clock quarantine, persisted replay
+conflicts, concurrent single-writer serialization, lifecycle coverage and
+authority scans passed.
+
+Limitation: persistence locking remains in-process/one writer-process only;
+cross-process locking is not implemented, consistent with the architecture.
+No Gen-3 baseline, artifact, deployment, operation, customer, revenue or Gen-4
+behavior is authorized.
