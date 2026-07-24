@@ -42,3 +42,10 @@ READY_FOR_CODEX_STRATEGIC_VISION_REVIEW
 
 Gen-4 design package has typed contracts, provider/LLM boundaries, lifecycle
 recovery semantics, pilot thresholds, and complete dependency traceability.
+
+GEN4_O1_IMPLEMENTATION_READY_FOR_INDEPENDENT_VERIFICATION
+
+Implementation candidate: autark commit `2ae39e1` on `gen4-development`. This
+is an unverified handoff for independent Docker, adversarial, restart, and
+authority verification only. No later objective, live credential, deployment,
+or Gen-4 baseline is authorized.
