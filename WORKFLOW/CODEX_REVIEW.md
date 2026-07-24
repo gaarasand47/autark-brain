@@ -1,31 +1,11 @@
-# Independent Gen-2 Repair Verification
+# Codex Gen-2A Docker Verification
 
-## Verdict
+**Verdict:** `UNVERIFIED`
+**Engine:** `86c8e79213d207edf4d38969a97865147f06f39f`
+**Brain handoff:** `5acbed72f07f8a169e035443a1ed6ea5a9b8a99f`
 
-**PASS WITH LIMITATIONS**
+The required final Docker adversarial verification could not run because the
+Docker Desktop Linux daemon was unavailable. Raw command output and checksums
+are archived in `AUDITS/GEN2A/DOCKER_VERIFICATION_2026-07-24.md`.
 
-## Independently Verified Evidence
-
-- Engine commit:
-  `077d756303d48e9e19f8dbeac034c54f4c6a0c9f`
-- Brain handoff commit, resolved locally:
-  `24eb160156bcefa89268bbc944c656c00c995954`
-- Docker build: passed.
-- Focused suites: 5/5 suites, 30/30 tests passed.
-- Full suite: 17/17 suites, 75/75 tests passed.
-- Critical Hunger remains `FINANCIAL_CONSERVATION`/`LOW` for all five
-  `ObjectiveClass` values, including the `0.80` boundary.
-- Persistence protections remain intact.
-- Canonical documentation is consistent with independent-review status.
-- No authority boundary was added.
-
-## Limitation
-
-Jest still requires `--forceExit` and reports the existing open-handle
-warning. This is documented and was outside the bounded repair scope.
-
-## Boundary
-
-This verdict accepts the bounded architecture repair. It is not a release,
-production-readiness, Gen-2 RC1, or Gen-3 authorization. Stage 7 RC evidence
-remains separate.
+No Gen-2A baseline tag was created. Gen-3 remains blocked.
