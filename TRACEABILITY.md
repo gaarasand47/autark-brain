@@ -1,4 +1,7 @@
-# Traceability Matrix
+# Gen-4 Stage 0 Traceability Matrix
+
+Historical Gen-1/Gen-2 rows below are preserved for lineage; current Gen-4
+design rows are authoritative for this review.
 
 ## Gen-4 Stage 0 Traceability
 

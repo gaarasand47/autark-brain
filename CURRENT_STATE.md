@@ -12,7 +12,7 @@
 
 **Generation:** Gen-4
 **Current Stage:** Gen-4 Stage 0 architecture reconciliation
-**Status:** READY_FOR_CODEX_DESIGN_REVIEW
+**Status:** READY_FOR_CODEX_DESIGN_REVIEW (documentation-only; no Gen-4 source)
 **Source Implementation:** INDEPENDENTLY VERIFIED — PASS WITH LIMITATIONS  
 
 ---

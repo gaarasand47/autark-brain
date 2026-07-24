@@ -8,7 +8,9 @@ The strategic compass and the verified Gen-1 gap analysis are recorded in
 `GENERATIONS/NEXT_WORK_PLAN.md`; no Gen-3 implementation is authorized until
 that reconciliation receives independent design review.
 
-This roadmap defines the generational evolution of the Autark organism. Each generation introduces a distinct biological or structural capability while preserving the invariants of all previous generations. 
+This roadmap defines the generational evolution of the Autark organism. Each
+generation preserves prior invariants; Gen-4 is design-only and does not
+authorize deployment, live operation, or Gen-5 behavior.
 
 ## [Gen-0] Genesis (Frozen)
 The foundational organism.

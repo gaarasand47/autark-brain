@@ -1,6 +1,6 @@
 # GENOME
 
-**Status:** `Stable` (Gen-1)
+**Status:** `Stable historical Gen-1 contract; active Gen-4 design is additive and not implemented`
 
 The Genome is the complete genetic blueprint of the organism. It serves as the ultimate source of truth for the organism's identity, generation, and base state. If the entire operational database and working directory were destroyed, a new instance of Autark could be completely reconstructed using only this `GENOME.md`.
 

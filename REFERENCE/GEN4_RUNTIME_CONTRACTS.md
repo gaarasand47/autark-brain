@@ -1,10 +1,14 @@
 # Gen-4 Runtime Contracts
 
-Provider records include provider identity, implementation version, mode
-(`SIMULATED` or `LIVE`), request/response provenance, model/version, evidence
-hash, and clock timestamp. Simulated output is never admissible as protected
-evidence; LIVE mode fails closed if the configured provider is absent or
-identity/version mismatches.
+```ts
+type ProviderMode = 'SIMULATED'|'LIVE';
+interface ProviderIdentity { providerId:string; implementationVersion:string; modelId:string|null; modelVersion:string|null; mode:ProviderMode; }
+interface ProviderEvidence { identity:ProviderIdentity; requestHash:string; responseHash:string; provenance:string; observedAt:string; }
+```
+Provider selection must explicitly require `LIVE`, then verify provider/model
+identity and approved version. Any unavailable, mismatched, expired, or
+simulated provider fails closed; no fallback value, hash, cost, reserve, or
+success claim may resemble real evidence.
 
 Clock is injected and monotonic for lifecycle guards; Replay requires a stable
 replay key and deterministic result. ResourceMeter enforces CPU, memory, disk,
