@@ -73,6 +73,14 @@ path assertion remains a documented hardening caveat. The next permitted
 action is drafting the narrow G4-O3 plan; no implementation or baseline tag is
 authorized yet.
 
+GEN4_O4_VERIFIED_READY_FOR_GEN4_O5_PLAN
+
+O4 independently passed at engine commit `a3e389d`. Docker digest
+`sha256:e6edaa4...`; five focused tests passed. The inherited O1
+quarantine-path assertion remains a documented hardening caveat. The next
+permitted action is drafting the narrow G4-O5 plan; no implementation or
+baseline tag is authorized yet.
+
 GEN4_O3_VERIFIED_READY_FOR_GEN4_O4_PLAN
 
 O3 independently passed at engine commit `66c0ff1`. Docker digest

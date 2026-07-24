@@ -161,3 +161,13 @@ Pinned Docker image digest `sha256:84b665...` and six focused tests passed.
 The O3 bounded implementation is independently verified within scope. The
 inherited O1 quarantine-path assertion remains tracked and does not grant
 deployment, live credentials, or protected-action authority.
+
+## G4-O4 implementation verification
+
+**Verified engine:** `a3e389d`  
+**Verdict:** `PASS`
+
+Pinned Docker image digest `sha256:e6edaa4...` and five focused tests passed.
+O4 is independently verified within its bounded scope. The inherited O1
+quarantine-path assertion remains tracked; no deployment or protected-action
+authority is granted.
