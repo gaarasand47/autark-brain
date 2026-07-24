@@ -1,6 +1,6 @@
 # Gen-2A Perception and Learning Handoff
 
-**Status:** Awaiting independent Docker adversarial verification
+**Status:** PASS WITH LIMITATIONS; ready for human Gen-2A baseline lock
 **Scope:** Gen-2A Stages 0–5 only; Builder/business (Stage 6) excluded.
 
 ## Exact engine repair chain
@@ -27,12 +27,10 @@
 - TypeScript build: passed.
 - Focused Gen-2A tests: 3/3 passed.
 - Independent verdict: `PASS WITH LIMITATIONS`.
-- Docker adversarial verification: `UNVERIFIED` because Docker Desktop's Linux
-  engine is unavailable in the review environment.
+- Docker adversarial verification: `PASS WITH LIMITATIONS`; raw evidence is in
+  `AUDITS/GEN2A/DOCKER_VERIFICATION_2026-07-24-PASS.md`.
 
 ## Required next action
 
-Start Docker, run focused and adversarial Gen-2A tests, inspect persistence
-restart/corruption/concurrency behavior, and verify that no observation or
-learning path has execution, spending, signing, broadcast, mutation, policy or
-identity authority. Only then may a Gen-2A baseline tag be created.
+The Gen-2A baseline may be tagged for human authorization. Cross-process
+locking remains explicitly out of scope; no Gen-3 behavior is authorized.
