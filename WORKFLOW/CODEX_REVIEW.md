@@ -93,3 +93,19 @@ Implementation conditions: enforce immutability after creation, canonical hash
 and sorted-ID rules, capability snapshots, and all listed adversarial tests for
 cycles, duplicates, bounds, budgets, version/replay, immutability, recovery and
 authority. No scope expansion.
+
+## G3-S1-O3 implementation verification
+
+**Reviewed engine commit:** `ec52565`
+**Verdict:** `PASS WITH LIMITATIONS`
+
+Pinned Docker build and TypeScript compilation passed. Five focused suites
+passed (23/23). Durable same-key replay conflicts, restart recovery,
+corruption quarantine with raw-byte hash, persistence locking, DAG/canonical
+hashing, bounds, immutability, and authority checks passed.
+
+Accepted limitations: no explicit stale-lock takeover or cross-process
+concurrency test; capability registry provenance is not persisted as a
+snapshot hash; authority scanning remains regex-based. These limitations are
+recorded and do not grant execution, deployment, Treasury, wallet, signing,
+broadcast, mutation, policy, identity, customer, or approval authority.
