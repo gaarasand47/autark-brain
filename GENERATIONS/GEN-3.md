@@ -113,3 +113,34 @@ The following conditions are mandatory for every implementation objective:
   broadcast, mutation, policy, identity or approval authority;
 - human constitutional sovereignty is permanent. Gen-6/7 banking, credit and
   currency remain simulation-first and human-governed, outside Gen-3.
+
+### O2 normative schema and guards
+
+`Project` fields: `id`, `candidateId`, `scope`, `exclusions`,
+`budgetCeiling`, `cognitiveBudget`, `risk`, `acceptanceCriteria`,
+`requiredCapabilities`, `status`, `version`, `createdAt`, `updatedAt`,
+`provenanceHash`, and `authority:'NONE'`. IDs/strings are non-empty;
+budgets are finite `[0,1e9]`, risk is finite `[0,1]`, version is a positive
+integer, timestamps are UTC, and arrays are bounded. Candidate membership
+requires a qualified candidate, matching provenance hash, unexpired evidence,
+and freshness at creation.
+
+Allowed transitions are exactly
+`PROPOSED→EVALUATING→QUALIFIED→AWAITING_PROJECT_APPROVAL→APPROVED→PLANNING→BUILDING→TESTING→READY_FOR_REVIEW→ACCEPTED_FOR_RELEASE`.
+Any non-terminal state may fail to `REJECTED|BLOCKED|FAILED|CANCELLED|ROLLED_BACK|RETIRED`; terminal states have no outgoing edges. Builder evaluates guards;
+Approval authorizes project approval; human release authority authorizes
+acceptance. Heart is pass-through and Cortex cannot transition. Idempotency
+keys make exact replays no-ops; changed payloads conflict; stale versions
+reject.
+
+Persistence has an explicit schema version, atomic record/version-marker
+commit, highest contiguous valid-version recovery, and quarantine names
+`project-quarantine.<clock>.<id>` carrying source hash/reason. Recovery returns
+`{status:'UNAVAILABLE', reason, snapshotVersion:null}` on corruption. Replay
+input is the ordered transition log plus deterministic clock/ID seeds.
+
+Tests must assert every edge, skipped/terminal/unauthorized/stale/conflict
+transitions, malformed bounds, candidate evidence expiry/membership mismatch,
+restart recovery, quarantine naming, idempotency, unavailable envelope shape,
+and a static scan proving no execution/Treasury/wallet/signing/broadcast/
+mutation/policy/identity/approval calls.
