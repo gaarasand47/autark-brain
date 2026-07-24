@@ -37,9 +37,12 @@ The biological drive.
   Full chaos/security validation is deferred.
 
 ## [Gen-3] Predictive World Modeling
-The internal simulator.
-- **Goal:** Instead of just dreaming in a stubbed sandbox, build an active, probabilistic model of external environments (APIs, markets, humans) to predict outcomes before acting.
-- **Architecture:** The `WorldModel` organ.
+**Gen-3 Builder — Opportunity-to-Artifact Organism (Stage 0 authorized).**
+- **Goal:** Convert evidenced opportunities into bounded projects and tested,
+  reviewable digital artifacts; no deployment or autonomous business.
+- **Architecture:** One `BuilderSystem` organ; see `GENERATIONS/GEN-3.md` and
+  `DECISIONS/ADR-009-GEN3-BUILDER-BOUNDARY.md`.
+- **Future timeline review:** `REFERENCE/GENERATION_TIMELINE_REVIEW.md`.
 
 ## [Gen-4] Planning & Temporal Reasoning
 The long-term strategist.

@@ -10,9 +10,9 @@
 > production-ready, or final-freeze verified. See
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
-**Generation:** Gen-2  
-**Current Stage:** Gen-2 RC1 baseline
-**Status:** GEN2_RC1_READY_FOR_HUMAN
+**Generation:** Gen-3
+**Current Stage:** Gen-3 Stage 0 architecture reconciliation
+**Status:** GEN3_STAGE0_DESIGN_IN_PROGRESS
 **Source Implementation:** INDEPENDENTLY VERIFIED — PASS WITH LIMITATIONS  
 
 ---
@@ -50,6 +50,10 @@ Parent Directory: `d:\autark\`
   (`077d756303d48e9e19f8dbeac034c54f4c6a0c9f`)
 - [ ] **Known limitation**: Jest requires `--forceExit` because of an existing
   open handle.
+- [x] **Gen-2A Perception and Learning Completion**: PASS WITH LIMITATIONS;
+  `Gen-2A-Baseline` tagged.
+- [ ] **Gen-3 Stage 0 architecture reconciliation**: IN PROGRESS;
+  documentation only.
 
 ## Gen-1 Inherited Audit Status
 
