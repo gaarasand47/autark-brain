@@ -1,6 +1,6 @@
 # Gen-3 Builder — Stage 0 Architecture Reconciliation
 
-**Status:** Stage 0 design in progress; documentation only
+**Status:** Stage 1 narrow vertical slice in progress under independent review
 **Inherited baseline:** Gen-2A-Baseline, PASS WITH LIMITATIONS
 
 ## Evolutionary goal
@@ -70,3 +70,29 @@ No transition may skip guards, expand scope or exceed budget.
 - no Gen-3 production source exists before approval.
 
 Gen-2A remains immutable and no Gen-4/5/6 behavior is introduced here.
+
+## Stage 0 repair invariants (normative)
+
+The following conditions are mandatory for every implementation objective:
+
+- evidence references must resolve to immutable observations, match identity
+  and fingerprint, remain within freshness/expiry bounds, and preserve source
+  provenance; missing or malformed evidence rejects the candidate;
+- `BuilderSystem` is the only Builder organ. Heart may invoke its public
+  methods, while Cortex supplies advisory input and cannot transition state;
+- project approval, artifact acceptance and any later deployment decision are
+  distinct records and authorities. `ACCEPTED_FOR_RELEASE` is a non-deploying
+  handoff state;
+- artifacts are built only in a canonical isolated workspace. Traversal,
+  symlink/hard-link escape, child-process/network access, resource exhaustion,
+  or quarantine failure fails closed; production paths are immutable;
+- persistence uses atomic, versioned records with restart recovery and
+  corruption quarantine, inheriting the single-writer limitation;
+- ValidationPipeline emits evidence only and cannot approve its own output;
+- OutcomeTracker records only outcomes supported by observable evidence and
+  may not invent customer, revenue or deployment results;
+- Treasury, Policy, Sandbox, Approval, Memory and Learning retain their
+  existing ownership. Builder has no execution, spending, signing,
+  broadcast, mutation, policy, identity or approval authority;
+- human constitutional sovereignty is permanent. Gen-6/7 banking, credit and
+  currency remain simulation-first and human-governed, outside Gen-3.
