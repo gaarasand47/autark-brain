@@ -11,6 +11,10 @@ Gen-4 turns a tested Gen-3 artifact into a bounded, observable operator service.
 - ProtectedActionGateway remains the sole route to protected actions; live credentials are leased, scoped, revocable, and never persisted in plaintext.
 - Immutable provenance for every intent, artifact, credential lease, deployment, health observation, rollback, and human decision.
 
+## Canonical envelopes and guards
+
+`OperatorIntent {intentId, artifactHash, environment, capabilitySet, budgetCents, policyVersion, approvalRef, evidenceHash, expiresAt, rollbackTarget}` and `LifecycleTransition {from, to, actor, authority, reason, evidenceHash, version, occurredAt}` are immutable and schema-versioned. Guards reject stale versions, expired approvals, missing evidence, budget overflow, unapproved capabilities, dependency drift, invalid environment, and non-monotonic transitions. Recovery is atomic, idempotent, single-writer, and quarantines corrupt state.
+
 ## Lifecycle
 
 `PROPOSED → APPROVED → STAGED → CANARY → ACTIVE → PAUSED → ROLLING_BACK → RETIRED`.
@@ -27,3 +31,5 @@ No customer communication, sales, contracts, pricing, revenue, autonomous purcha
 ## Exit criteria
 
 Documentation is complete, interfaces are versioned, authority matrix is explicit, security/DR/observability controls are testable, pilot entry/exit is defined, and independent review is APPROVED or APPROVED WITH CONDITIONS. No production implementation is authorized by this document.
+
+Dependency, privacy, backup-restore, human-intervention, and four-day pilot evidence are mandatory before any later stage.
