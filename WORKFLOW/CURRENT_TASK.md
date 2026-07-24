@@ -1,12 +1,12 @@
 # Current Task
 
-- **Objective ID:** `G4-O2`
-- **Stage:** Gen-4 implementation repair
-- **Title:** Repair O2 candidate after independent failure
-- **Failed engine:** `a4916e9`
-- **Independent verdict:** `FAIL`
-- **Scope:** Correct only the findings recorded in `WORKFLOW/CODEX_REVIEW.md`
-  and rerun bounded adversarial verification.
-- **Exclusions:** No O3 or later work, credentials, deployment, real-value
+- **Objective ID:** `G4-O3`
+- **Stage:** Gen-4 implementation planning
+- **Title:** Draft narrow G4-O3 plan after independently verified O2
+- **Accepted engine:** `ae40e73`
+- **Independent verdict:** `PASS`
+- **Scope:** Documentation-only planning for the next bounded Gen-4 objective.
+- **Known caveat:** inherited O1 quarantine-path assertion remains tracked.
+- **Exclusions:** No implementation, credentials, deployment, real-value
   action, customer communication, wallet/signing/broadcast, production
-  mutation, or baseline tag.
+  mutation, or Gen-4 baseline tag.

@@ -64,3 +64,11 @@ Independent review of engine commit `a4916e9` returned `FAIL`. Repair is
 required within the existing O2 scope. Do not advance to O3, create a Gen-4
 baseline, add credentials, deploy, or broaden authority until a fresh
 independent verification passes.
+
+GEN4_O2_VERIFIED_READY_FOR_GEN4_O3_PLAN
+
+O2 independently passed at engine commit `ae40e73`. Docker digest
+`sha256:bbacb066...`; four focused tests passed. The inherited O1 quarantine
+path assertion remains a documented hardening caveat. The next permitted
+action is drafting the narrow G4-O3 plan; no implementation or baseline tag is
+authorized yet.

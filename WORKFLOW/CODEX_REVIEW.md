@@ -140,3 +140,14 @@ contract. Typed validation, deterministic persistence/recovery,
 writer-fencing, and adversarial coverage remain incomplete. Repair is required
 within O2; no later objective, baseline, deployment, credential, or protected
 action authority is authorized.
+
+## G4-O2 repair verification
+
+**Verified engine:** `ae40e73`  
+**Verdict:** `PASS`
+
+Pinned Docker image digest `sha256:bbacb066...` and four focused tests passed.
+The repaired O2 persistence and authority boundaries are independently
+verified. Caveat: the quarantine-path assertion inherited from O1 remains
+tracked for later hardening; it does not expand O2 authority or permit a
+baseline without the documented limitation.
