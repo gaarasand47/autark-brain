@@ -10,9 +10,9 @@
 > production-ready, or final-freeze verified. See
 > `AUDITS/RECONCILIATION/Gen1/full-jest-20260723T124536Z-success.metadata.md`.
 
-**Generation:** Gen-3
-**Current Stage:** Gen-3 Stage 0 architecture reconciliation
-**Status:** GEN3_STAGE0_DESIGN_IN_PROGRESS
+**Generation:** Gen-4
+**Current Stage:** Gen-4 Stage 0 architecture reconciliation
+**Status:** READY_FOR_CODEX_DESIGN_REVIEW
 **Source Implementation:** INDEPENDENTLY VERIFIED — PASS WITH LIMITATIONS  
 
 ---
@@ -32,8 +32,8 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen2-development` | `dd32313733023adac7f8510435ea2251da30422e` |
-| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen2-development` | `HEAD` |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen4-development` | Gen-3 hardened baseline |
+| **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen4-development` | Gen-4 Stage 0 docs |
 | **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `6e2b961a40e19c6f2fedfc301e4ce8125940dcca` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
 | **`autark-data`** | `d:\autark\autark-data` | Runtime State & SQLite DBs | N/A | N/A |
@@ -52,8 +52,9 @@ Parent Directory: `d:\autark\`
   open handle.
 - [x] **Gen-2A Perception and Learning Completion**: PASS WITH LIMITATIONS;
   `Gen-2A-Baseline` tagged.
-- [ ] **Gen-3 Stage 0 architecture reconciliation**: IN PROGRESS;
-  documentation only.
+- [x] **Gen-3 foundation hardening**: PASS; immutable baseline preserved.
+- [x] **Gen-4 Stage 0 architecture reconciliation**: documentation complete;
+  awaiting independent design review.
 
 ## Gen-1 Inherited Audit Status
 
