@@ -1,6 +1,6 @@
 # Post-Gen-2 Architecture Work Plan
 
-**Status:** Planning only; no implementation authorization
+**Status:** Gen-2A implementation candidate under independent verification
 **Prerequisite:** Gen-2 Instinct baseline remains immutable and locked.
 
 ## Objective A — Vision and generation reconciliation
@@ -121,3 +121,18 @@ Only after Stages 0–5 are complete and reviewed: define bounded opportunity
 discovery, product creation, deployment, operations, customer support, revenue
 accounting and reinvestment. This is the first stage allowed to propose the
 future Builder generation; it is not authorized by the current plan.
+
+## Current Gen-2A implementation evidence
+
+- Engine repair chain: `93c3429`, `594562c`, `81cab86`, `1424fe7`,
+  `27b1926`, `bf8d20d`, `86c8e79`.
+- Independent focused result: `PASS WITH LIMITATIONS`; build passes and the
+  focused ObservationEngine suite passes 3/3.
+- Implemented: immutable validated envelopes, deterministic clock/IDs,
+  unavailable-source degradation, source budgets, durable atomic observation
+  storage, corruption quarantine, idempotency, evidence-bound lessons,
+  reversible retirement audit, and offline evidence-validated hypotheses.
+- Limitation: persistence serialization is in-process; cross-process locking is
+  not implemented.
+- Baseline status: `UNVERIFIED` until Docker adversarial verification runs.
+  No Gen-2A baseline tag or Gen-3 authorization is issued.
