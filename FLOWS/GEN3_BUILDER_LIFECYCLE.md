@@ -17,3 +17,10 @@ Every transition is versioned, persisted atomically, replayable and guarded.
 Failure produces a durable failure record and quarantines partial artifacts.
 The flow cannot access production deployment, customer communication, wallet,
 signing, broadcast or real-money actions.
+## Transition records and terminal behavior
+
+Each transition is an atomic versioned record containing actor, decision,
+evidence references, prior/new versions, timestamp and correlation ID. A
+missing guard fails closed. `ACCEPTED_FOR_RELEASE` is terminal with no side
+effect; deployment and operation are later-generation decisions. Outcomes
+without externally observable evidence are recorded only as `UNMEASURED`.

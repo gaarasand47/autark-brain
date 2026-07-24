@@ -31,3 +31,12 @@ artifacts remain quarantined and cannot become review-ready.
 BuilderSystem has no Treasury, wallet, signing, broadcast, deployment,
 production mutation, policy, identity, approval or customer-communication
 authority. It may request those bounded external decisions through interfaces.
+## Mandatory controls
+
+The isolated workspace rejects path traversal, symlink and hard-link escapes;
+disallows child processes and network access; enforces CPU, memory, disk and
+time limits; and quarantines partial or failed artifacts. Persistence is
+versioned and atomic, recovers on restart, quarantines corruption, and is
+explicitly single-writer/process. Validation emits evidence only; acceptance
+is a separate human/Approval decision. Every transition carries actor,
+decision, evidence and version records.

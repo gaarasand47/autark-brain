@@ -1,6 +1,6 @@
 # Gen-3 Stage 0 Design Handoff
 
-**Status:** READY_FOR_CODEX_VERIFICATION
+**Status:** READY_FOR_CODEX_DESIGN_REVIEW
 **Scope:** G3-S1-O1 OpportunityCandidate schema and evidence-bound
 qualification only.
 
@@ -41,7 +41,7 @@ identity change is included. Gen-2A files and tags are untouched.
 No Stage 1 objective may begin until these documents receive independent design
 approval.
 
-## G3-S1-O1 implementation handoff
+## G3-S1-O1 implementation handoff (pending design approval)
 
 Engine implementation: `src/builder/OpportunityCandidate.ts` and focused tests
 in `src/__tests__/unit/OpportunityCandidate.test.ts`.
@@ -52,6 +52,6 @@ fingerprint and source id), and fail-closed qualification. It has no project,
 artifact, deployment, customer, Treasury, wallet, signing, broadcast,
 mutation, policy, identity or approval path.
 
-Acceptance evidence: `npm run build`; focused Jest suite (3 tests).
-Implementer must stop here for independent Codex verification; no self-approval
-or baseline claim is made.
+Acceptance evidence: `npm run build`; focused Jest suite. This objective is
+not authorized until the repaired Stage 0 architecture receives independent
+design approval. No self-approval or baseline claim is made.

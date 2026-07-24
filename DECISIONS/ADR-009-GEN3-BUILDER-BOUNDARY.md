@@ -38,3 +38,16 @@ manifest and checksum. A generated artifact is never a production mutation.
 
 Gen-3 can demonstrate a complete opportunity-to-review-package loop while
 deferring operation, customers, deployment and autonomous business to Gen-4/5.
+## Binding actor and authority contract
+
+Every lifecycle transition records `actor`, `decision`, `evidenceRefs`,
+`previousVersion`, `newVersion`, timestamp and correlation ID. Heart is a
+blind pass-through and never decides or mutates Builder state. Builder owns
+guards but has no approval authority. Cortex is advisory only. Project
+approval, artifact acceptance and deployment approval are separate decisions.
+Treasury, Policy, Sandbox, Approval, Memory and Learning retain ownership;
+Builder cannot execute, spend, sign, broadcast, mutate production, change
+policy or identity. Human constitutional sovereignty is permanent.
+
+`ACCEPTED_FOR_RELEASE` is terminal for Gen-3 and has no deployment side effect.
+An outcome not supported by externally observed evidence is `UNMEASURED`.

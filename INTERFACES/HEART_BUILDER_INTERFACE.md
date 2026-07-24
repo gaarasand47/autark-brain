@@ -16,3 +16,9 @@ The boundary must expose only bounded operations equivalent to:
 
 Every returned value is advisory/read-only. Treasury, Policy, Sandbox and
 Approval remain separate authority boundaries.
+## Boundary contract
+
+Heart forwards immutable requests and returns immutable results without
+interpreting or approving them. It never mutates lifecycle state, selects
+transitions, or supplies approval. Builder owns guard evaluation; Approval
+owns approval decisions. Every call carries correlation ID and evidence refs.

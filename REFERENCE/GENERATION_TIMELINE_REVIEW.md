@@ -39,3 +39,6 @@ The first Gen-3 artifact should be a non-deployed internal engineering utility
 or report generator. It must begin from an evidenced opportunity, build only in
 an isolated workspace, pass reproducible tests, produce a checksum-bearing
 review package, and stop before deployment or customer contact.
+Gen-3 cannot deploy, operate, contact customers or claim revenue. Gen-6/7
+banking, credit and currency remain simulation-first and permanently
+human-governed.
