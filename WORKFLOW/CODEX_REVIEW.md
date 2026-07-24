@@ -151,3 +151,13 @@ The repaired O2 persistence and authority boundaries are independently
 verified. Caveat: the quarantine-path assertion inherited from O1 remains
 tracked for later hardening; it does not expand O2 authority or permit a
 baseline without the documented limitation.
+
+## G4-O3 implementation verification
+
+**Verified engine:** `66c0ff1`  
+**Verdict:** `PASS`
+
+Pinned Docker image digest `sha256:84b665...` and six focused tests passed.
+The O3 bounded implementation is independently verified within scope. The
+inherited O1 quarantine-path assertion remains tracked and does not grant
+deployment, live credentials, or protected-action authority.
