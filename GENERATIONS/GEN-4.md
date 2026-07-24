@@ -33,3 +33,8 @@ No customer communication, sales, contracts, pricing, revenue, autonomous purcha
 Documentation is complete, interfaces are versioned, authority matrix is explicit, security/DR/observability controls are testable, pilot entry/exit is defined, and independent review is APPROVED or APPROVED WITH CONDITIONS. No production implementation is authorized by this document.
 
 Dependency, privacy, backup-restore, human-intervention, and four-day pilot evidence are mandatory before any later stage.
+# Strategic completion gate
+
+Gen-4 is not complete when OperatorSystem exists. The defining verified loop is: accepted useful artifact → persistent multi-day mission → deployment proposal and separate approval → real deployment → health verification → continuous observation → bounded low-risk maintenance → recovery or rollback → measured operational outcome → learning feedback. At least one useful artifact must remain operational through the pilot. Gen-4 targets E2 operated value and may support E3 only with human commercial assistance; customer/revenue autonomy is Gen-5.
+
+All Gen-4 Stage 0 reviews must include the Vision Drift Check and temporal hierarchy (Mission, Phase, Milestone, Task, Action proposal), with deterministic resume, drift detection, completion proof and no authority bypass.

@@ -61,3 +61,10 @@ The biological drive.
 ## [Gen-6+] Society & Autark Swarms
 The collective.
 - **Goal:** Allow multiple Autarks to communicate, trade resources, specialize (e.g., one becomes a researcher, another a coder), and form a computational ecosystem.
+# Strategic reconciliation (binding)
+
+The original nine-phase vision remains canonical; Gen-0 through Gen-7 are an engineering refinement mapped to those phases in `VISION/AUTARK_STRATEGIC_COMPASS.md`. Generation numbers require a major end-to-end capability under `GOVERNANCE/GENERATION_NAMING_AND_VALUE_RULE.md`.
+
+Gen-4 is Operator and Temporal Agency and must reach E2 operated value (and may reach E3 only with human commercial assistance). Its completion loop is persistent mission → approved deployment → health observation → bounded maintenance → recovery/rollback → measured learning. Gen-5 is Autonomous Enterprise and must include market/customer discovery, approved communication, offers, pricing, sales, contracts, delivery, payment/revenue accounting, support, portfolio, P&L and reinvestment; it targets E4/E5 and is not optional polish. Gen-6 society and Gen-7 autogenesis cannot be used to avoid proving Gen-5 real-world value.
+
+Every Stage 0 uses the Vision Drift Check and records evidence-backed scorecard statuses; architecture, tests, simulations and documentation alone do not complete a generation.

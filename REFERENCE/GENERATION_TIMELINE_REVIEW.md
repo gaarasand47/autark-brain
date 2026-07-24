@@ -42,3 +42,6 @@ review package, and stop before deployment or customer contact.
 Gen-3 cannot deploy, operate, contact customers or claim revenue. Gen-6/7
 banking, credit and currency remain simulation-first and permanently
 human-governed.
+# Strategic timeline binding
+
+The original phase vision is preserved and mapped to the current generation model by `VISION/AUTARK_STRATEGIC_COMPASS.md`. Gen-4 must prove temporal agency and operated value (E2), not merely expose OperatorSystem. Gen-5 must prove a bounded real-value loop (E4/E5). Gen-6/7 remain downstream and cannot defer enterprise usefulness. Apply `GOVERNANCE/VISION_DRIFT_CHECK.md` to every design review.

@@ -38,7 +38,7 @@ Human authorization accepted the confirmed Gen-4 Stage 0 additions and
 exclusions. Documentation-only architecture package is prepared for
 independent Codex design review. No Gen-4 implementation has started.
 
-READY_FOR_CODEX_DESIGN_REVIEW
+READY_FOR_CODEX_STRATEGIC_VISION_REVIEW
 
 Gen-4 design package has typed contracts, provider/LLM boundaries, lifecycle
 recovery semantics, pilot thresholds, and complete dependency traceability.
