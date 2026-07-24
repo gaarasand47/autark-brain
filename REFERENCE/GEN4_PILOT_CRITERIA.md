@@ -1,0 +1,3 @@
+# Gen-4 Four-Day Pilot Criteria
+
+Entry requires independent PASS, pinned image and dependencies, zero-value/test environment, approved artifact checksum, credential revocation drill, backup restore proof, emergency-stop drill, alert routing, privacy review, and named human operator. During four days record uptime, errors, resource/cost ceilings, rollbacks, incidents, and every approval. Exit requires no unauthorized effect, no unresolved critical/high finding, complete audit export, clean shutdown/restart, successful restore, and human acceptance. Failure pauses and quarantines; it does not auto-retry into production.

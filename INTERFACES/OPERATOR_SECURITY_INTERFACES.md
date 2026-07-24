@@ -1,0 +1,3 @@
+# Gen-4 Security Interfaces
+
+Credential leases are scoped by environment, artifact, capability, operation, audience, expiry, and correlation ID; secrets are redacted, rotated, revocable, and never logged or persisted plaintext. Dependency gates require lockfile, SBOM, signature/provenance, vulnerability threshold, and image-digest verification. Privacy rules define minimization, retention, deletion, consent, encryption, and access audit for external observations and model data. Observability requires immutable logs, metrics, traces, clock sync, alerts, retention, and export. Disaster recovery requires encrypted backups, restore drills, RPO/RTO, checksum verification, and human authorization.

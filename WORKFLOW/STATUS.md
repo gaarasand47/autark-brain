@@ -32,3 +32,10 @@ Fresh independent Docker verification passed at engine commit `6e254a5`:
 Final evidence is archived in
 `AUDITS/RELEASES/GEN3_FOUNDATION_HARDENING_FINAL.md`. Gen-4 remains blocked
 until separate human authorization.
+GEN4_STAGE0_DESIGN_IN_PROGRESS
+
+Human authorization accepted the confirmed Gen-4 Stage 0 additions and
+exclusions. Documentation-only architecture package is prepared for
+independent Codex design review. No Gen-4 implementation has started.
+
+READY_FOR_CODEX_DESIGN_REVIEW

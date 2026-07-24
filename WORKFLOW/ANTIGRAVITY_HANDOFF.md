@@ -67,3 +67,10 @@ are deferred until separately authorized.
 ## Status
 
 `GEN2_RC1_READY_FOR_HUMAN`
+## Gen-4 Stage 0 documentation handoff
+
+The Gen-4 operator architecture package is documentation-only and ready for
+independent Codex design review. Review GEN-4.md, ADR-010, OPERATOR_SYSTEM.md,
+the operator interfaces, security interfaces, lifecycle flows, authority
+matrix, pilot criteria, and GEN4_STAGE0_HANDOFF.md. Do not implement code,
+modify Gen-3, create tags, or begin a pilot before approval.
