@@ -157,3 +157,29 @@ Tests cover malformed bounds, foreign capabilities, cycles, duplicate tasks,
 budget overflow, version mismatch, deterministic replay and immutability.
 No execution, artifact build, deployment, customer, Treasury, wallet,
 signing, broadcast, production mutation, policy, identity or approval authority.
+
+### O3 normative contract
+
+Fields: `id:string`, `projectId:string`, `projectVersion:positive integer`,
+`objective:string`, `scopeHash:string`, `deliverables:readonly string[]`,
+`exclusions:readonly string[]`, `acceptanceCriteria:readonly string[]`,
+`capabilities:readonly {id:string,version:string}[]`,
+`tasks:readonly {id:string,dependsOn:readonly string[],capabilityId:string,budgetCents:integer}`,
+`budgetCents:integer`, `provenanceHash:string`, `version:positive integer`,
+`createdAt:string`, `authority:'NONE'`. IDs are deterministic hashes of
+canonical content; task IDs and edge lists are sorted before hashing. Budgets
+are integer cents, non-negative, and task sum must not exceed total budget or
+Project ceiling; no floating-point rounding is permitted.
+
+Cycle detection uses deterministic Kahn topological sorting over sorted node IDs;
+any residual node is a cycle. Capability identity/version must resolve to the
+registered immutable membership set; foreign, duplicate or stale versions
+reject. Project version, candidate provenance and scope hash must match at
+creation. Idempotency keys replay as no-op only for identical canonical payload;
+different payload conflicts.
+
+Persistence is atomic/versioned with restart recovery, contiguous-version
+selection, corruption quarantine and an unavailable envelope. Authority scans
+cover every `src/builder` module and transitive imports for execution,
+Treasury, wallet, signing, broadcast, mutation, policy, identity, customer or
+approval calls.
