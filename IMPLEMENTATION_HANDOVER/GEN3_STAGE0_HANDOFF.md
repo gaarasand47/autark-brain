@@ -63,3 +63,9 @@ mutation, policy, identity or approval path.
 Acceptance evidence: `npm run build`; focused Jest suite. This objective is
 not authorized until the repaired Stage 0 architecture receives independent
 design approval. No self-approval or baseline claim is made.
+## G3-S1-O3 plan
+
+`READY_FOR_CODEX_DESIGN_REVIEW` — documentation only. Define the immutable
+ProjectSpecification, bounded acyclic task graph, capability references,
+budget allocation, provenance and acceptance criteria for an already approved
+Project. No execution or artifact construction is authorized.

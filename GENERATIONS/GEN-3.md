@@ -144,3 +144,16 @@ transitions, malformed bounds, candidate evidence expiry/membership mismatch,
 restart recovery, quarantine naming, idempotency, unavailable envelope shape,
 and a static scan proving no execution/Treasury/wallet/signing/broadcast/
 mutation/policy/identity/approval calls.
+
+## G3-S1-O3 — Project specification (design only)
+
+Define an immutable `ProjectSpecification` linked to exactly one approved
+Project: objective, scope hash, deliverables, exclusions, acceptance criteria,
+capability references, bounded acyclic task graph, budget allocation and
+provenance. IDs/hashes are non-empty; budgets are finite non-negative and sum
+within the Project ceiling; tasks reference only registered capabilities.
+Creation requires `APPROVED` status with matching version/provenance.
+Tests cover malformed bounds, foreign capabilities, cycles, duplicate tasks,
+budget overflow, version mismatch, deterministic replay and immutability.
+No execution, artifact build, deployment, customer, Treasury, wallet,
+signing, broadcast, production mutation, policy, identity or approval authority.
