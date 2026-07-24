@@ -8,3 +8,9 @@ This repository contains the permanent historical record, architectural decision
 - **ENGINEERING_STANDARDS.md**: The mechanical operating principles governing organism development.
 
 By strictly segregating this repository from the executable kernel, we maintain a clean and verifiable history of the organism's evolution.
+
+## Current status
+
+Gen-3 foundation hardening is independently verified with `PASS WITH
+LIMITATIONS`. The authoritative evidence is
+`AUDITS/RELEASES/GEN3_FINAL_FOUNDATION_HARDENING.md`; Gen-4 is not authorized.

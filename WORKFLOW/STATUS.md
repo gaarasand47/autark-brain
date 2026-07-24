@@ -17,3 +17,10 @@ GEN3_BASELINED_AWAITING_GEN4_AUTHORIZATION
 Human baseline authorization accepted. Evidence is archived in
 `AUDITS/RELEASES/GEN3_BASELINE_ARCHIVE.md`. Gen-4 remains blocked pending
 separate human authorization.
+
+GEN3_FOUNDATION_HARDENING_VERIFIED_WITH_LIMITATIONS
+
+Final hardening evidence is archived in
+`AUDITS/RELEASES/GEN3_FINAL_FOUNDATION_HARDENING.md`. No RC2 tag is created
+until the remaining high-contention stress and inherited Gen-1 test issues
+are separately resolved or explicitly authorized.
