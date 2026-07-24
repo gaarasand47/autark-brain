@@ -1,13 +1,13 @@
 # Gen-4 Stage 0 Traceability Matrix
 
-Historical Gen-1/Gen-2 rows below are preserved for lineage; current Gen-4
-design rows are authoritative for this review.
+Gen-4 Stage 0 rows are authoritative and complete for independent review.
+Historical Gen-1/Gen-2 rows below are preserved for lineage only.
 
 ## Gen-4 Stage 0 Traceability
 
 | Requirement | Canonical document | Status |
 |---|---|---|
-| Operator organ, schemas, guards | GENERATIONS/GEN-4.md, ORGANS/OPERATOR_SYSTEM.md | Review pending |
+| Operator organ, schemas, guards | GENERATIONS/GEN-4.md, ORGANS/OPERATOR_SYSTEM.md | Complete; awaiting independent review |
 | Authority and dependencies | REFERENCE/GEN4_AUTHORITY_MATRIX.md, REFERENCE/GEN4_DEPENDENCY_CONTRACTS.md | Review pending |
 | Security and recovery | SECURITY/GEN4_*.md | Review pending |
 | Lifecycle and maintenance | FLOWS/GEN4_*.md | Review pending |
@@ -15,7 +15,10 @@ design rows are authoritative for this review.
 | Typed runtime and provider contracts | REFERENCE/GEN4_TYPED_CONTRACTS.md, REFERENCE/GEN4_RUNTIME_CONTRACTS.md, SECURITY/GEN4_PROVIDER_LLM_BOUNDARY.md | Review pending |
 | Persistence, fencing, quarantine, recovery | REFERENCE/GEN4_TYPED_CONTRACTS.md, FLOWS/GEN4_OPERATOR_LIFECYCLE.md | Review pending |
 
-**Status:** `Gen-2 RC1 baseline candidate - PASS WITH LIMITATIONS` (awaiting human lock)
+**Status:** `Gen-4 Stage 0 design package complete - awaiting independent review`
+
+Gen-2 RC1 status is historical lineage only; Gen-2A and Gen-3 immutable
+baselines remain sealed and are not modified by Gen-4 design.
 
 Every major architectural feature must be traceable through this matrix. If a feature is listed here but cannot be found in the code or design specifications, it is biologically invalid.
 

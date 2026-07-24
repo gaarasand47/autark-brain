@@ -3,7 +3,8 @@
 ```ts
 type ProviderMode = 'SIMULATED'|'LIVE';
 interface ProviderIdentity { providerId:string; implementationVersion:string; modelId:string|null; modelVersion:string|null; mode:ProviderMode; }
-interface ProviderEvidence { identity:ProviderIdentity; requestHash:string; responseHash:string; provenance:string; observedAt:string; }
+interface ProviderProvenance { sourceId:string; sourceVersion:string; collectedAt:string; evidenceHash:string; correlationId:string; }
+interface ProviderEvidence { identity:ProviderIdentity; requestHash:string; responseHash:string; provenance:ProviderProvenance; observedAt:string; }
 ```
 Provider selection must explicitly require `LIVE`, then verify provider/model
 identity and approved version. Any unavailable, mismatched, expired, or

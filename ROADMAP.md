@@ -50,8 +50,8 @@ The biological drive.
 - **Goal:** Operate approved Gen-3 artifacts under bounded policy, sandbox,
   credential, budget, observability, and human-intervention controls.
 - **Current reconciliation:** Gen-4 is an OperatorSystem architecture,
-  documentation-only on `gen4-development`, preserving immutable Gen-2A and
-  Gen-3 evidence. No implementation or pilot is authorized.
+  documentation-only on `gen4-development`; Gen-3 implementation is sealed
+  historical evidence. No Gen-4 implementation or pilot is authorized.
 
 ## [Gen-5] Evolution (Future, not Gen-4)
 - **Goal:** Research and propose self-improvement under permanent human
