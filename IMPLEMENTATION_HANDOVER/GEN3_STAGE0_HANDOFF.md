@@ -41,6 +41,14 @@ identity change is included. Gen-2A files and tags are untouched.
 No Stage 1 objective may begin until these documents receive independent design
 approval.
 
+## Next objective draft — G3-S1-O2
+
+Status: `READY_FOR_CODEX_DESIGN_REVIEW` (planning only; no implementation).
+The next narrow objective is the Project lifecycle schema, guarded transitions,
+versioned persistence/recovery and adversarial tests. It must not construct
+artifacts or add deployment, execution, Treasury, wallet, signing, broadcast,
+mutation, policy, identity, customer or approval authority.
+
 ## G3-S1-O1 implementation handoff (pending design approval)
 
 Engine implementation: `src/builder/OpportunityCandidate.ts` and focused tests

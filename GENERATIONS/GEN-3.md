@@ -71,6 +71,23 @@ No transition may skip guards, expand scope or exceed budget.
 
 Gen-2A remains immutable and no Gen-4/5/6 behavior is introduced here.
 
+## G3-S1-O2 — Project lifecycle (design only)
+
+Define a versioned `Project` record referencing one qualified
+`OpportunityCandidate`, immutable scope/exclusions, budget and cognitive
+ceilings, acceptance criteria, required capabilities, provenance and lifecycle
+status. Define guarded transitions through the documented active states and
+terminal failure states. Each transition records actor, decision, evidence
+references, previous/new version, timestamp and correlation ID.
+
+Persistence must be atomic and versioned with one-writer/process semantics.
+Recovery selects the last valid version, quarantines corruption and returns an
+explicit unavailable result. Replay is deterministic. Scope excludes artifact
+construction, deployment, operation, customers, purchases, Treasury,
+wallet/signing/broadcast, production mutation, policy, identity and approval
+authority. Focused adversarial tests must cover schema bounds, every guard,
+restart recovery, quarantine, idempotency and authority exclusion.
+
 ## Stage 0 repair invariants (normative)
 
 The following conditions are mandatory for every implementation objective:
