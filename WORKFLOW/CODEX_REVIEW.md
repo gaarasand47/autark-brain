@@ -109,3 +109,12 @@ concurrency test; capability registry provenance is not persisted as a
 snapshot hash; authority scanning remains regex-based. These limitations are
 recorded and do not grant execution, deployment, Treasury, wallet, signing,
 broadcast, mutation, policy, identity, customer, or approval authority.
+
+## Gen-3 limitation-fix verification
+
+Reviewed engine commit `713913d`: **PASS WITH LIMITATIONS**. Docker and
+TypeScript passed; five focused suites passed (27/27). Registry snapshot
+hashing, stale-lock takeover, competing-writer rejection, replay conflict,
+and raw-byte quarantine hashing were independently verified. Remaining limits
+are full multi-process stress coverage and runtime-complete authority
+reachability proof.

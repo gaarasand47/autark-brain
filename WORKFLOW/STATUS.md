@@ -5,3 +5,9 @@ five focused suites (23/23) passed. Accepted limitations: no explicit
 cross-process stale-lock/concurrency test, capability registry provenance is
 membership-validated but not persisted as a snapshot hash, and authority
 scanning is regex-based. No deployment or later-generation authority.
+
+Limitation-fix verification at engine commit `713913d`: PASS WITH
+LIMITATIONS. Docker and TypeScript passed; 27/27 focused tests passed.
+Registry snapshot hashing, stale-lock takeover, competing-writer rejection,
+replay conflict, and raw-byte quarantine hashing passed. Remaining limits are
+full multi-process stress coverage and runtime-complete authority reachability.
