@@ -92,6 +92,22 @@ and O10 integrated baseline are architecture-only plans until each prior
 objective independently passes. No live credentials, production deployment,
 customer activity, pilot, or Gen-5 behavior is authorized.
 
+GEN4_O7_O10_IMPLEMENTED_UNVERIFIED
+
+Implementation commits now exist on the engine `gen4-development` branch for
+the remaining planned objectives, but they are not approved or baselined:
+
+- O7 temporal mission/operator lifecycle: `9414b90`
+- O8 credential, disaster-recovery, and human-intervention closure: `c472040`
+- O9 zero-value/testnet pilot and measured outcomes: `781a734`
+- O10 integrated baseline candidate: `7720235`
+
+These commits are **IMPLEMENTED_UNVERIFIED** only. O6 fencing, contention,
+replay-conflict, quarantine-evidence, shutdown, and authority blockers remain
+unresolved. O7 also has hardening gaps, and the actual Heart-to-operator wiring
+is absent. No independent verification, baseline tag, live credential, pilot,
+production deployment, customer activity, or Gen-5 behavior is authorized.
+
 GEN4_O4_VERIFIED_READY_FOR_GEN4_O5_PLAN
 
 O4 independently passed at engine commit `a3e389d`. Docker digest

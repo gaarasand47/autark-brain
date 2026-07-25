@@ -74,3 +74,23 @@ independent Codex design review. Review GEN-4.md, ADR-010, OPERATOR_SYSTEM.md,
 the operator interfaces, security interfaces, lifecycle flows, authority
 matrix, pilot criteria, and GEN4_STAGE0_HANDOFF.md. Do not implement code,
 modify Gen-3, create tags, or begin a pilot before approval.
+
+## Implementation history after Stage 0
+
+The following engine commits are recorded for independent review only:
+
+| Objective | Engine commit | Status |
+|---|---|---|
+| O7 temporal mission/operator lifecycle | `9414b90` | IMPLEMENTED_UNVERIFIED |
+| O8 credential/DR/human intervention | `c472040` | IMPLEMENTED_UNVERIFIED |
+| O9 zero-value pilot/outcomes | `781a734` | IMPLEMENTED_UNVERIFIED |
+| O10 integrated baseline candidate | `7720235` | IMPLEMENTED_UNVERIFIED |
+
+This history does not supersede the required objective gates. O6 remains
+unresolved (fencing, real multi-process contention, replay conflicts,
+quarantine evidence, shutdown, and authority regression). O7 has additional
+hardening gaps, and the production Heart-to-OperatorSystem wiring is absent.
+The commits must be reviewed at their exact diffs with Docker and adversarial
+tests before any status can advance. No Gen-4 baseline tag exists and no live
+credentials, production deployment, customer activity, or Gen-5 behavior is
+authorized.
