@@ -32,7 +32,7 @@ Parent Directory: `d:\autark\`
 
 | Repository | Path | Role | Branch | Commit |
 |---|---|---|---|---|
-| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen4-development` | Gen-3 hardened baseline; Gen-4 source absent |
+| **`autark`** | `d:\autark\autark` | Executable Organism Engine | `gen4-development` | Gen-4 O1–O6 implementation history; O6 unverified |
 | **`autark-brain`** | `d:\autark\autark-brain` | Memory Vault & Engineering Knowledge | `gen4-development` | Gen-4 Stage 0 docs, review pending |
 | **`autark-bench`** | `d:\autark\autark-bench` | Benchmarking & Reliability Engine | `gen2-development` | `6e2b961a40e19c6f2fedfc301e4ce8125940dcca` |
 | **`autark-lab`** | `d:\autark\autark-lab` | Research & Prototypes | N/A | N/A |
@@ -53,8 +53,16 @@ Parent Directory: `d:\autark\`
 - [x] **Gen-2A Perception and Learning Completion**: PASS WITH LIMITATIONS;
   `Gen-2A-Baseline` tagged.
 - [x] **Gen-3 foundation hardening**: PASS; immutable baseline preserved.
-- [x] **Gen-4 Stage 0 architecture reconciliation**: documentation complete;
-  awaiting independent design review.
+- [x] **Gen-4 Stage 0 architecture reconciliation**: independently approved;
+  remaining objective sequence recorded in `GENERATIONS/GEN4_OBJECTIVE_SEQUENCE.md`.
+- [x] **Gen-4 O1–O5 implementation**: independently verified at `efd03e2`,
+  `ae40e73`, `66c0ff1`, `a3e389d`, and `d7b6ca8`.
+- [ ] **Gen-4 O6 incident/recovery closure**: implementation exists but is
+  unverified; fencing, contention, replay, quarantine, shutdown, and authority
+  evidence remain open.
+- [ ] **Gen-4 O7–O9**: architecture defined; implementation not yet started.
+- [ ] **Gen-4 O10 integrated baseline**: blocked until O6–O9 and independent
+  final verification pass.
 
 ## Gen-1 Inherited Audit Status
 

@@ -50,9 +50,11 @@ The biological drive.
 ## [Gen-4] Operator / Deployment Service
 - **Goal:** Operate approved Gen-3 artifacts under bounded policy, sandbox,
   credential, budget, observability, and human-intervention controls.
-- **Current reconciliation:** Gen-4 is an OperatorSystem architecture,
-  documentation-only on `gen4-development`; Gen-3 implementation is sealed
-  historical evidence. No Gen-4 implementation or pilot is authorized.
+- **Current reconciliation:** Gen-4 O1–O5 have independently verified bounded
+  implementation evidence. O6 remains open for repair and verification; O7–O10
+  are sequenced in `GENERATIONS/GEN4_OBJECTIVE_SEQUENCE.md`. No live credentials,
+  production deployment, customer activity, or pilot is authorized until the
+  relevant gates pass and a human authorizes it.
 
 ## [Gen-5] Evolution (Future, not Gen-4)
 - **Goal:** Research and propose self-improvement under permanent human
