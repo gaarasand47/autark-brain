@@ -81,6 +81,17 @@ quarantine-path assertion remains a documented hardening caveat. The next
 permitted action is drafting the narrow G4-O6 plan; no implementation or
 baseline tag is authorized yet.
 
+GEN4_O6_REPAIR_AND_REMAINING_OBJECTIVES_DEFINED
+
+The canonical remaining objective sequence is recorded in
+`GENERATIONS/GEN4_OBJECTIVE_SEQUENCE.md`. O6 implementation exists but is
+unverified and remains blocked on fencing, contention, replay-conflict,
+quarantine-evidence, shutdown, and authority regression evidence. O7 temporal
+mission, O8 credential/DR and human intervention, O9 zero-value pilot/outcomes,
+and O10 integrated baseline are architecture-only plans until each prior
+objective independently passes. No live credentials, production deployment,
+customer activity, pilot, or Gen-5 behavior is authorized.
+
 GEN4_O4_VERIFIED_READY_FOR_GEN4_O5_PLAN
 
 O4 independently passed at engine commit `a3e389d`. Docker digest
