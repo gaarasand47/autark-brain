@@ -108,6 +108,21 @@ unresolved. O7 also has hardening gaps, and the actual Heart-to-operator wiring
 is absent. No independent verification, baseline tag, live credential, pilot,
 production deployment, customer activity, or Gen-5 behavior is authorized.
 
+GEN4_O7_REPAIR_REQUIRED
+
+Independent review of O7 engine commit `c8b2905` returned **FAIL**. Gaps:
+real OS-process contention, concurrent readers, repeated rounds, natural
+shutdown/cleanup; deep cross-reference and deadline validation; rejection and
+persistence of illegal or skipped transitions; sequential chain/version/hash
+verification; post-save owner-token/epoch fencing; quarantine byte/evidence
+hash assertions; and replay coverage for restart, tampering, and concurrency.
+
+O8 `c472040`, O9 `781a734`, and O10 `7720235` remain IMPLEMENTED_UNVERIFIED and
+blocked behind O7. Required order: O7 repair/PASS -> O8 hardening/PASS -> O9
+hardening/PASS -> O10 hardening/PASS -> O6 closure/PASS -> integrated Docker
+and full-suite evidence -> human baseline decision. No baseline tag or live
+operation is authorized.
+
 GEN4_O4_VERIFIED_READY_FOR_GEN4_O5_PLAN
 
 O4 independently passed at engine commit `a3e389d`. Docker digest

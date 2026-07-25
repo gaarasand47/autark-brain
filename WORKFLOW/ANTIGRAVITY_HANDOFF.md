@@ -94,3 +94,15 @@ The commits must be reviewed at their exact diffs with Docker and adversarial
 tests before any status can advance. No Gen-4 baseline tag exists and no live
 credentials, production deployment, customer activity, or Gen-5 behavior is
 authorized.
+
+## O7 independent review failure
+
+O7 commit `c8b2905` received an independent **FAIL**. Repair must address real
+OS-process contention with readers and repeated rounds, natural shutdown and
+cleanup, deep cross-reference/deadline validation, illegal/skipped transition
+persistence rejection, sequential chain/version/hash checks, post-save
+owner-token/epoch fencing, quarantine raw-byte/evidence-hash assertions, and
+restart/tamper/concurrent replay tests. O8 `c472040`, O9 `781a734`, and O10
+`7720235` are implemented but unverified and blocked behind O7. The mandatory
+order is O7 repair/PASS, O8 PASS, O9 PASS, O10 PASS, O6 PASS, then integrated
+Docker/full-suite evidence and a human baseline decision.

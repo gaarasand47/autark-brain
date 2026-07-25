@@ -80,3 +80,9 @@ read-only Cortex observation; no wallet, signing, broadcast, production-code
 mutation, customer communication, or revenue authority; deterministic
 recovery; immutable provenance; and bounded resource/egress policy.
 
+## Current execution order
+
+O7 repair and independent PASS -> O8 hardening and PASS -> O9 hardening and
+PASS -> O10 hardening and PASS -> O6 closure and PASS -> integrated Docker/full
+suite verification and evidence archive -> human baseline decision. Later
+candidate commits never bypass an earlier failed review.
