@@ -95,6 +95,12 @@ byte/evidence hashing and disposal, and rerun Docker-backed shutdown, restart,
 tamper, and replay evidence. O8 (`c472040`), O9 (`781a734`), and O10
 (`7720235`) remain blocked and unverified.
 
+The follow-on O7 repair at `c2ff8f3` passes local build plus 10 checks (8+2),
+but independent Docker build verification hung during Dockerfile `npm install`
+and produced no image. It therefore remains **UNVERIFIED / blocked**; a
+healthy-daemon Docker rebuild and independent verdict at the exact commit are
+required. O8-O10 and the baseline gate remain closed.
+
 ## Current execution order
 
 O7 repair and independent PASS -> O8 hardening and PASS -> O9 hardening and

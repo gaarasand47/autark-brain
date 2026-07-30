@@ -124,3 +124,12 @@ stale fencing assertions; close quarantine raw-byte/evidence hashes and
 cleanup/dispose; and rerun Docker-backed shutdown, restart, tamper, and replay
 checks. Only a fresh independent Docker **PASS** at the exact final commit can
 unblock O8. O8 `c472040`, O9 `781a734`, and O10 `7720235` remain blocked.
+
+## O7 c2ff8f3 verification update
+
+Repair commit `c2ff8f3` passes the local build and 10 checks (8+2). The
+independent Docker build hung in the Dockerfile `npm install` step and
+produced no image, so this is **UNVERIFIED**, not a pass. O7 remains blocked;
+O8 `c472040`, O9 `781a734`, and O10 `7720235` must not advance. Re-run the
+independent Docker build/tests with a healthy daemon and record a verdict at
+the exact commit before considering any baseline or live operation.

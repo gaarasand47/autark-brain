@@ -150,6 +150,17 @@ and replay evidence; then obtain a fresh independent Docker PASS at the exact
 final commit. No baseline, credentials, deployment, pilot, customer activity,
 or Gen-5 behavior is authorized.
 
+GEN4_O7_C2FF8F3_DOCKER_UNVERIFIED
+
+O7 repair commit `c2ff8f3` passes the local build and 10 focused checks (8
+unit/integration plus 2 additional tests). Independent Docker verification did
+not complete: the build hung during the Dockerfile `npm install`, produced no
+image, and therefore supplies no independent evidence. O7 remains
+**UNVERIFIED / blocked**. Do not advance O8, O9, or O10, create a baseline tag,
+or authorize live credentials, deployment, pilot, customer activity, or Gen-5
+behavior. Retry with a healthy Docker build and an independent verdict at the
+exact commit before any gate advances.
+
 GEN4_O3_VERIFIED_READY_FOR_GEN4_O4_PLAN
 
 O3 independently passed at engine commit `66c0ff1`. Docker digest
