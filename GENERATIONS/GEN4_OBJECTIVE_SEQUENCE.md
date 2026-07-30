@@ -17,6 +17,7 @@ The engine branch `gen4-development` contains the following bounded objectives:
 | O4 | ServiceMonitor and read-only providers | `a3e389d` | independently PASS |
 | O5 | MaintenanceController bounded proposals | `d7b6ca8` | independently PASS |
 | O6 | IncidentManager, recovery, fencing, quarantine | `57ea382` and repairs | **UNVERIFIED / repair required** |
+| O7 | Temporal mission and operator lifecycle | `44f3eb8` + `38af682` | **FAIL / UNVERIFIED / repair required** |
 
 The O1 inherited quarantine-path caveat remains recorded and is not silently
 converted into a pass. O6 must receive a fresh independent review at its exact
@@ -79,6 +80,20 @@ separation of proposal, approval, execution, and outcome authorities;
 read-only Cortex observation; no wallet, signing, broadcast, production-code
 mutation, customer communication, or revenue authority; deterministic
 recovery; immutable provenance; and bounded resource/egress policy.
+
+## Latest O7 review gate
+
+Combined repair commits `44f3eb8` + `38af682` are **FAIL / UNVERIFIED**:
+Docker daemon unavailable; save validation is incomplete; cross-references,
+deadlines, and dependencies are shallow; transition-chain continuity/hash
+checks are absent; contention does not kill workers or prove OS stale fencing;
+and quarantine cleanup/dispose has gaps. Before a fresh independent review,
+validate every save, enforce contiguous transition versions/hashes with
+illegal/skipped/tampered rejection, prove OS-process contention with worker
+termination and concurrent readers across repeated rounds, close quarantine
+byte/evidence hashing and disposal, and rerun Docker-backed shutdown, restart,
+tamper, and replay evidence. O8 (`c472040`), O9 (`781a734`), and O10
+(`7720235`) remain blocked and unverified.
 
 ## Current execution order
 

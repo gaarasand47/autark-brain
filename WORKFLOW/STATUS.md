@@ -131,6 +131,25 @@ quarantine-path assertion remains a documented hardening caveat. The next
 permitted action is drafting the narrow G4-O5 plan; no implementation or
 baseline tag is authorized yet.
 
+GEN4_O7_COMBINED_REVIEW_FAILED_UNVERIFIED
+
+Latest O7 repair commits: `44f3eb8` + `38af682`. Independent review is
+**FAIL / UNVERIFIED**: Docker daemon unavailable (no executable evidence);
+save lacks validation; cross-references/deadlines/dependencies are shallow;
+transition-chain continuity/hash verification is absent; contention neither
+kills workers nor proves OS stale fencing; quarantine cleanup/dispose has gaps.
+O8 `c472040`, O9 `781a734`, and O10 `7720235` remain blocked/unverified.
+
+Next repairs: validate every save (schema, bounds, provenance, deadlines,
+dependencies, cross-reference closure); persist/verify contiguous transition
+versions and hashes with illegal/skipped/tampered rejection; test real
+OS-process contention with concurrent readers, repeated rounds, worker
+termination, and stale-token/epoch fencing; close quarantine byte/evidence
+hashing and cleanup/dispose; restore Docker-backed shutdown, restart, tamper,
+and replay evidence; then obtain a fresh independent Docker PASS at the exact
+final commit. No baseline, credentials, deployment, pilot, customer activity,
+or Gen-5 behavior is authorized.
+
 GEN4_O3_VERIFIED_READY_FOR_GEN4_O4_PLAN
 
 O3 independently passed at engine commit `66c0ff1`. Docker digest

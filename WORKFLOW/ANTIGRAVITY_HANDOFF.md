@@ -106,3 +106,21 @@ restart/tamper/concurrent replay tests. O8 `c472040`, O9 `781a734`, and O10
 `7720235` are implemented but unverified and blocked behind O7. The mandatory
 order is O7 repair/PASS, O8 PASS, O9 PASS, O10 PASS, O6 PASS, then integrated
 Docker/full-suite evidence and a human baseline decision.
+
+## Latest O7 combined repair review (still failed)
+
+The latest combined O7 implementation is engine commits `44f3eb8` and
+`38af682`. Independent review is **FAIL / UNVERIFIED**: the Docker daemon was
+unavailable, so no executable evidence exists. Save paths lack validation;
+cross-references, deadlines, and dependencies are shallow; transition-chain
+continuity and hashes are not proved; contention does not terminate workers or
+demonstrate OS-level stale owner-token/epoch fencing; and quarantine
+cleanup/disposal remains incomplete.
+
+Repair handoff: validate every save; enforce contiguous transition versions
+and hashes with illegal/skipped/tampered rejection; run real OS-process
+contention with concurrent readers, repeated rounds, worker termination, and
+stale fencing assertions; close quarantine raw-byte/evidence hashes and
+cleanup/dispose; and rerun Docker-backed shutdown, restart, tamper, and replay
+checks. Only a fresh independent Docker **PASS** at the exact final commit can
+unblock O8. O8 `c472040`, O9 `781a734`, and O10 `7720235` remain blocked.
