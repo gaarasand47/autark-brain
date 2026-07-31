@@ -15,9 +15,11 @@ roadmaps, and workflow handoffs. It does not contain production runtime code.
 - Verification: 39/39 suites, 210/210 tests, 50/50 contention reruns,
   10/10 natural shutdown runs, no `--forceExit`
 
-Gen-4 is sealed. The next development branch is `gen4.1-development` in the
-engine repository. Gen-4.1 architecture and implementation must preserve the
-immutable Gen-4 baseline.
+Gen-4 is adjudicated and tagged. The next development branch is
+`gen4.1-development` in the engine repository. Gen-4.1 architecture and
+implementation must preserve the baseline. Remote GitHub tag deletion/update
+protection is unavailable on the current private-repository plan and is
+recorded as an administrative follow-up; the annotated tag target is fixed.
 
 ## Directory map
 
