@@ -168,3 +168,18 @@ O3 independently passed at engine commit `66c0ff1`. Docker digest
 assertion remains a documented hardening caveat. The next permitted action is
 drafting the narrow G4-O4 plan; no implementation or baseline tag is
 authorized yet.
+
+GEN-4 FINAL CANDIDATE
+INDEPENDENT BASELINE VERDICT PENDING
+
+Final engine implementation candidate: `6c190ffa510e0fa8df07135b6bbe67d4cebd9989`.
+Final engine evidence commit: `b55df135255adeb70a0d9becbb62e6a6d629ad59`.
+Verified Docker digest:
+`autark-gen4-task4-1@sha256:64c17e645b95b0a7cb252402bd34b1e46bb055dd9566acf65f99d6c08b984f84`.
+O6–O10 evidence, full-suite totals (39/39 suites, 210/210 tests), natural
+shutdown (10/10 repetitions), Docker rebuild, and checksums are reconciled in
+`AUDITS/RELEASES/GEN4_FINAL_CANDIDATE_RECONCILIATION.md`.
+
+Historical failed and unverified reports remain unchanged and are superseded
+by this later evidence. No baseline tag, baseline verdict, live credential,
+deployment, pilot, customer activity, or Gen-5 behavior is authorized.

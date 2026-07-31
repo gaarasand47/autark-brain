@@ -71,3 +71,15 @@ Parent Directory: `d:\autark\`
 - [ ] **Stage 13 Architecture Drift**: OPEN — traceability and organ/interface claims conflict with code.
 - [ ] **Stage 14 Release Candidate / Live Validation**: UNVERIFIED — no live validation is authorized or evidenced.
 - [ ] **Stage 15 Gen-1 Freeze**: OPEN — immutable tag preserved; final-freeze decision withheld.
+
+## Gen-4 Final Candidate Reconciliation
+
+- **Engine implementation:** `6c190ffa510e0fa8df07135b6bbe67d4cebd9989`
+- **Evidence archive:** `b55df135255adeb70a0d9becbb62e6a6d629ad59`
+- **Docker digest:** `autark-gen4-task4-1@sha256:64c17e645b95b0a7cb252402bd34b1e46bb055dd9566acf65f99d6c08b984f84`
+- **Verification reported:** 39/39 suites, 210/210 tests, 10/10 natural shutdown repetitions; no `--forceExit`.
+- **Status:** GEN-4 FINAL CANDIDATE / INDEPENDENT BASELINE VERDICT PENDING.
+- **Limitation:** native Windows `npm ci` needs local C++ tooling for `better-sqlite3`; Docker installation/build is verified. This is post-baseline host-environment work.
+
+See `AUDITS/RELEASES/GEN4_FINAL_CANDIDATE_RECONCILIATION.md` for the A–I
+matrix. Previous reports and immutable tags are preserved.

@@ -50,11 +50,14 @@ The biological drive.
 ## [Gen-4] Operator / Deployment Service
 - **Goal:** Operate approved Gen-3 artifacts under bounded policy, sandbox,
   credential, budget, observability, and human-intervention controls.
-- **Current reconciliation:** Gen-4 O1–O5 have independently verified bounded
-  implementation evidence. O6 remains open for repair and verification; O7–O10
-  are sequenced in `GENERATIONS/GEN4_OBJECTIVE_SEQUENCE.md`. No live credentials,
-  production deployment, customer activity, or pilot is authorized until the
-  relevant gates pass and a human authorizes it.
+- **Current reconciliation:** Final implementation candidate
+  `6c190ffa510e0fa8df07135b6bbe67d4cebd9989` and evidence commit
+  `b55df135255adeb70a0d9becbb62e6a6d629ad59` are documented with Docker digest
+  `autark-gen4-task4-1@sha256:64c17e645b95b0a7cb252402bd34b1e46bb055dd9566acf65f99d6c08b984f84`.
+  O6–O10 evidence and natural shutdown are complete for independent review;
+  the baseline verdict and tag remain pending. No live credentials, production
+  deployment, customer activity, or pilot is authorized until independent
+  review and separate human authorization.
 
 ## [Gen-5] Evolution (Future, not Gen-4)
 - **Goal:** Research and propose self-improvement under permanent human
