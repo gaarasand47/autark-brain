@@ -181,3 +181,23 @@ Pinned Docker image digest `sha256:2bf594...` and three focused tests passed.
 O5 is independently verified within its bounded scope. The inherited O1
 quarantine-path assertion remains tracked; no deployment or protected-action
 authority is granted.
+
+## GEN-4 FINAL INDEPENDENT BASELINE ADJUDICATION
+
+**Verdict: GEN-4 BASELINE VERIFIED**
+
+- Engine implementation: `6c190ffa510e0fa8df07135b6bbe67d4cebd9989`
+- Engine evidence: `b55df135255adeb70a0d9becbb62e6a6d629ad59`
+- Brain reconciliation: `acfa1f28545b3bbeea649b50dc070475846ab03e`
+- Docker: `autark-gen4-task4-1@sha256:64c17e645b95b0a7cb252402bd34b1e46bb055dd9566acf65f99d6c08b984f84`
+
+Verified: 39/39 suites, 210/210 tests, 50/50 contention reruns, 10/10
+natural-shutdown runs, no `--forceExit`, and no forbidden direct Heart
+authority path. Evidence checksums and historical-report preservation were
+verified. Native Windows `npm ci` requiring local C++ tooling for
+`better-sqlite3` remains a post-baseline host limitation; Docker installation
+and release build are verified.
+
+This is the independent adjudication record. Baseline sealing and tag creation
+are separate finalization actions; no Gen-4.1 implementation is authorized by
+this review.

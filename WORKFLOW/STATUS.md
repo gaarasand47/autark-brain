@@ -183,3 +183,12 @@ shutdown (10/10 repetitions), Docker rebuild, and checksums are reconciled in
 Historical failed and unverified reports remain unchanged and are superseded
 by this later evidence. No baseline tag, baseline verdict, live credential,
 deployment, pilot, customer activity, or Gen-5 behavior is authorized.
+
+GEN-4 BASELINE VERIFIED
+
+Independent adjudication verified engine `6c190ffa510e0fa8df07135b6bbe67d4cebd9989`,
+evidence `b55df135255adeb70a0d9becbb62e6a6d629ad59`, Brain reconciliation
+`acfa1f28545b3bbeea649b50dc070475846ab03e`, and Docker digest
+`autark-gen4-task4-1@sha256:64c17e645b95b0a7cb252402bd34b1e46bb055dd9566acf65f99d6c08b984f84`.
+The final baseline tag and Gen-4.1 branch are sealing actions; no Gen-4.1
+implementation has started.
